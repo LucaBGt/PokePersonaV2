@@ -473,11 +473,37 @@ struct RankingHall2P
     u8 language;
 };
 
+
 // quest menu
 #include "constants/quests.h"
 #define SIDE_QUEST_FLAGS_COUNT     ((SIDE_QUEST_COUNT / 8) + ((SIDE_QUEST_COUNT % 8) ? 1 : 0))
 #include "constants/items.h"
 #define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))
+
+// follow me
+struct FollowerMapData
+{
+    /*0x0*/ u8 id;
+    /*0x1*/ u8 number;
+    /*0x2*/ u8 group;
+}; /* size = 0x4 */
+struct Follower
+{
+    /*0x00*/ u8 inProgress:1;
+             u8 warpEnd:1;
+             u8 createSurfBlob:3;
+             u8 comeOutDoorStairs:3;
+    /*0x01*/ u8 objId;
+    /*0x02*/ u8 currentSprite;
+    /*0x03*/ u8 delayedState;
+    /*0x04*/ struct FollowerMapData map;
+    /*0x08*/ struct Coords16 log;
+    /*0x0C*/ const u8* script;
+    /*0x10*/ u16 flag;
+    /*0x12*/ u16 graphicsId;
+    /*0x14*/ u16 flags;
+    /*0x15*/ u8 locked;
+}; /* size = 0x18 */
 
 struct SaveBlock2
 {
@@ -511,11 +537,13 @@ struct SaveBlock2
     /*0x57C*/ struct RankingHall2P hallRecords2P[2][3]; // From record mixing.
     /*0x624*/ u16 contestLinkResults[CONTEST_CATEGORIES_COUNT][CONTESTANT_COUNT];
     /*0x64C*/ struct BattleFrontier frontier;
+
     /*0x0F2C*/ u8 unlockedQuests[SIDE_QUEST_FLAGS_COUNT];
     /*0x????*/ u8 completedQuests[SIDE_QUEST_FLAGS_COUNT];
     /*0x????*/ u8 activeQuest;
     /*0xF2C*/ u8 itemFlags[ITEM_FLAGS_COUNT];
-}; 
+    /*0xF2C*/ struct Follower follower;
+}; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
 

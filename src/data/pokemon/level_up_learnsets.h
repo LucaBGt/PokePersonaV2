@@ -2581,6 +2581,7 @@ static const struct LevelUpMove sLaprasLevelUpLearnset[] = {
     LEVEL_UP_MOVE(43, MOVE_SAFEGUARD),
     LEVEL_UP_MOVE(47, MOVE_HYDRO_PUMP),
     LEVEL_UP_MOVE(50, MOVE_SHEER_COLD),
+
     LEVEL_UP_END
 };
 
