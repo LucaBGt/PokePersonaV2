@@ -70,12 +70,12 @@ static const union AnimCmd *const sAnims_SwapLine[] =
     sAnim_SwapLine_LeftArrow
 };
 
-static const struct CompressedSpriteSheet sSpriteSheet_SwapLine =
+const struct CompressedSpriteSheet gBagSwapSpriteSheet =
 {
     gBagSwapLineGfx, 0x100, TAG_SWAP_LINE
 };
 
-static const struct CompressedSpritePalette sSpritePalette_SwapLine =
+const struct CompressedSpritePalette gBagSwapSpritePalette =
 {
     gBagSwapLinePal, TAG_SWAP_LINE
 };
@@ -92,6 +92,23 @@ static const struct SpriteTemplate sSpriteTemplate_SwapLine =
 };
 
 // code
+void ResetAllBgsCoordinatesAndBgCntRegs(void)
+{
+    SetGpuReg(REG_OFFSET_DISPCNT, 0);
+    SetGpuReg(REG_OFFSET_BG3CNT, 0);
+    SetGpuReg(REG_OFFSET_BG2CNT, 0);
+    SetGpuReg(REG_OFFSET_BG1CNT, 0);
+    SetGpuReg(REG_OFFSET_BG0CNT, 0);
+    ChangeBgX(0, 0, 0);
+    ChangeBgY(0, 0, 0);
+    ChangeBgX(1, 0, 0);
+    ChangeBgY(1, 0, 0);
+    ChangeBgX(2, 0, 0);
+    ChangeBgY(2, 0, 0);
+    ChangeBgX(3, 0, 0);
+    ChangeBgY(3, 0, 0);
+}
+
 void ResetVramOamAndBgCntRegs(void)
 {
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
@@ -390,8 +407,8 @@ void sub_8122298(u16 *arg0, u16 *arg1, u8 arg2, u8 arg3, u8 arg4)
 
 void LoadListMenuSwapLineGfx(void)
 {
-    LoadCompressedSpriteSheet(&sSpriteSheet_SwapLine);
-    LoadCompressedSpritePalette(&sSpritePalette_SwapLine);
+    LoadCompressedSpriteSheet(&gBagSwapSpriteSheet);
+    LoadCompressedSpritePalette(&gBagSwapSpritePalette);
 }
 
 void CreateSwapLineSprites(u8 *spriteIds, u8 count)
