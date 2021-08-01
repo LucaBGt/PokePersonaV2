@@ -1274,7 +1274,7 @@ u8 SpawnSpecialObjectEvent(struct ObjectEventTemplate *objectEventTemplate)
     return TrySpawnObjectEventTemplate(objectEventTemplate, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);
 }
 
-u8 SpawnSpecialObjectEventParameterized(u8 graphicsId, u8 movementBehavior, u8 localId, s16 x, s16 y, u8 z)
+u8 SpawnSpecialObjectEventParameterized(u16 graphicsId, u8 movementBehavior, u8 localId, s16 x, s16 y, u8 z)
 {
     struct ObjectEventTemplate objectEventTemplate;
 
@@ -1282,7 +1282,7 @@ u8 SpawnSpecialObjectEventParameterized(u8 graphicsId, u8 movementBehavior, u8 l
     y -= 7;
     objectEventTemplate.localId = localId;
     objectEventTemplate.graphicsId = graphicsId;
-    objectEventTemplate.inConnection = 0;
+    //objectEventTemplate.inConnection = 0;
     objectEventTemplate.x = x;
     objectEventTemplate.y = y;
     objectEventTemplate.elevation = z;
@@ -1358,7 +1358,7 @@ u8 AddPseudoObjectEvent(u16 graphicsId, void (*callback)(struct Sprite *), s16 x
 
 // Used to create sprite object events instead of a full object event
 // Used when resources are limiting, e.g. for the audience in contests or group members in Union Room
-u8 CreateObjectSprite(u8 graphicsId, u8 objectEventId, s16 x, s16 y, u8 z, u8 direction)
+u8 CreateObjectSprite(u16 graphicsId, u8 a1, s16 x, s16 y, u8 z, u8 direction)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -1385,7 +1385,7 @@ u8 CreateObjectSprite(u8 graphicsId, u8 objectEventId, s16 x, s16 y, u8 z, u8 di
         sprite->pos1.y += sprite->centerToCornerVecY;
         sprite->oam.paletteNum = IndexOfSpritePaletteTag(spriteTemplate.paletteTag);
         sprite->coordOffsetEnabled = TRUE;
-        sprite->sObjEventId = objectEventId;
+        sprite->sObjEventId = graphicsId;
         sprite->data[1] = z;
         if (subspriteTables != NULL)
         {
@@ -1562,7 +1562,7 @@ static void SetPlayerAvatarObjectEventIdAndObjectId(u8 objectEventId, u8 spriteI
     SetPlayerAvatarExtraStateTransition(gObjectEvents[objectEventId].graphicsId, PLAYER_AVATAR_FLAG_5);
 }
 
-void ObjectEventSetGraphicsId(struct ObjectEvent *objectEvent, u8 graphicsId)
+void ObjectEventSetGraphicsId(struct ObjectEvent *objectEvent, u16 graphicsId)
 {
     const struct ObjectEventGraphicsInfo *graphicsInfo;
     struct Sprite *sprite;
@@ -1599,7 +1599,7 @@ void ObjectEventSetGraphicsId(struct ObjectEvent *objectEvent, u8 graphicsId)
     }
 }
 
-void ObjectEventSetGraphicsIdByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup, u8 graphicsId)
+void ObjectEventSetGraphicsIdByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup, u16 graphicsId)
 {
     u8 objectEventId;
 
@@ -1660,7 +1660,7 @@ static void SetBerryTreeGraphics(struct ObjectEvent *objectEvent, struct Sprite 
     }
 }
 
-const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u8 graphicsId)
+const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId)
 {
     u8 bard;
 
@@ -1678,7 +1678,7 @@ const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u8 graphicsId)
     {
         graphicsId = OBJ_EVENT_GFX_NINJA_BOY;
     }
-    
+
     return gObjectEventGraphicsInfoPointers[graphicsId];
 }
 
@@ -7219,7 +7219,7 @@ static void ObjectEventUpdateMetatileBehaviors(struct ObjectEvent *objEvent)
 
 static void GetGroundEffectFlags_Reflection(struct ObjectEvent *objEvent, u32 *flags)
 {
-    u32 reflectionFlags[NUM_REFLECTION_TYPES - 1] = { 
+    u32 reflectionFlags[NUM_REFLECTION_TYPES - 1] = {
         [REFL_TYPE_ICE   - 1] = GROUND_EFFECT_FLAG_ICE_REFLECTION,
         [REFL_TYPE_WATER - 1] = GROUND_EFFECT_FLAG_WATER_REFLECTION
     };
@@ -7437,7 +7437,7 @@ static u8 ObjectEventGetNearbyReflectionType(struct ObjectEvent *objEvent)
             RETURN_REFLECTION_TYPE_AT(objEvent->previousCoords.x - j, objEvent->previousCoords.y + one + i)
         }
     }
-    
+
     return REFL_TYPE_NONE;
 }
 
@@ -8388,7 +8388,7 @@ void TurnObjectEventSprite(u8 objectEventId, u8 direction)
         StartSpriteAnim(&gSprites[spriteId], GetFaceDirectionAnimNum(direction));
 }
 
-void SetObjectEventSpriteGraphics(u8 objectEventId, u8 graphicsId)
+void SetObjectEventSpriteGraphics(u8 objectEventId, u16 graphicsId)
 {
     int spriteId = GetObjectEventSpriteId(objectEventId);
 
