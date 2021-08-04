@@ -206,6 +206,14 @@ LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer2:: @ 81F79A2
 	waitmovement 0
 	return
 
+LittlerootTown_BrendansHouse_1F_EventScript_SwapCostume::
+	fadescreen FADE_TO_BLACK
+	setvar VAR_SYS_COSTUME, 1
+	special SwapPlayersCostume
+	//waitstate
+	fadescreen FADE_FROM_BLACK
+	end
+
 LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer0: @ 81F79AD
 	walk_in_place_fastest_left
 	walk_left

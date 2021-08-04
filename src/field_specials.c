@@ -4375,3 +4375,14 @@ u8 Script_TryGainNewFanFromCounter(void)
 {
     return TryGainNewFanFromCounter(gSpecialVar_0x8004);
 }
+
+void SwapPlayersCostume(void)
+{
+    u8 costumeId = VarGet(VAR_SYS_COSTUME);
+    struct ObjectEvent *objEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
+
+    gSaveBlock2Ptr->costumeId = costumeId;
+    ObjectEventSetGraphicsId(objEvent, GetPlayerAvatarGraphicsIdByCurrentState());
+    ObjectEventTurn(objEvent, objEvent->movementDirection);
+    //BlendPalettes(0xFFFFFFFF, 16, 0);
+}

@@ -547,6 +547,7 @@ struct SaveBlock2
     /*0x????*/ u8 activeQuest;
     /*0xF2C*/ u8 itemFlags[ITEM_FLAGS_COUNT];
     /*0xF2C*/ struct Follower follower;
+              u8 costumeId;
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;

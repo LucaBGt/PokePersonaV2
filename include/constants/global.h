@@ -124,5 +124,8 @@
 #define POST_BATTLE_FOLLOWER_FIX            FALSE   //if you experience the follower de-syncing with the player after battle, set to TRUE
 #define SLOW_MOVEMENT_ON_STAIRS         TRUE
 #define FOLLOW_ME_IMPLEMENTED           TRUE    //for stairs movement. see ObjectMovingOnRockStairs in src/field_player_avatar.c
+#define DEFAULT_COSTUME 0
+#define COSTUME_1       1
+#define COSTUME_COUNT   2
 
 #endif // GUARD_CONSTANTS_GLOBAL_H
