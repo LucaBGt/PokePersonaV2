@@ -607,6 +607,17 @@ static const union AnimCmd sAnim_NurseBow[] =
     ANIMCMD_END,
 };
 
+ static const union AnimCmd sAnim_AnimFrameOne[] =
+ {
+    ANIMCMD_FRAME(9, 16),
+    ANIMCMD_END,
+ };
+ 
+ static const union AnimCmd sAnim_AnimFrameTwo[] =
+ {
+    ANIMCMD_FRAME(10, 16),
+    ANIMCMD_END,
+ };
 static const union AnimCmd sAnim_RockBreak[] =
 {
     ANIMCMD_FRAME(0, 8),
@@ -1097,6 +1108,32 @@ static const union AnimCmd *const sAnimTable_Nurse[] = {
     sAnim_NurseBow,
 };
 
+static const union AnimCmd *const sAnimTable_MoreAnims[] = {
+    sAnim_FaceSouth,
+    sAnim_FaceNorth,
+    sAnim_FaceWest,
+    sAnim_FaceEast,
+    sAnim_GoSouth,
+    sAnim_GoNorth,
+    sAnim_GoWest,
+    sAnim_GoEast,
+    sAnim_GoFastSouth,
+    sAnim_GoFastNorth,
+    sAnim_GoFastWest,
+    sAnim_GoFastEast,
+    sAnim_GoFasterSouth,
+    sAnim_GoFasterNorth,
+    sAnim_GoFasterWest,
+    sAnim_GoFasterEast,
+    sAnim_GoFastestSouth,
+    sAnim_GoFastestNorth,
+    sAnim_GoFastestWest,
+    sAnim_GoFastestEast,
+    sAnim_AnimFrameOne,
+    sAnim_AnimFrameTwo,
+};
+
+
 static const union AnimCmd *const sAnimTable_FieldMove[] = {
     sAnim_FieldMove,
 };
@@ -1143,6 +1180,7 @@ static const union AffineAnimCmd *const sAffineAnimTable_KyogreGroudon[] = {
     sAffineAnim_KyogreGroudon_DipEast,      // Unused
 };
 
+
 // For animations with alternating steps
 static const struct StepAnimTable sStepAnimTables[] = {
     {
@@ -1167,6 +1205,10 @@ static const struct StepAnimTable sStepAnimTables[] = {
     },
     {
         .anims = sAnimTable_Nurse,
+        .animPos = {1, 3, 0, 2},
+    },
+    {
+        .anims = sAnimTable_MoreAnims,
         .animPos = {1, 3, 0, 2},
     },
     {

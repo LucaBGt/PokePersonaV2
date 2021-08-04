@@ -557,3 +557,20 @@ gMetatiles_UnionRoom:: @ 83DF392
 	.align 1
 gMetatileAttributes_UnionRoom:: @ 83DF6A2
 	.incbin "data/tilesets/secondary/union_room/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_InterrogationRoom::
+	.incbin "data/tilesets/secondary/interrogationroom/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_InterrogationRoom::
+	.incbin "data/tilesets/secondary/interrogationroom/metatile_attributes.bin"
+	
+
+	.align 1
+gMetatiles_OakLab::
+	.incbin "data/tilesets/secondary/oaklab/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_OakLab::
+	.incbin "data/tilesets/secondary/oaklab/metatile_attributes.bin"

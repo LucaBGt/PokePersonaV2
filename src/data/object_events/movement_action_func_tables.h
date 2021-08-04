@@ -261,6 +261,8 @@ u8 MovementAction_FlyUp_Step1(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_Fly_Finish(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_FlyDown_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_FlyDown_Step1(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_Anim_Frame_One_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_Anim_Frame_Two_Step0(struct ObjectEvent *, struct Sprite *);
 //slow running
 u8 MovementActionFunc_RunSlowDown_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
 u8 MovementActionFunc_RunSlowUp_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
@@ -426,6 +428,8 @@ u8 (*const gMovementActionFuncs_StopLevitateAtTop[])(struct ObjectEvent *, struc
 u8 (*const gMovementActionFuncs_Figure8[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_FlyUp[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_FlyDown[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_Anim_Frame_One[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_Anim_Frame_Two[])(struct ObjectEvent *, struct Sprite *);
 //run slow
 u8 (*const gMovementActionFuncs_RunDownSlow[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_RunUpSlow[])(struct ObjectEvent *, struct Sprite *);
@@ -591,6 +595,8 @@ u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *)
     [MOVEMENT_ACTION_FIGURE_8] = gMovementActionFuncs_Figure8,
     [MOVEMENT_ACTION_FLY_UP] = gMovementActionFuncs_FlyUp,
     [MOVEMENT_ACTION_FLY_DOWN] = gMovementActionFuncs_FlyDown,
+    [MOVEMENT_ACTION_ANIM_FRAME_ONE] = gMovementActionFuncs_Anim_Frame_One,
+    [MOVEMENT_ACTION_ANIM_FRAME_TWO] = gMovementActionFuncs_Anim_Frame_Two,
     //run slow
     [MOVEMENT_ACTION_RUN_DOWN_SLOW] = gMovementActionFuncs_RunDownSlow,
     [MOVEMENT_ACTION_RUN_UP_SLOW] = gMovementActionFuncs_RunUpSlow,
@@ -1124,6 +1130,18 @@ u8 (*const gMovementActionFuncs_FaceOriginalDirection[])(struct ObjectEvent *, s
 
 u8 (*const gMovementActionFuncs_NurseJoyBowDown[])(struct ObjectEvent *, struct Sprite *) = {
     MovementAction_NurseJoyBowDown_Step0,
+    MovementAction_WaitSpriteAnim,
+    MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_Anim_Frame_One[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_Anim_Frame_One_Step0,
+    MovementAction_WaitSpriteAnim,
+    MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_Anim_Frame_Two[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_Anim_Frame_Two_Step0,
     MovementAction_WaitSpriteAnim,
     MovementAction_PauseSpriteAnim,
 };

@@ -4410,6 +4410,36 @@
       "secondary_tileset": "gTileset_MysteryEventsHouse",
       "border_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/border.bin",
       "blockdata_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/map.bin"
+    },
+    {
+      "id": "LAYOUT_INTRO_MAP",
+      "name": "IntroMap_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_InterrogationRoom",
+      "border_filepath": "data/layouts/IntroMap/border.bin",
+      "blockdata_filepath": "data/layouts/IntroMap/map.bin"
+    },
+    {
+      "id": "LAYOUT_INTERROGATION_ROOM",
+      "name": "InterrogationRoom_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_InterrogationRoom",
+      "border_filepath": "data/layouts/InterrogationRoom/border.bin",
+      "blockdata_filepath": "data/layouts/InterrogationRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_OAK_LAB_INTRO",
+      "name": "OakLab_Intro_Layout",
+      "width": 20,
+      "height": 25,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_OakLab",
+      "border_filepath": "data/layouts/OakLab_Intro/border.bin",
+      "blockdata_filepath": "data/layouts/OakLab_Intro/map.bin"
     }
   ]
 }

@@ -78,11 +78,14 @@ void WarpFadeInScreen(void)
     {
     case 0:
         FillPalBufferBlack();
-        FadeScreen(FADE_FROM_BLACK, 0);
+        if(!FlagGet(FLAG_SYS_PREVENT_MAP_FADE_IN))
+            FadeScreen(FADE_FROM_BLACK, 0);
         break;
     case 1:
         FillPalBufferWhite();
-        FadeScreen(FADE_FROM_WHITE, 0);
+        if(!FlagGet(FLAG_SYS_PREVENT_MAP_FADE_IN))
+            FadeScreen(FADE_FROM_WHITE, 0);
+        
     }
 }
 
@@ -101,13 +104,20 @@ void FadeInFromBlack(void)
 void WarpFadeOutScreen(void)
 {
     u8 currentMapType = GetCurrentMapType();
-    switch (GetMapPairFadeToType(currentMapType, GetDestinationWarpMapHeader()->mapType))
+    if (!FlagGet(FLAG_SYS_PREVENT_MAP_FADE_OUT)) // fadescreen if flag not set
     {
-    case 0:
-        FadeScreen(FADE_TO_BLACK, 0);
-        break;
-    case 1:
-        FadeScreen(FADE_TO_WHITE, 0);
+        switch (GetMapPairFadeToType(currentMapType, GetDestinationWarpMapHeader()->mapType))
+        {
+        case 0:
+            FadeScreen(FADE_TO_BLACK, 0);
+            break;
+        case 1:
+            FadeScreen(FADE_TO_WHITE, 0);
+        }
+    }
+    else
+    {
+        FlagClear(FLAG_SYS_PREVENT_MAP_FADE_OUT);  // reset flag internally
     }
 }
 
