@@ -151,3 +151,4 @@
 	.include "src/quests.o"
 	.include "src/debug.o"
 	.include "src/field_pic.o"
+	.include "src/dexnav.o"

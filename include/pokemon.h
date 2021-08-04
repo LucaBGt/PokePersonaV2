@@ -210,7 +210,10 @@ struct BaseStats
             u8 bodyColor : 7;
             u8 noFlip : 1;
             u8 flags;
+             /* 0x1A */ u8 abilityHidden;
+
 };
+
 
 #include "constants/battle_config.h"
 struct BattleMove
