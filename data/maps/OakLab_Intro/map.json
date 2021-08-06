@@ -2,7 +2,7 @@
   "id": "MAP_OAK_LAB_INTRO",
   "name": "OakLab_Intro",
   "layout": "LAYOUT_OAK_LAB_INTRO",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_BIRCH_LAB",
   "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -16,8 +16,8 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_OAK_YOUNG",
-      "x": 10,
-      "y": 12,
+      "x": 11,
+      "y": 18,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -25,7 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_PROF_HIDDEN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -37,8 +37,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "OakLab_Ball_Chikorita",
+      "flag": "FLAG_POKEBALLS_HIDDEN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -50,8 +50,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "OakLab_Ball_Piplup",
+      "flag": "FLAG_POKEBALLS_HIDDEN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -63,8 +63,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "OakLab_Ball_Tepig",
+      "flag": "FLAG_POKEBALLS_HIDDEN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ELM",
@@ -76,28 +76,135 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "OakLab_Elm",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_KUKUI_YOUNG",
+      "x": 10,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "OakLab_KukuiWhatMon",
       "flag": "0"
     }
   ],
   "warp_events": [
+
+  ],
+  "coord_events": [
     {
+      "type": "trigger",
       "x": 9,
       "y": 20,
       "elevation": 0,
-      "dest_map": "MAP_LILYCOVE_CITY",
-      "dest_warp_id": 1
+      "var": "VAR_TEMP_0",
+      "var_value": "1",
+      "script": "OakLab_TryLeave"
     },
     {
+      "type": "trigger",
       "x": 10,
       "y": 20,
       "elevation": 0,
-      "dest_map": "MAP_LILYCOVE_CITY",
-      "dest_warp_id": 1
+      "var": "VAR_TEMP_0",
+      "var_value": "1",
+      "script": "OakLab_TryLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "1",
+      "script": "OakLab_TryStairs"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_OAK_LAB_STATE",
+      "var_value": "1",
+      "script": "OakLab_WannaLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_OAK_LAB_STATE",
+      "var_value": "1",
+      "script": "OakLab_WannaLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_OAK_LAB_STATE",
+      "var_value": "1",
+      "script": "OakLab_WannaLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_OAK_LAB_STATE",
+      "var_value": "1",
+      "script": "OakLab_WannaLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_OAK_LAB_STATE",
+      "var_value": "1",
+      "script": "OakLab_WannaLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_OAK_LAB_STATE",
+      "var_value": "1",
+      "script": "OakLab_DontGoThere"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_OAK_LAB_STATE",
+      "var_value": "2",
+      "script": "OakLab_DontGoThere"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_OAK_LAB_STATE",
+      "var_value": "2",
+      "script": "OakLab_RivalBattle_Left"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_OAK_LAB_STATE",
+      "var_value": "2",
+      "script": "OakLab_RivalBattle_Left"
     }
-  ],
-  "coord_events": [
-
   ],
   "bg_events": [
 

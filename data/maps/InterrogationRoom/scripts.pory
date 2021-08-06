@@ -11,6 +11,7 @@ mapscripts InterrogationRoom_MapScripts {
 		}
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_GAMESTATE, 1: InterrogationRoom_FirstScene
+		//VAR_GAMESTATE, 3: InterrogationRoom_AfterOak
     ]
 }
 
@@ -29,7 +30,7 @@ script InterrogationRoom_FirstScene{
 	delay(30)
 
 	fadescreen(FADE_FROM_BLACK)
-	clearflag(FLAG_SYS_PREVENT_MAP_FADE_IN)
+	//clearflag(FLAG_SYS_PREVENT_MAP_FADE_IN)
 
 	special(SpawnCameraObject)
 
@@ -142,6 +143,34 @@ movement CommonMovement_FaceDown{
 	face_down
 }
 
+movement CommonMovement_WalkLeft{
+	walk_left
+}
+
+movement CommonMovement_WalkRight{
+	walk_right
+}
+
+movement CommonMovement_WalkUp{
+	walk_up
+}
+
+movement CommonMovement_WalkDown{
+	walk_down
+}
+
+movement CommonMovement_EmoteExclamation{
+	emote_exclamation_mark
+}
+
+movement CommonMovement_EmoteQuestion{
+	emote_question_mark
+}
+
+movement CommonMovement_FacePlayer{
+	face_player
+}
+
 movement  InterogationRoom_AgentSit{
 	walk_slow_right
 	walk_slow_down
@@ -161,13 +190,13 @@ script Agent_ShakeHead{
 
 movement CommonMovement_AgentShakeHead{
 	emote_anim_frame_one
-
+delay_16
   	emote_anim_frame_two
-
+delay_16
   	emote_anim_frame_one
-
+delay_16
   	emote_anim_frame_two
-
+delay_16
 	face_down
   	delay_16
 }

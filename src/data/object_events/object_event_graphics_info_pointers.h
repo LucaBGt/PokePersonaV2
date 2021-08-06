@@ -249,6 +249,8 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Agent;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_File;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Elm;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Oak_Young;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kukui_Young;
+
 
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
@@ -497,6 +499,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_FILE] = &gObjectEventGraphicsInfo_File,
     [OBJ_EVENT_GFX_ELM] = &gObjectEventGraphicsInfo_Elm,
     [OBJ_EVENT_GFX_OAK_YOUNG] = &gObjectEventGraphicsInfo_Oak_Young,
+    [OBJ_EVENT_GFX_KUKUI_YOUNG] = &gObjectEventGraphicsInfo_Kukui_Young,
+
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

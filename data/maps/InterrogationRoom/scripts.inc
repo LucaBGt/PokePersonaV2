@@ -25,7 +25,6 @@ InterrogationRoom_FirstScene::
 	closemessage
 	delay 30
 	fadescreen FADE_FROM_BLACK
-	clearflag FLAG_SYS_PREVENT_MAP_FADE_IN
 	special SpawnCameraObject
 	delay 30
 	applymovement OBJ_EVENT_ID_CAMERA, InterogationRoom_CameraUp
@@ -115,6 +114,34 @@ CommonMovement_FaceDown:
 	face_down
 	step_end
 
+CommonMovement_WalkLeft:
+	walk_left
+	step_end
+
+CommonMovement_WalkRight:
+	walk_right
+	step_end
+
+CommonMovement_WalkUp:
+	walk_up
+	step_end
+
+CommonMovement_WalkDown:
+	walk_down
+	step_end
+
+CommonMovement_EmoteExclamation:
+	emote_exclamation_mark
+	step_end
+
+CommonMovement_EmoteQuestion:
+	emote_question_mark
+	step_end
+
+CommonMovement_FacePlayer:
+	face_player
+	step_end
+
 InterogationRoom_AgentSit:
 	walk_slow_right
 	walk_slow_down
@@ -132,9 +159,13 @@ Agent_ShakeHead::
 
 CommonMovement_AgentShakeHead:
 	emote_anim_frame_one
+	delay_16
 	emote_anim_frame_two
+	delay_16
 	emote_anim_frame_one
+	delay_16
 	emote_anim_frame_two
+	delay_16
 	face_down
 	delay_16
 	step_end

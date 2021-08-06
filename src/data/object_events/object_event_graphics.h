@@ -389,3 +389,5 @@ const u16 gObjectEventPal_Balls[] = INCBIN_U16("graphics/object_events/palettes/
 const u32 gObjectEventPic_Oak_Young[] = INCBIN_U32("graphics/object_events/pics/people/oak_young.4bpp");
 const u16 gObjectEventPal_Oak_Young[] = INCBIN_U16("graphics/object_events/palettes/oak_young.gbapal");
 
+const u32 gObjectEventPic_Kukui_Young[] = INCBIN_U32("graphics/object_events/pics/people/kukui_young.4bpp");
+const u16 gObjectEventPal_Kukui_Young[] = INCBIN_U16("graphics/object_events/palettes/kukui_young.gbapal");

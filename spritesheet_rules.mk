@@ -721,3 +721,6 @@ $(OBJEVENTGFXDIR)/people/oak_young.4bpp: %.4bpp: %.png
 
 $(OBJEVENTGFXDIR)/misc/item_ball.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
+
+$(OBJEVENTGFXDIR)/people/kukui_young.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
