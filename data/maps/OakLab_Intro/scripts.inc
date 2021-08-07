@@ -194,6 +194,9 @@ OakLab_Elm_4:
 	lock
 	faceplayer
 	msgbox OakLab_Elm_Text_1
+	msgbox OakLab_Elm_Text_2
+	msgbox OakLab_Elm_Text_3
+	msgbox OakLab_Elm_Text_4
 	closemessage
 	release
 	end
@@ -201,17 +204,26 @@ OakLab_Elm_4:
 OakLab_Elm_5:
 	lock
 	faceplayer
-	msgbox OakLab_Elm_Text_2
+	msgbox OakLab_Elm_Text_5
+	msgbox OakLab_Elm_Text_6
 	closemessage
 	release
 	end
 
 
 OakLab_KukuiWhatMon::
-	goto_if_set FLAG_PROF_HIDDEN, OakLab_KukuiWhatMon_1
+	lock
+	switch VAR_OAK_LAB_STATE
+	case 0, OakLab_KukuiWhatMon_2
+	case 1, OakLab_KukuiWhatMon_3
+	case 2, OakLab_KukuiWhatMon_4
+	case 3, OakLab_KukuiWhatMon_5
 	return
 
-OakLab_KukuiWhatMon_1:
+OakLab_KukuiWhatMon_2:
+	return
+
+OakLab_KukuiWhatMon_3:
 	lock
 	faceplayer
 	msgbox OakLab_KukuiWhatMon_Text_0
@@ -220,6 +232,38 @@ OakLab_KukuiWhatMon_1:
 	waitmovement 0
 	release
 	end
+
+OakLab_KukuiWhatMon_4:
+	lock
+	faceplayer
+	switch VAR_STARTER_MON
+	case 1, OakLab_KukuiWhatMon_8
+	case 2, OakLab_KukuiWhatMon_9
+	case 0, OakLab_KukuiWhatMon_10
+OakLab_KukuiWhatMon_6:
+	msgbox OakLab_KukuiWhatMon_Text_4
+	closemessage
+	release
+	end
+
+OakLab_KukuiWhatMon_5:
+	faceplayer
+	msgbox OakLab_KukuiWhatMon_Text_5
+	closemessage
+	release
+	end
+
+OakLab_KukuiWhatMon_8:
+	msgbox OakLab_KukuiWhatMon_Text_1
+	goto OakLab_KukuiWhatMon_6
+
+OakLab_KukuiWhatMon_9:
+	msgbox OakLab_KukuiWhatMon_Text_2
+	goto OakLab_KukuiWhatMon_6
+
+OakLab_KukuiWhatMon_10:
+	msgbox OakLab_KukuiWhatMon_Text_3
+	goto OakLab_KukuiWhatMon_6
 
 
 OakLab_Elm_FirstTalk::
@@ -280,23 +324,30 @@ OakLab_Elm_FirstTalk_2:
 
 
 OakLab_Ball_Chikorita::
-	goto_if_set FLAG_PROF_HIDDEN, OakLab_Ball_Chikorita_1
 	lock
-	msgbox OakLab_Ball_Chikorita_Text_3
+	switch VAR_OAK_LAB_STATE
+	case 0, OakLab_Ball_Chikorita_2
+	case 1, OakLab_Ball_Chikorita_3
+	case 2, OakLab_Ball_Chikorita_4
+	case 3, OakLab_Ball_Chikorita_5
+	return
+
+OakLab_Ball_Chikorita_2:
+	msgbox OakLab_Ball_Chikorita_Text_0
 	closemessage
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_FOLLOWER, CommonMovement_EmoteExclamation
 	delay 60
-	facefollower
-	msgbox OakLab_Ball_Chikorita_Text_4
+	call CommonMovement_FaceFollower
+	msgbox OakLab_Ball_Chikorita_Text_1
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
 	waitmovement 0
 	playmoncry SPECIES_CHIKORITA, 2
+	delay 60
 	waitmoncry
-	delay 30
-	facefollower
-	msgbox OakLab_Ball_Chikorita_Text_5
+	call CommonMovement_FaceFollower
+	msgbox OakLab_Ball_Chikorita_Text_2
 	closemessage
 	call OakLab_OakAppear
 	applymovement OBJ_EVENT_ID_CAMERA, OakLab_RevealOak_Chikorita
@@ -304,7 +355,7 @@ OakLab_Ball_Chikorita::
 	goto OakLab_OakAppear_2
 	return
 
-OakLab_Ball_Chikorita_1:
+OakLab_Ball_Chikorita_3:
 	playse SE_PIN
 	applymovement 5, CommonMovement_EmoteExclamation
 	delay 60
@@ -312,20 +363,29 @@ OakLab_Ball_Chikorita_1:
 	waitmovement 0
 	delay 30
 	showmonpic SPECIES_CHIKORITA, 10, 3
-	msgbox OakLab_Ball_Chikorita_Text_0
-	msgbox OakLab_Ball_Chikorita_Text_1, MSGBOX_YESNO
+	msgbox OakLab_Ball_Chikorita_Text_3
+	msgbox OakLab_Ball_Chikorita_Text_4, MSGBOX_YESNO
 	switch VAR_RESULT
-	case YES, OakLab_Ball_Chikorita_5
-	case NO, OakLab_Ball_Chikorita_6
+	case YES, OakLab_Ball_Chikorita_8
+	case NO, OakLab_Ball_Chikorita_9
+OakLab_Ball_Chikorita_6:
+	return
+
+OakLab_Ball_Chikorita_4:
+	goto OakLab_Elm_ForOtherKid
 	return
 
 OakLab_Ball_Chikorita_5:
-	goto OakLab_ChikoritaChosen
+	goto OakLab_Elm_ForOtherKid
 	return
 
-OakLab_Ball_Chikorita_6:
+OakLab_Ball_Chikorita_8:
+	goto OakLab_ChikoritaChosen
+	goto OakLab_Ball_Chikorita_6
+
+OakLab_Ball_Chikorita_9:
 	hidemonpic
-	msgbox OakLab_Ball_Chikorita_Text_2
+	msgbox OakLab_Ball_Chikorita_Text_5
 	closemessage
 	applymovement 5, CommonMovement_FaceDown
 	waitmovement 0
@@ -334,23 +394,30 @@ OakLab_Ball_Chikorita_6:
 
 
 OakLab_Ball_Piplup::
-	goto_if_set FLAG_PROF_HIDDEN, OakLab_Ball_Piplup_1
 	lock
-	msgbox OakLab_Ball_Chikorita_Text_3
+	switch VAR_OAK_LAB_STATE
+	case 0, OakLab_Ball_Piplup_2
+	case 1, OakLab_Ball_Piplup_3
+	case 2, OakLab_Ball_Piplup_4
+	case 3, OakLab_Ball_Piplup_5
+	return
+
+OakLab_Ball_Piplup_2:
+	msgbox OakLab_Ball_Chikorita_Text_0
 	closemessage
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_FOLLOWER, CommonMovement_EmoteExclamation
 	delay 60
-	facefollower
-	msgbox OakLab_Ball_Chikorita_Text_4
+	call CommonMovement_FaceFollower
+	msgbox OakLab_Ball_Chikorita_Text_1
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
 	waitmovement 0
 	playmoncry SPECIES_PIPLUP, 2
+	delay 60
 	waitmoncry
-	delay 30
-	facefollower
-	msgbox OakLab_Ball_Chikorita_Text_5
+	call CommonMovement_FaceFollower
+	msgbox OakLab_Ball_Chikorita_Text_2
 	closemessage
 	call OakLab_OakAppear
 	applymovement OBJ_EVENT_ID_CAMERA, OakLab_RevealOak_Piplup
@@ -358,7 +425,7 @@ OakLab_Ball_Piplup::
 	goto OakLab_OakAppear_2
 	return
 
-OakLab_Ball_Piplup_1:
+OakLab_Ball_Piplup_3:
 	playse SE_PIN
 	applymovement 5, CommonMovement_EmoteExclamation
 	delay 60
@@ -369,17 +436,26 @@ OakLab_Ball_Piplup_1:
 	msgbox OakLab_Ball_Piplup_Text_0
 	msgbox OakLab_Ball_Piplup_Text_1, MSGBOX_YESNO
 	switch VAR_RESULT
-	case YES, OakLab_Ball_Piplup_5
-	case NO, OakLab_Ball_Piplup_6
+	case YES, OakLab_Ball_Piplup_8
+	case NO, OakLab_Ball_Piplup_9
+OakLab_Ball_Piplup_6:
+	return
+
+OakLab_Ball_Piplup_4:
+	goto OakLab_Elm_ForOtherKid
 	return
 
 OakLab_Ball_Piplup_5:
-	goto OakLab_PiplupChosen
+	goto OakLab_Elm_ForOtherKid
 	return
 
-OakLab_Ball_Piplup_6:
+OakLab_Ball_Piplup_8:
+	goto OakLab_PiplupChosen
+	goto OakLab_Ball_Piplup_6
+
+OakLab_Ball_Piplup_9:
 	hidemonpic
-	msgbox OakLab_Ball_Chikorita_Text_2
+	msgbox OakLab_Ball_Chikorita_Text_5
 	closemessage
 	applymovement 5, CommonMovement_FaceDown
 	waitmovement 0
@@ -388,23 +464,30 @@ OakLab_Ball_Piplup_6:
 
 
 OakLab_Ball_Tepig::
-	goto_if_set FLAG_PROF_HIDDEN, OakLab_Ball_Tepig_1
 	lock
-	msgbox OakLab_Ball_Chikorita_Text_3
+	switch VAR_OAK_LAB_STATE
+	case 0, OakLab_Ball_Tepig_2
+	case 1, OakLab_Ball_Tepig_3
+	case 2, OakLab_Ball_Tepig_4
+	case 3, OakLab_Ball_Tepig_5
+	return
+
+OakLab_Ball_Tepig_2:
+	msgbox OakLab_Ball_Chikorita_Text_0
 	closemessage
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_FOLLOWER, CommonMovement_EmoteExclamation
 	delay 60
-	facefollower
-	msgbox OakLab_Ball_Chikorita_Text_4
+	call CommonMovement_FaceFollower
+	msgbox OakLab_Ball_Chikorita_Text_1
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
 	waitmovement 0
 	playmoncry SPECIES_TEPIG, 2
+	delay 60
 	waitmoncry
-	delay 30
-	facefollower
-	msgbox OakLab_Ball_Chikorita_Text_5
+	call CommonMovement_FaceFollower
+	msgbox OakLab_Ball_Chikorita_Text_2
 	closemessage
 	call OakLab_OakAppear
 	applymovement OBJ_EVENT_ID_CAMERA, OakLab_RevealOak_Tepig
@@ -412,7 +495,7 @@ OakLab_Ball_Tepig::
 	goto OakLab_OakAppear_2
 	return
 
-OakLab_Ball_Tepig_1:
+OakLab_Ball_Tepig_3:
 	playse SE_PIN
 	applymovement 5, CommonMovement_EmoteExclamation
 	delay 60
@@ -423,17 +506,26 @@ OakLab_Ball_Tepig_1:
 	msgbox OakLab_Ball_Tepig_Text_0
 	msgbox OakLab_Ball_Tepig_Text_1, MSGBOX_YESNO
 	switch VAR_RESULT
-	case YES, OakLab_Ball_Tepig_5
-	case NO, OakLab_Ball_Tepig_6
+	case YES, OakLab_Ball_Tepig_8
+	case NO, OakLab_Ball_Tepig_9
+OakLab_Ball_Tepig_6:
+	return
+
+OakLab_Ball_Tepig_4:
+	goto OakLab_Elm_ForOtherKid
 	return
 
 OakLab_Ball_Tepig_5:
-	goto OakLab_TepigChosen
+	goto OakLab_Elm_ForOtherKid
 	return
 
-OakLab_Ball_Tepig_6:
+OakLab_Ball_Tepig_8:
+	goto OakLab_TepigChosen
+	goto OakLab_Ball_Tepig_6
+
+OakLab_Ball_Tepig_9:
 	hidemonpic
-	msgbox OakLab_Ball_Chikorita_Text_2
+	msgbox OakLab_Ball_Chikorita_Text_5
 	closemessage
 	applymovement 5, CommonMovement_FaceDown
 	waitmovement 0
@@ -510,9 +602,10 @@ OakLab_OakAppear_2::
 	closemessage
 	delay 30
 	msgbox OakLab_OakAppear_2_Text_8
-	closemessage
 	msgbox OakLab_OakAppear_2_Text_9
 	closemessage
+	applymovement 5, OakLab_Elm_Jump
+	waitmovement 0
 	delay 30
 	msgbox OakLab_OakAppear_2_Text_10
 	closemessage
@@ -585,11 +678,11 @@ OakLab_OakAppear_2::
 	delay 60
 	msgbox OakLab_OakAppear_2_Text_23
 	msgbox OakLab_OakAppear_2_Text_24
-	msgbox OakLab_OakAppear_2_Text_25
-	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceRight
 	applymovement 6, CommonMovement_FaceLeft
+	closemessage
 	delay 30
+	msgbox OakLab_OakAppear_2_Text_25
 	msgbox OakLab_OakAppear_2_Text_26
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
@@ -723,6 +816,59 @@ OakLab_RivalChooseStarter_1:
 OakLab_RivalChooseStarter_6:
 	special RemoveCameraObject
 	fadescreen 0
+	msgbox OakLab_RivalChooseStarter_Text_4
+	closemessage
+	applymovement 5, OakLab_Elm_GivePokedexToPlayer
+	waitmovement 0
+	msgbox OakLab_RivalChooseStarter_Text_5
+	playfanfare MUS_OBTAIN_TMHM
+	message OakLab_RivalChooseStarter_Text_6
+	waitfanfare
+	waitmessage
+	setflag FLAG_SYS_POKEDEX_GET
+	special SetUnlockedPokedexFlags
+	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
+	closemessage
+	applymovement 5, OakLab_Elm_GivePokedexToKukui
+	waitmovement 0
+	msgbox OakLab_RivalChooseStarter_Text_7
+	closemessage
+	applymovement 5, OakLab_Elm_GivePokedexWalkBack
+	waitmovement 0
+	msgbox OakLab_RivalChooseStarter_Text_8
+	msgbox OakLab_RivalChooseStarter_Text_9
+	msgbox OakLab_RivalChooseStarter_Text_10
+	msgbox OakLab_RivalChooseStarter_Text_11
+	closemessage
+	delay 30
+	playse SE_PIN
+	applymovement 6, CommonMovement_EmoteQuestion
+	delay 60
+	msgbox OakLab_RivalChooseStarter_Text_12
+	msgbox OakLab_RivalChooseStarter_Text_13
+	msgbox OakLab_RivalChooseStarter_Text_14
+	msgbox OakLab_RivalChooseStarter_Text_15
+	closemessage
+	delay 30
+	playse SE_PIN
+	applymovement 6, CommonMovement_EmoteExclamation
+	delay 60
+	switch VAR_STARTER_MON
+	case 1, OakLab_RivalChooseStarter_13
+	case 2, OakLab_RivalChooseStarter_14
+	case 0, OakLab_RivalChooseStarter_15
+OakLab_RivalChooseStarter_11:
+	msgbox OakLab_RivalChooseStarter_Text_19
+	closemessage
+	delay 30
+	msgbox OakLab_RivalChooseStarter_Text_20
+	msgbox OakLab_RivalChooseStarter_Text_21
+	msgbox OakLab_RivalChooseStarter_Text_22
+	msgbox OakLab_RivalChooseStarter_Text_23
+	msgbox OakLab_RivalChooseStarter_Text_24
+	closemessage
+	special SpawnCameraObject
+	special RemoveCameraObject
 	setvar VAR_OAK_LAB_STATE, 2
 	release
 	end
@@ -775,20 +921,136 @@ OakLab_RivalChooseStarter_10:
 	waitmovement 0
 	goto OakLab_RivalChooseStarter_6
 
+OakLab_RivalChooseStarter_13:
+	msgbox OakLab_RivalChooseStarter_Text_16
+	goto OakLab_RivalChooseStarter_11
+
+OakLab_RivalChooseStarter_14:
+	msgbox OakLab_RivalChooseStarter_Text_17
+	goto OakLab_RivalChooseStarter_11
+
+OakLab_RivalChooseStarter_15:
+	msgbox OakLab_RivalChooseStarter_Text_18
+	goto OakLab_RivalChooseStarter_11
+
+
+OakLab_Elm_ForOtherKid::
+	playse SE_PIN
+	applymovement 5, CommonMovement_EmoteExclamation
+	delay 60
+	applymovement 5, CommonMovement_FaceRight
+	waitmovement 0
+	delay 30
+	msgbox OakLab_Elm_ForOtherKid_Text_0
+	closemessage
+	applymovement 5, CommonMovement_FaceDown
+	waitmovement 0
+	release
+	end
+
 
 OakLab_RivalBattle_Left::
+	msgbox OakLab_RivalBattle_Left_Text_0
+	closemessage
+	applymovement 6, OakLab_KukuiToBattle_Left
+	waitmovement 0
 	goto OakLab_RivalBattle_Start
 	return
 
 
 OakLab_RivalBattle_Right::
+	msgbox OakLab_RivalBattle_Left_Text_0
+	closemessage
 	goto OakLab_RivalBattle_Start
 	return
 
 
 OakLab_RivalBattle_Start::
+	applymovement 6, OakLab_KukuiToBattle
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
+	waitmovement 0
+	delay 30
+	msgbox OakLab_RivalBattle_Start_Text_0
+	closemessage
+	applymovement 5, OakLab_ElmToBattle
+	waitmovement 0
+	msgbox OakLab_RivalBattle_Start_Text_1
+	setflag FLAG_SYS_CANNOT_LOSE
+	switch VAR_STARTER_MON
+	case 0, OakLab_RivalBattle_Start_3
+	case 1, OakLab_RivalBattle_Start_4
+	case 2, OakLab_RivalBattle_Start_5
+OakLab_RivalBattle_Start_1:
+	goto_if_set FLAG_SYS_PLAYER_LOST, OakLab_RivalBattle_Start_7
+	msgbox OakLab_RivalBattle_Start_Text_3
+OakLab_RivalBattle_Start_6:
+	msgbox OakLab_RivalBattle_Start_Text_4
+	closemessage
+	clearflag FLAG_SYS_CANNOT_LOSE
+	clearflag FLAG_SYS_PLAYER_LOST
+	special HealPlayerParty
+	applymovement 5, OakLab_Elm_Jump
+	waitmovement 0
+	msgbox OakLab_RivalBattle_Start_Text_5
+	applymovement 5, OakLab_Elm_Jump
+	waitmovement 0
+	msgbox OakLab_RivalBattle_Start_Text_6
+	closemessage
+	fadescreen 1
+	setvar VAR_GAMESTATE, 3
+	setvar VAR_OAK_LAB_STATE, 3
+	setflag FLAG_SYS_PREVENT_MAP_FADE_OUT
+	setflag FLAG_SYS_PREVENT_MAP_FADE_IN
+	warpsilent MAP_INTERROGATION_ROOM, -1, 7, 10
+	release
+	end
+
+OakLab_RivalBattle_Start_3:
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TREECKO, OakLab_KukuiLost
+	goto OakLab_RivalBattle_Start_1
+
+OakLab_RivalBattle_Start_4:
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_MUDKIP, OakLab_KukuiLost
+	goto OakLab_RivalBattle_Start_1
+
+OakLab_RivalBattle_Start_5:
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TORCHIC, OakLab_KukuiLost
+	goto OakLab_RivalBattle_Start_1
+
+OakLab_RivalBattle_Start_7:
+	msgbox OakLab_RivalBattle_Start_Text_2
+	goto OakLab_RivalBattle_Start_6
+
+
+CommonMovement_FaceFollower::
+	facefollower
+	applymovement OBJ_EVENT_ID_FOLLOWER, CommonMovement_FacePlayer
+	waitmovement 0
 	return
 
+
+OakLab_KukuiToBattle_Left:
+	walk_fast_left
+	step_end
+
+OakLab_KukuiToBattle:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+OakLab_ElmToBattle:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	face_right
+	step_end
 
 OakLab_PlayerEnter:
 	walk_slow_up
@@ -978,7 +1240,7 @@ OakLab_KukuiChooseTepig:
 	step_end
 
 OakLab_ReturnChikorita:
-	walk_right
+	walk_left
 	walk_down
 	walk_down
 	step_end
@@ -989,9 +1251,30 @@ OakLab_ReturnPiplup:
 	step_end
 
 OakLab_ReturnTepig:
+	walk_right
+	walk_down
+	walk_down
+	step_end
+
+OakLab_Elm_GivePokedexToPlayer:
+	walk_down
+	walk_right
+	face_down
+	delay_16
+	step_end
+
+OakLab_Elm_GivePokedexToKukui:
+	walk_right
+	face_down
+	delay_16
+	step_end
+
+OakLab_Elm_GivePokedexWalkBack:
 	walk_left
-	walk_down
-	walk_down
+	walk_left
+	walk_up
+	face_down
+	delay_16
 	step_end
 
 OakLab_KukuiScript::
@@ -1054,13 +1337,44 @@ OakLab_Elm_Text_0:
 	.string "Elm: It's OK to take your time.\nThis is an important descision.$"
 
 OakLab_Elm_Text_1:
-	.string "Elm: I feel like that boy, MAKOA\nwill come around eventually.$"
+	.string "Elm: We used to just ask the TRAINERS\n"
+	.string "to write down what they found out, but\l"
+	.string "as it turns out, kids are pretty\l"
+	.string "unreliable narrators.$"
 
 OakLab_Elm_Text_2:
-	.string "Elm: Good luck on your journey!\nPlease record all the POKéMON you meet!$"
+	.string "'Magcargo's body temperature is\n"
+	.string "approximately 18,000 degrees F'?$"
+
+OakLab_Elm_Text_3:
+	.string "I don't think so.$"
+
+OakLab_Elm_Text_4:
+	.string "Anyway, that's the gist of it.$"
+
+OakLab_Elm_Text_5:
+	.string "Elm: This apprenticeship said nothing\nabout working with kids!$"
+
+OakLab_Elm_Text_6:
+	.string "I just wanted a nice, quiet\nresearch lab...$"
 
 OakLab_KukuiWhatMon_Text_0:
 	.string "Makoa: Come on!\nI wanna choose too!$"
+
+OakLab_KukuiWhatMon_Text_1:
+	.string "Makoa: So, CHIKORITA learns\nRAZOR LEAF at LEVEL 6?$"
+
+OakLab_KukuiWhatMon_Text_2:
+	.string "Makoa: So, PIPLUP learns\nBUBBLE at LEVEL 8?$"
+
+OakLab_KukuiWhatMon_Text_3:
+	.string "Makoa: So, TEPIG learns\nEMBER at LEVEL 7?$"
+
+OakLab_KukuiWhatMon_Text_4:
+	.string "Oh wow...\nThis POKéDEX-thing is really helpful!$"
+
+OakLab_KukuiWhatMon_Text_5:
+	.string "Makoa: I'll be right behind you!\nI just need a bit to take in the\lawesome attacks we exchanged...$"
 
 OakLab_Elm_FirstTalk_Text_0:
 	.string "Aide: Aw man...\nThis thing just ain't working...$"
@@ -1093,23 +1407,23 @@ OakLab_Elm_FirstTalk_Text_9:
 	.string "Elm: The PROFESSOR is just up ahead.\nHe's waiting for you for sure\lalready!$"
 
 OakLab_Ball_Chikorita_Text_0:
-	.string "Elm: This is CHIKORITA,\nthe LEAF POKéMON.$"
+	.string "A POKéBALL lies on the table.$"
 
 OakLab_Ball_Chikorita_Text_1:
+	.string "Makoa: Oh!\nI wonder what POKéMON is inside...$"
+
+OakLab_Ball_Chikorita_Text_2:
+	.string "Makoa: Hm...\nThis one SOUNDS strong!$"
+
+OakLab_Ball_Chikorita_Text_3:
+	.string "Elm: This is CHIKORITA,\nthe LEAF POKéMON.$"
+
+OakLab_Ball_Chikorita_Text_4:
 	.string "Will you pick this gentle POKéMON as\n"
 	.string "your partner?$"
 
-OakLab_Ball_Chikorita_Text_2:
-	.string "Elm: That's perfectly fine.\nThink it through!$"
-
-OakLab_Ball_Chikorita_Text_3:
-	.string "A POKéBALL lies on the table.$"
-
-OakLab_Ball_Chikorita_Text_4:
-	.string "Makoa: Oh!\nI wonder what POKéMON is inside...$"
-
 OakLab_Ball_Chikorita_Text_5:
-	.string "Makoa: Hm...\nThis one SOUNDS strong!$"
+	.string "Elm: That's perfectly fine.\nThink it through!$"
 
 OakLab_Ball_Piplup_Text_0:
 	.string "Elm: This is PIPLUP,\nthe PENGUIN POKéMON.$"
@@ -1198,7 +1512,7 @@ OakLab_OakAppear_2_Text_22:
 	.string "Makoa: Hm, I think I'll pick...$"
 
 OakLab_OakAppear_2_Text_23:
-	.string "Elm: Oh, no!\nI think it's best if YOU practice\la bit of patiece.$"
+	.string "Elm: Oh, no!\nI think it's best if YOU practice\la bit of patience.$"
 
 OakLab_OakAppear_2_Text_24:
 	.string "The other kid, {PLAYER} was it?\nYou can go first.$"
@@ -1236,5 +1550,110 @@ OakLab_RivalChooseStarter_Text_2:
 OakLab_RivalChooseStarter_Text_3:
 	.string "Makoa: TEPIG, I choose you!$"
 
+OakLab_RivalChooseStarter_Text_4:
+	.string "Elm: Alright.\nBefore the two of you leave for\lyour big adventure, one more thing.$"
+
+OakLab_RivalChooseStarter_Text_5:
+	.string "Elm: Here you go, {PLAYER}.$"
+
+OakLab_RivalChooseStarter_Text_6:
+	.string "{PLAYER} recieved the POKéDEX!$"
+
+OakLab_RivalChooseStarter_Text_7:
+	.string "Elm: And for you too.\nDon't break it!$"
+
+OakLab_RivalChooseStarter_Text_8:
+	.string "Makoa: Uh...\nThis thing is pretty neat and all,\lbut what IS it?$"
+
+OakLab_RivalChooseStarter_Text_9:
+	.string "Elm: What you are holding in your\nhands right now is called a POKéDEX!$"
+
+OakLab_RivalChooseStarter_Text_10:
+	.string "PROFESSOR OAK has invented it with his\n"
+	.string "mentor, PROFESSOR ROWAN.$"
+
+OakLab_RivalChooseStarter_Text_11:
+	.string "It's an automatic, cutting-edge\n"
+	.string "POKéMON lexicon, and we hope it\l"
+	.string "becomes an irreplacable part for every\l"
+	.string "POKéMON TRAINER and RESEARCHER in the\l"
+	.string "field.$"
+
+OakLab_RivalChooseStarter_Text_12:
+	.string "Makoa: That's very nice, but why\nall there no data entries?$"
+
+OakLab_RivalChooseStarter_Text_13:
+	.string "Elm: Eh...\nWhen we say cutting-edge, we mean\lREALLY cutting edge.$"
+
+OakLab_RivalChooseStarter_Text_14:
+	.string "You and the other kids that come by\n"
+	.string "today will be the first users, and we\l"
+	.string "hope your journeys will fill the\l"
+	.string "database right up with new POKéMON\l"
+	.string "information!$"
+
+OakLab_RivalChooseStarter_Text_15:
+	.string "Although I think it's fair to say that\n"
+	.string "this can be seen as a public service,\l"
+	.string "and the POKéDEX records all data\l"
+	.string "automatically.$"
+
+OakLab_RivalChooseStarter_Text_16:
+	.string "Makoa: Wow, that's really cool!\nI wonder if the POKéDEX has already\lrecorded data about my CHIKORITA!$"
+
+OakLab_RivalChooseStarter_Text_17:
+	.string "Makoa: Wow, that's really cool!\nI wonder if the POKéDEX has already\lrecorded data about my PIPLUP!$"
+
+OakLab_RivalChooseStarter_Text_18:
+	.string "Makoa: Wow, that's really cool!\nI wonder if the POKéDEX has already\lrecorded data about my TEPIG!$"
+
+OakLab_RivalChooseStarter_Text_19:
+	.string "Hm...$"
+
+OakLab_RivalChooseStarter_Text_20:
+	.string "Elm: So, that's the formalities\nout of the way.$"
+
+OakLab_RivalChooseStarter_Text_21:
+	.string "If you guys are ever in town,\nwe at OAK's LAB are always happy\lto review your DEX's progress.$"
+
+OakLab_RivalChooseStarter_Text_22:
+	.string "If I may ask a personal favour,\nany data on POKéMON EGGS is especially\luseful for my THESIS.$"
+
+OakLab_RivalChooseStarter_Text_23:
+	.string "If nothing else, I look forward to\nseeing you at the LEAGUE FINALE,\lhopefully.$"
+
+OakLab_RivalChooseStarter_Text_24:
+	.string "Take care!$"
+
+OakLab_Elm_ForOtherKid_Text_0:
+	.string "Elm: Sorry, but this POKéMON is for\nthe next kid that comes by.$"
+
+OakLab_RivalBattle_Left_Text_0:
+	.string "Makoa: Hey, wait a minute?\nWhere do you think you're going?$"
+
+OakLab_RivalBattle_Start_Text_0:
+	.string "Makoa: We're trainers now!\nAnd I intend to keep my promise and\lfight you, here and now!$"
+
+OakLab_RivalBattle_Start_Text_1:
+	.string "Elm: You can't do that in he-$"
+
+OakLab_RivalBattle_Start_Text_2:
+	.string "Makoa: YES! I did it!$"
+
+OakLab_RivalBattle_Start_Text_3:
+	.string "Makoa: Aw man,\nyou're crazy strong already!$"
+
+OakLab_RivalBattle_Start_Text_4:
+	.string "I can't wait to fight you again\nonce we're stronger!$"
+
+OakLab_RivalBattle_Start_Text_5:
+	.string "Elm: Alright, that's IT!$"
+
+OakLab_RivalBattle_Start_Text_6:
+	.string "You two. Out. Now.$"
+
 OakLab_KukuiScript_Text_0:
 	.string "Makoa: Let's see the PROF.!\nI can't wait!$"
+
+OakLab_KukuiLost::
+	.string "Wow... I've never seen attacks\nthis strong...$"

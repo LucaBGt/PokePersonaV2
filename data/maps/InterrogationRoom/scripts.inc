@@ -12,6 +12,7 @@ InterrogationRoom_MapScripts_MAP_SCRIPT_ON_RESUME:
 
 InterrogationRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_GAMESTATE, 1, InterrogationRoom_FirstScene
+	map_script_2 VAR_GAMESTATE, 3, InterrogationRoom_AfterOak
 	.2byte 0
 
 
@@ -19,6 +20,7 @@ InterrogationRoom_FirstScene::
 	lockall
 	setobjectxy 1, 19, 19
 	setobjectxy 2, 19, 19
+	applymovement 2, CommonMovement_FaceDown
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
 	delay 30
 	msgbox InterrogationRoom_FirstScene_Text_0
@@ -86,6 +88,51 @@ InterrogationRoom_FirstScene::
 	closemessage
 	releaseall
 	end
+
+
+InterrogationRoom_AfterOak::
+	lock
+	clearflag FLAG_SYS_PREVENT_MAP_FADE_OUT
+	clearflag FLAG_SYS_PREVENT_MAP_FADE_IN
+	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
+	fadescreen 0
+	delay 60
+	msgbox InterrogationRoom_AfterOak_Text_0
+	msgbox InterrogationRoom_AfterOak_Text_1
+	closemessage
+	setflag FLAG_BADGE01_GET
+	setflag FLAG_BADGE02_GET
+	setflag FLAG_BADGE03_GET
+	additem ITEM_SUPER_POTION, 4
+	additem ITEM_POTION, 8
+	additem ITEM_PARALYZE_HEAL, 1
+	additem ITEM_RARE_CANDY, 1
+	additem ITEM_PREMIER_BALL, 4
+	additem ITEM_POKE_BALL, 8
+	switch VAR_STARTER_MON
+	case 0, InterrogationRoom_AfterOak_3
+	case 1, InterrogationRoom_AfterOak_4
+	case 2, InterrogationRoom_AfterOak_5
+InterrogationRoom_AfterOak_1:
+	special AddParty1
+	special HealPlayerParty
+	waitstate
+	setvar VAR_GAMESTATE, 4
+	release
+	end
+
+InterrogationRoom_AfterOak_3:
+	closemessage
+	special SetPartyChikorita1
+	goto InterrogationRoom_AfterOak_1
+
+InterrogationRoom_AfterOak_4:
+	special SetPartyPiplup1
+	goto InterrogationRoom_AfterOak_1
+
+InterrogationRoom_AfterOak_5:
+	special SetPartyTepig1
+	goto InterrogationRoom_AfterOak_1
 
 
 InterogationRoom_CameraUp:
@@ -210,3 +257,9 @@ InterrogationRoom_FirstScene_Text_8:
 
 InterrogationRoom_FirstScene_Text_9:
 	.string "PROLOGUE\n11 Years ago...$"
+
+InterrogationRoom_AfterOak_Text_0:
+	.string "Agent: So, after that your journey\nreally begun.$"
+
+InterrogationRoom_AfterOak_Text_1:
+	.string "I'm especially interested to hear\nabout your, what was it,\lfourth gym badge.$"

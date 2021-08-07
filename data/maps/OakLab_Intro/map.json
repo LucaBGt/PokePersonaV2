@@ -6,11 +6,11 @@
   "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": false,
   "allow_escaping": false,
   "allow_running": false,
-  "show_map_name": true,
+  "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": 0,
   "object_events": [
@@ -203,7 +203,7 @@
       "elevation": 0,
       "var": "VAR_OAK_LAB_STATE",
       "var_value": "2",
-      "script": "OakLab_RivalBattle_Left"
+      "script": "OakLab_RivalBattle_Right"
     }
   ],
   "bg_events": [

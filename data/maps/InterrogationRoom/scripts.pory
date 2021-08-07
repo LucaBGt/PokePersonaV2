@@ -11,7 +11,7 @@ mapscripts InterrogationRoom_MapScripts {
 		}
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_GAMESTATE, 1: InterrogationRoom_FirstScene
-		//VAR_GAMESTATE, 3: InterrogationRoom_AfterOak
+		VAR_GAMESTATE, 3: InterrogationRoom_AfterOak
     ]
 }
 
@@ -20,6 +20,7 @@ script InterrogationRoom_FirstScene{
 
 	setobjectxy(LOCALID_AGENT,19,19)
 	setobjectxy(LOCALID_FILE,19,19)
+	applymovement(LOCALID_FILE,CommonMovement_FaceDown)
 	applymovement(OBJ_EVENT_ID_PLAYER,CommonMovement_FaceUp)
 
 	delay(30)
@@ -116,6 +117,61 @@ script InterrogationRoom_FirstScene{
 
 	closemessage
 	releaseall
+	end
+}
+
+script InterrogationRoom_AfterOak{
+
+	lock
+
+	clearflag(FLAG_SYS_PREVENT_MAP_FADE_OUT)
+    clearflag(FLAG_SYS_PREVENT_MAP_FADE_IN)
+
+	applymovement(OBJ_EVENT_ID_PLAYER,CommonMovement_FaceUp)
+
+	fadescreen(0)
+
+	delay(60)
+
+	msgbox("Agent: So, after that your journey\nreally begun.")
+	msgbox("I'm especially interested to hear\nabout your, what was it,\lfourth gym badge.")
+	closemessage
+
+	setflag(FLAG_BADGE01_GET)
+	setflag(FLAG_BADGE02_GET)
+	setflag(FLAG_BADGE03_GET)
+
+	additem(ITEM_SUPER_POTION,4)
+	additem(ITEM_POTION,8)
+	additem(ITEM_PARALYZE_HEAL,1)
+	additem(ITEM_RARE_CANDY,1)
+	additem(ITEM_PREMIER_BALL,4)
+	additem(ITEM_POKE_BALL,8)
+
+	switch(var(VAR_STARTER_MON)){
+        case 0:
+			closemessage
+			special(SetPartyChikorita1)
+        break
+        case 1:
+			special(SetPartyPiplup1)
+        break
+        case 2:
+			special(SetPartyTepig1)
+        break
+    }
+
+	special(AddParty1)
+
+	special(HealPlayerParty)
+	waitstate
+
+	//setflag(FLAG_SYS_PREVENT_MAP_FADE_OUT)
+	//warp(MAP_OAK_LAB_INTRO,255,9,20)
+
+	setvar(VAR_GAMESTATE, 4)
+
+	release
 	end
 }
 

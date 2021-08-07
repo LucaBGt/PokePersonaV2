@@ -6785,7 +6785,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute103Mudkip[] 
     {
     .iv = 0,
     .lvl = 5,
-    .species = SPECIES_TREECKO,
+    .species = SPECIES_CHIKORITA,
     }
 };
 
@@ -6829,7 +6829,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute103Treecko[]
     {
     .iv = 0,
     .lvl = 5,
-    .species = SPECIES_TORCHIC,
+    .species = SPECIES_TEPIG,
     }
 };
 
@@ -6873,7 +6873,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute103Torchic[]
     {
     .iv = 0,
     .lvl = 5,
-    .species = SPECIES_MUDKIP,
+    .species = SPECIES_PIPLUP,
     }
 };
 

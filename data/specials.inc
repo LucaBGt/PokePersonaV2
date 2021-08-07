@@ -312,6 +312,11 @@ gSpecials:: @ 81DBA64
 	def_special IsGrassTypeInParty
 	def_special DoContestHallWarp
 	def_special PutZigzagoonInPlayerParty
+	def_special AddParty1
+	def_special SetPartyChikorita1
+	def_special SetPartyPiplup1
+	def_special SetPartyTepig1
+
 	def_special IsStarterInParty
 	def_special CopyCurSecretBaseOwnerName_StrVar1
 	def_special ScriptCheckFreePokemonStorageSpace

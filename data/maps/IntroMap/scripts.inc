@@ -10,6 +10,8 @@ IntroMap_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 Prepare::
 	lock
 	setflag FLAG_SYS_PREVENT_MAP_FADE_IN
+	setflag FLAG_RECEIVED_RUNNING_SHOES
+	setflag FLAG_SYS_B_DASH
 	warpsilent MAP_INTERROGATION_ROOM, -1, 7, 10
 	setvar VAR_GAMESTATE, 1
 	end

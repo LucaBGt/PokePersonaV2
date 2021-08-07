@@ -245,8 +245,10 @@ script OakLab_Elm{
         case 2:
         lock
         faceplayer
-        msgbox("Elm: I feel like that boy, MAKOA\nwill come around eventually.")
-        msgbox("His heart is in the right place.\nAnd yours is too, looking after\lhim like that.")
+        msgbox(format("Elm: We used to just ask the TRAINERS to write down what they found out, but as it turns out, kids are pretty unreliable narrators."))
+        msgbox(format("'Magcargo's body temperature is approximately 18,000 degrees F'?"))
+        msgbox("I don't think so.")
+        msgbox("Anyway, that's the gist of it.")
         closemessage
         release
         end
@@ -256,7 +258,8 @@ script OakLab_Elm{
         case 3:
         lock
         faceplayer
-        msgbox("Elm: Good luck on your journey!\nPlease record all the POKéMON you meet!")
+        msgbox("Elm: This apprenticeship said nothing\nabout working with kids!")
+        msgbox("I just wanted a nice, quiet\nresearch lab...")
         closemessage
         release
         end
@@ -288,7 +291,18 @@ script OakLab_KukuiWhatMon {
         case 2:
         lock
         faceplayer
-        msgbox("Makoa: Oh wow...\nThis POKéDEX-thing is really interesting!")
+        switch(var(VAR_STARTER_MON)){
+        case 1:
+            msgbox("Makoa: So, CHIKORITA learns\nRAZOR LEAF at LEVEL 6?")
+        break
+        case 2:
+            msgbox("Makoa: So, PIPLUP learns\nBUBBLE at LEVEL 8?")
+        break
+        case 0:
+            msgbox("Makoa: So, TEPIG learns\nEMBER at LEVEL 7?")
+        break
+    }
+        msgbox("Oh wow...\nThis POKéDEX-thing is really helpful!")
         closemessage
         release
         end
@@ -296,6 +310,11 @@ script OakLab_KukuiWhatMon {
 
         //3 = After Rival, ready to leave
         case 3:
+            faceplayer
+            msgbox("Makoa: I'll be right behind you!\nI just need a bit to take in the\lawesome attacks we exchanged...")
+            closemessage
+            release
+            end
         break
     }
 }
@@ -380,221 +399,266 @@ script OakLab_Elm_FirstTalk {
 
 script OakLab_Ball_Chikorita {
 
-    if(flag(FLAG_PROF_HIDDEN)){
-
-    playse(SE_PIN)
-    applymovement(LOCALID_ELM, CommonMovement_EmoteExclamation)
-    delay(60)
-
-    applymovement(LOCALID_ELM, CommonMovement_FaceRight)
-    waitmovement(0)
-
-    delay(30)
-
-    showmonpic(SPECIES_CHIKORITA, 10, 3)
-
-    msgbox("Elm: This is CHIKORITA,\nthe LEAF POKéMON.")
-    msgbox(format("Will you pick this gentle POKéMON as your partner?"),MSGBOX_YESNO)
-
-    switch(var(VAR_RESULT)){
-        case YES:
-        goto(OakLab_ChikoritaChosen)
-        break
-        case NO:
-        hidemonpic
-
-        msgbox("Elm: That's perfectly fine.\nThink it through!")
-        closemessage
-    
-        applymovement(LOCALID_ELM, CommonMovement_FaceDown)
-        waitmovement(0)
-
-        release
-        end
-        break
-    }
-
-    } else {
-
     lock
-    msgbox("A POKéBALL lies on the table.")
-    closemessage
 
-    playse(SE_PIN)
-    applymovement(OBJ_EVENT_ID_FOLLOWER, CommonMovement_EmoteExclamation)
-    delay(60)
+    switch(var(VAR_OAK_LAB_STATE)){
+        //0 = Talk to Pokeball
+        case 0:
+            msgbox("A POKéBALL lies on the table.")
+            closemessage
 
-    facefollower
+            playse(SE_PIN)
+            applymovement(OBJ_EVENT_ID_FOLLOWER, CommonMovement_EmoteExclamation)
+            delay(60)
 
-    msgbox("Makoa: Oh!\nI wonder what POKéMON is inside...")
-    closemessage
+            call(CommonMovement_FaceFollower)
 
-    applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp)
-    waitmovement(0)
+            msgbox("Makoa: Oh!\nI wonder what POKéMON is inside...")
+            closemessage
 
-    playmoncry(SPECIES_CHIKORITA,2)
-    waitmoncry
+            applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp)
+            waitmovement(0)
 
-    delay(30)
+            playmoncry(SPECIES_CHIKORITA,2)
+            
+            delay(60)
+
+            waitmoncry
     
-    facefollower
+            call(CommonMovement_FaceFollower)
 
-    msgbox("Makoa: Hm...\nThis one SOUNDS strong!")
-    closemessage
+            msgbox("Makoa: Hm...\nThis one SOUNDS strong!")
+            closemessage
 
-    call(OakLab_OakAppear)
+            call(OakLab_OakAppear)
 
-    applymovement(OBJ_EVENT_ID_CAMERA,OakLab_RevealOak_Chikorita)
-	waitmovement(0)
+            applymovement(OBJ_EVENT_ID_CAMERA,OakLab_RevealOak_Chikorita)
+	        waitmovement(0)
 
-    goto(OakLab_OakAppear_2)
+            goto(OakLab_OakAppear_2)
+        break
+
+        //1 = Choose Pokemon
+        case 1:
+            playse(SE_PIN)
+            applymovement(LOCALID_ELM, CommonMovement_EmoteExclamation)
+            delay(60)
+
+            applymovement(LOCALID_ELM, CommonMovement_FaceRight)
+            waitmovement(0)
+
+            delay(30)
+
+            showmonpic(SPECIES_CHIKORITA, 10, 3)
+
+            msgbox("Elm: This is CHIKORITA,\nthe LEAF POKéMON.")
+            msgbox(format("Will you pick this gentle POKéMON as your partner?"),MSGBOX_YESNO)
+
+            switch(var(VAR_RESULT)){
+                case YES:
+                goto(OakLab_ChikoritaChosen)
+                break
+        
+            case NO:
+                hidemonpic
+
+                msgbox("Elm: That's perfectly fine.\nThink it through!")
+                closemessage
+    
+                applymovement(LOCALID_ELM, CommonMovement_FaceDown)
+                waitmovement(0)
+
+                release
+                end
+                break
+            }
+        break
+
+        //2 = Before RivalFight
+        case 2:
+            goto(OakLab_Elm_ForOtherKid)
+        break
+
+        //3 = After Rival, ready to leave
+        case 3:
+            goto(OakLab_Elm_ForOtherKid)
+        break
     }
 }
 
-
 script OakLab_Ball_Piplup {
     
-    if(flag(FLAG_PROF_HIDDEN)){
-
-    playse(SE_PIN)
-    applymovement(LOCALID_ELM, CommonMovement_EmoteExclamation)
-    delay(60)
-
-    applymovement(LOCALID_ELM, CommonMovement_FaceRight)
-    waitmovement(0)
-
-    delay(30)
-
-    showmonpic(SPECIES_PIPLUP, 10, 3)
-
-    msgbox("Elm: This is PIPLUP,\nthe PENGUIN POKéMON.")
-    msgbox(format("Will you pick this proud POKéMON as your partner?"),MSGBOX_YESNO)
-
-    switch(var(VAR_RESULT)){
-        case YES:
-        goto(OakLab_PiplupChosen)
-        break
-        case NO:
-        hidemonpic
-
-        msgbox("Elm: That's perfectly fine.\nThink it through!")
-        closemessage
-    
-        applymovement(LOCALID_ELM, CommonMovement_FaceDown)
-        waitmovement(0)
-
-        release
-        end
-        break
-    }
-
-    } else {
-
     lock
-    msgbox("A POKéBALL lies on the table.")
-    closemessage
 
-    playse(SE_PIN)
-    applymovement(OBJ_EVENT_ID_FOLLOWER, CommonMovement_EmoteExclamation)
-    delay(60)
+    switch(var(VAR_OAK_LAB_STATE)){
+        //0 = Talk to Pokeball
+        case 0:
+            msgbox("A POKéBALL lies on the table.")
+            closemessage
 
-    facefollower
+            playse(SE_PIN)
+            applymovement(OBJ_EVENT_ID_FOLLOWER, CommonMovement_EmoteExclamation)
+            delay(60)
 
-    msgbox("Makoa: Oh!\nI wonder what POKéMON is inside...")
-    closemessage
+            call(CommonMovement_FaceFollower)
 
-    applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp)
-    waitmovement(0)
+            msgbox("Makoa: Oh!\nI wonder what POKéMON is inside...")
+            closemessage
 
-    playmoncry(SPECIES_PIPLUP,2)
-    waitmoncry
+            applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp)
+            waitmovement(0)
 
-    delay(30)
+            playmoncry(SPECIES_PIPLUP,2)
+            delay(60)
+
+            waitmoncry
     
-    facefollower
+            call(CommonMovement_FaceFollower)
 
-    msgbox("Makoa: Hm...\nThis one SOUNDS strong!")
-    closemessage
+            msgbox("Makoa: Hm...\nThis one SOUNDS strong!")
+            closemessage
 
-    call(OakLab_OakAppear)
+            call(OakLab_OakAppear)
 
-    applymovement(OBJ_EVENT_ID_CAMERA,OakLab_RevealOak_Piplup)
-	waitmovement(0)
+            applymovement(OBJ_EVENT_ID_CAMERA,OakLab_RevealOak_Piplup)
+	        waitmovement(0)
 
-    goto(OakLab_OakAppear_2)
+            goto(OakLab_OakAppear_2)
+        break
+
+        //1 = Choose Pokemon
+        case 1:
+            playse(SE_PIN)
+            applymovement(LOCALID_ELM, CommonMovement_EmoteExclamation)
+            delay(60)
+
+            applymovement(LOCALID_ELM, CommonMovement_FaceRight)
+            waitmovement(0)
+
+            delay(30)
+
+            showmonpic(SPECIES_PIPLUP, 10, 3)
+
+            msgbox("Elm: This is PIPLUP,\nthe PENGUIN POKéMON.")
+            msgbox(format("Will you pick this proud POKéMON as your partner?"),MSGBOX_YESNO)
+
+            switch(var(VAR_RESULT)){
+                case YES:
+                goto(OakLab_PiplupChosen)
+                break
+        
+            case NO:
+                hidemonpic
+
+                msgbox("Elm: That's perfectly fine.\nThink it through!")
+                closemessage
+    
+                applymovement(LOCALID_ELM, CommonMovement_FaceDown)
+                waitmovement(0)
+
+                release
+                end
+                break
+            }
+        break
+
+        //2 = Before RivalFight
+        case 2:
+            goto(OakLab_Elm_ForOtherKid)
+        break
+
+        //3 = After Rival, ready to leave
+        case 3:
+            goto(OakLab_Elm_ForOtherKid)
+        break
     }
 }
 
 script OakLab_Ball_Tepig {
 
-if(flag(FLAG_PROF_HIDDEN)){
-
-    playse(SE_PIN)
-    applymovement(LOCALID_ELM, CommonMovement_EmoteExclamation)
-    delay(60)
-
-    applymovement(LOCALID_ELM, CommonMovement_FaceRight)
-    waitmovement(0)
-
-    delay(30)
-
-    showmonpic(SPECIES_TEPIG, 10, 3)
-
-    msgbox("Elm: This is TEPIG,\nthe FIRE PIG POKéMON.")
-    msgbox(format("Will you pick this energetic POKéMON as your partner?"),MSGBOX_YESNO)
-
-    switch(var(VAR_RESULT)){
-        case YES:
-        goto(OakLab_TepigChosen)
-        break
-        case NO:
-        hidemonpic
-
-        msgbox("Elm: That's perfectly fine.\nThink it through!")
-        closemessage
-    
-        applymovement(LOCALID_ELM, CommonMovement_FaceDown)
-        waitmovement(0)
-
-        release
-        end
-        break
-    }
-
-    } else {
-
     lock
-    msgbox("A POKéBALL lies on the table.")
-    closemessage
 
-    playse(SE_PIN)
-    applymovement(OBJ_EVENT_ID_FOLLOWER, CommonMovement_EmoteExclamation)
-    delay(60)
+    switch(var(VAR_OAK_LAB_STATE)){
+        //0 = Talk to Pokeball
+        case 0:
+            msgbox("A POKéBALL lies on the table.")
+            closemessage
 
-    facefollower
+            playse(SE_PIN)
+            applymovement(OBJ_EVENT_ID_FOLLOWER, CommonMovement_EmoteExclamation)
+            delay(60)
 
-    msgbox("Makoa: Oh!\nI wonder what POKéMON is inside...")
-    closemessage
+            call(CommonMovement_FaceFollower)
 
-    applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp)
-    waitmovement(0)
+            msgbox("Makoa: Oh!\nI wonder what POKéMON is inside...")
+            closemessage
 
-    playmoncry(SPECIES_TEPIG,2)
-    waitmoncry
+            applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp)
+            waitmovement(0)
 
-    delay(30)
+            playmoncry(SPECIES_TEPIG,2)
+            delay(60)
+
+            waitmoncry
     
-    facefollower
+            call(CommonMovement_FaceFollower)
 
-    msgbox("Makoa: Hm...\nThis one SOUNDS strong!")
-    closemessage
+            msgbox("Makoa: Hm...\nThis one SOUNDS strong!")
+            closemessage
 
-    call(OakLab_OakAppear)
+            call(OakLab_OakAppear)
 
-    applymovement(OBJ_EVENT_ID_CAMERA,OakLab_RevealOak_Tepig)
-	waitmovement(0)
+            applymovement(OBJ_EVENT_ID_CAMERA,OakLab_RevealOak_Tepig)
+	        waitmovement(0)
 
-    goto(OakLab_OakAppear_2)
+            goto(OakLab_OakAppear_2)
+        break
+
+        //1 = Choose Pokemon
+        case 1:
+            playse(SE_PIN)
+            applymovement(LOCALID_ELM, CommonMovement_EmoteExclamation)
+            delay(60)
+
+            applymovement(LOCALID_ELM, CommonMovement_FaceRight)
+            waitmovement(0)
+
+            delay(30)
+
+            showmonpic(SPECIES_TEPIG, 10, 3)
+
+            msgbox("Elm: This is TEPIG,\nthe FIRE PIG POKéMON.")
+            msgbox(format("Will you pick this energetic POKéMON as your partner?"),MSGBOX_YESNO)
+
+            switch(var(VAR_RESULT)){
+                case YES:
+                goto(OakLab_TepigChosen)
+                break
+        
+            case NO:
+                hidemonpic
+
+                msgbox("Elm: That's perfectly fine.\nThink it through!")
+                closemessage
+    
+                applymovement(LOCALID_ELM, CommonMovement_FaceDown)
+                waitmovement(0)
+
+                release
+                end
+                break
+            }
+        break
+
+        //2 = Before RivalFight
+        case 2:
+            goto(OakLab_Elm_ForOtherKid)
+        break
+
+        //3 = After Rival, ready to leave
+        case 3:
+            goto(OakLab_Elm_ForOtherKid)
+        break
     }
 }
 
@@ -699,10 +763,12 @@ script OakLab_OakAppear_2{
     closemessage
     delay(30)
     msgbox("Oak: Spit it out, ELM!\nWhat is going on?")
-    closemessage
 
     msgbox("Elm: I'm sorry to interrupt, but...")
     closemessage
+
+    applymovement(LOCALID_ELM, OakLab_Elm_Jump)
+	waitmovement(0)
     delay(30)
 
     msgbox("It's your daughter, she's, uh...\nShe's going into labour as we speak!")
@@ -804,7 +870,7 @@ script OakLab_OakAppear_2{
     applymovement(LOCALID_ELM, CommonMovement_EmoteExclamation)
     delay(60)
 
-    msgbox("Elm: Oh, no!\nI think it's best if YOU practice\la bit of patiece.")
+    msgbox("Elm: Oh, no!\nI think it's best if YOU practice\la bit of patience.")
     msgbox("The other kid, {PLAYER} was it?\nYou can go first.")
 
     applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceRight)
@@ -1031,23 +1097,214 @@ script OakLab_RivalChooseStarter{
 
     fadescreen(0)
 
+    msgbox("Elm: Alright.\nBefore the two of you leave for\lyour big adventure, one more thing.")
+    closemessage
+
+    applymovement(LOCALID_ELM, OakLab_Elm_GivePokedexToPlayer)
+    waitmovement(0)
+
+    msgbox("Elm: Here you go, {PLAYER}.")
+
+	playfanfare(MUS_OBTAIN_TMHM)
+	message(format("{PLAYER} recieved the POKéDEX!"))
+	waitfanfare
+	waitmessage
+	setflag(FLAG_SYS_POKEDEX_GET)
+	special(SetUnlockedPokedexFlags)
+	setflag(FLAG_RECEIVED_POKEDEX_FROM_BIRCH)
+	closemessage
+
+    applymovement(LOCALID_ELM, OakLab_Elm_GivePokedexToKukui)
+    waitmovement(0)
+
+    msgbox("Elm: And for you too.\nDon't break it!")
+    closemessage
+
+    applymovement(LOCALID_ELM, OakLab_Elm_GivePokedexWalkBack)
+    waitmovement(0)
+
+    msgbox("Makoa: Uh...\nThis thing is pretty neat and all,\lbut what IS it?")
+    msgbox("Elm: What you are holding in your\nhands right now is called a POKéDEX!")
+    msgbox(format("PROFESSOR OAK has invented it with his mentor, PROFESSOR ROWAN."))
+    msgbox(format("It's an automatic, cutting-edge POKéMON lexicon, and we hope it becomes an irreplacable part for every POKéMON TRAINER and RESEARCHER in the field."))
+    closemessage
+    delay(30)
+
+    playse(SE_PIN)
+    applymovement(LOCALID_KUKUI, CommonMovement_EmoteQuestion)
+    delay(60)
+
+    msgbox("Makoa: That's very nice, but why\nall there no data entries?")
+    msgbox("Elm: Eh...\nWhen we say cutting-edge, we mean\lREALLY cutting edge.")
+    msgbox(format("You and the other kids that come by today will be the first users, and we hope your journeys will fill the database right up with new POKéMON information!"))
+    msgbox(format("Although I think it's fair to say that this can be seen as a public service, and the POKéDEX records all data automatically."))
+    closemessage
+    delay(30)
+
+    playse(SE_PIN)
+    applymovement(LOCALID_KUKUI, CommonMovement_EmoteExclamation)
+    delay(60)
+
+    switch(var(VAR_STARTER_MON)){
+        case 1:
+            msgbox("Makoa: Wow, that's really cool!\nI wonder if the POKéDEX has already\lrecorded data about my CHIKORITA!")
+        break
+        case 2:
+            msgbox("Makoa: Wow, that's really cool!\nI wonder if the POKéDEX has already\lrecorded data about my PIPLUP!")
+        break
+        case 0:
+            msgbox("Makoa: Wow, that's really cool!\nI wonder if the POKéDEX has already\lrecorded data about my TEPIG!")
+        break
+    }
+
+    msgbox("Hm...")
+    closemessage
+    delay(30)
+
+    msgbox("Elm: So, that's the formalities\nout of the way.")
+    msgbox("If you guys are ever in town,\nwe at OAK's LAB are always happy\lto review your DEX's progress.")
+    msgbox("If I may ask a personal favour,\nany data on POKéMON EGGS is especially\luseful for my THESIS.")
+    msgbox("If nothing else, I look forward to\nseeing you at the LEAGUE FINALE,\lhopefully.")
+    msgbox("Take care!")
+    closemessage
+
+    special(SpawnCameraObject)
+
+    //applymovement(OBJ_EVENT_ID_CAMERA, CommonMovement_WalkLeft)
+	//waitmovement(0)
+
+    special(RemoveCameraObject)
+
     setvar(VAR_OAK_LAB_STATE, 2)
     release
     end
 
 }
 
+script OakLab_Elm_ForOtherKid{
+    playse(SE_PIN)
+    applymovement(LOCALID_ELM, CommonMovement_EmoteExclamation)
+    delay(60)
+
+    applymovement(LOCALID_ELM, CommonMovement_FaceRight)
+    waitmovement(0)
+
+    delay(30)
+
+    msgbox("Elm: Sorry, but this POKéMON is for\nthe next kid that comes by.")
+    closemessage
+
+    applymovement(LOCALID_ELM, CommonMovement_FaceDown)
+    waitmovement(0)
+
+    release
+    end
+}
+
 script OakLab_RivalBattle_Left {
+
+    msgbox("Makoa: Hey, wait a minute?\nWhere do you think you're going?")
+    closemessage
+    
+    applymovement(LOCALID_KUKUI, OakLab_KukuiToBattle_Left)
+    waitmovement(0)
+
     goto(OakLab_RivalBattle_Start)
 }
 
 script OakLab_RivalBattle_Right {
+
+    msgbox("Makoa: Hey, wait a minute?\nWhere do you think you're going?")
+    closemessage
+
     goto(OakLab_RivalBattle_Start)
 }
 
 script OakLab_RivalBattle_Start {
-    
+    applymovement(LOCALID_KUKUI, OakLab_KukuiToBattle)
+    waitmovement(0)
+
+    applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp)
+    waitmovement(0)
+
+    delay(30)
+
+    msgbox("Makoa: We're trainers now!\nAnd I intend to keep my promise and\lfight you, here and now!")
+    closemessage
+
+    applymovement(LOCALID_ELM, OakLab_ElmToBattle)
+    waitmovement(0)
+
+    msgbox("Elm: You can't do that in he-")
+
+    setflag(FLAG_SYS_CANNOT_LOSE)
+
+    switch (var(VAR_STARTER_MON)) {
+			case 0:
+                trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_TREECKO,OakLab_KukuiLost)
+			case 1:				
+                trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_MUDKIP,OakLab_KukuiLost)
+			case 2:
+                trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_TORCHIC, OakLab_KukuiLost)
+
+		}
+
+    if(flag(FLAG_SYS_PLAYER_LOST)){
+    msgbox("Makoa: YES! I did it!")
+    } else {
+    msgbox("Makoa: Aw man,\nyou're crazy strong already!")
+    }
+
+    msgbox("I can't wait to fight you again\nonce we're stronger!")
+    closemessage
+
+    clearflag(FLAG_SYS_CANNOT_LOSE)
+    clearflag(FLAG_SYS_PLAYER_LOST)
+
+    special(HealPlayerParty)
+
+    applymovement(LOCALID_ELM, OakLab_Elm_Jump)
+    waitmovement(0)
+
+    msgbox("Elm: Alright, that's IT!")
+    applymovement(LOCALID_ELM, OakLab_Elm_Jump)
+    waitmovement(0)
+    msgbox("You two. Out. Now.")
+    closemessage
+
+    fadescreen(1)
+    setvar(VAR_GAMESTATE, 3)
+    setvar(VAR_OAK_LAB_STATE, 3)
+
+    setflag(FLAG_SYS_PREVENT_MAP_FADE_OUT)
+    setflag(FLAG_SYS_PREVENT_MAP_FADE_IN)
+
+	warpsilent(MAP_INTERROGATION_ROOM,-1,7,10)
+
+    release
+    end
 }
+
+script CommonMovement_FaceFollower {
+    facefollower
+    applymovement(OBJ_EVENT_ID_FOLLOWER, CommonMovement_FacePlayer)
+    waitmovement(0)
+    return
+}
+
+movement OakLab_KukuiToBattle_Left{
+    walk_fast_left
+}
+
+movement OakLab_KukuiToBattle{
+    walk_down *4
+}
+
+movement OakLab_ElmToBattle{
+    walk_down * 7
+    face_right
+}
+
 
 movement OakLab_PlayerEnter{
     walk_slow_up * 2
@@ -1195,7 +1452,7 @@ movement OakLab_KukuiChooseTepig{
 }
 
 movement OakLab_ReturnChikorita{
-    walk_right
+    walk_left
     walk_down * 2
 }
 
@@ -1204,8 +1461,33 @@ movement OakLab_ReturnPiplup{
 }
 
 movement OakLab_ReturnTepig{
-    walk_left
+    walk_right
     walk_down * 2
+}
+
+movement OakLab_Elm_GivePokedexToPlayer {
+    walk_down
+    walk_right
+    face_down
+    delay_16
+}
+
+movement OakLab_Elm_GivePokedexToKukui {
+    walk_right
+    face_down
+    delay_16
+}
+
+movement OakLab_Elm_GivePokedexWalkBack{
+    walk_left *2
+    walk_up
+    face_down
+    delay_16
+}
+
+
+text OakLab_KukuiLost{
+    "Wow... I've never seen attacks\nthis strong..."
 }
 
 script OakLab_KukuiScript{
