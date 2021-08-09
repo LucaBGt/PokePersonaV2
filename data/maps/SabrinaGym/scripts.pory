@@ -1,1 +1,53 @@
-mapscripts SabrinaGym_MapScripts {}
+mapscripts SabrinaGym_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION{    
+        setrespawn(HEAL_LOCATION_SABRINA_GYM)
+        }
+}
+
+script SabrinaGym_Nurse {
+    lock
+
+    msgbox("Nurse: Hello there, Challenger!")
+    msgbox("May I fresh up your POKéMON?")
+
+    fadescreen(FADE_TO_BLACK)
+    special(HealPlayerParty)
+    playfanfare(MUS_HEAL)
+	waitfanfare
+    fadescreen(FADE_FROM_BLACK)
+
+    closemessage
+
+    release
+    end
+}
+
+script SabrinaGym_Adah{
+    trainerbattle_single(TRAINER_ADAH, "You wanna play too?\nIt'll be fun...", "Tibbers...")
+    msgbox("Hop, skip, jump!", MSGBOX_AUTOCLOSE)
+    end
+}
+
+script SabrinaGym_Louise{
+    trainerbattle_single(TRAINER_LOUISE, "You wanna play too?\nIt'll be fun...", "Tibbers...")
+    msgbox("Hop, skip, jump!", MSGBOX_AUTOCLOSE)
+    end
+}
+
+script SabrinaGym_Reina{
+    trainerbattle_single(TRAINER_REINA, "You wanna play too?\nIt'll be fun...", "Tibbers...")
+    msgbox("Hop, skip, jump!", MSGBOX_AUTOCLOSE)
+    end
+}
+
+script SabrinaGym_Gandalf{
+    trainerbattle_single(TRAINER_GANDALF, "You wanna play too?\nIt'll be fun...", "Tibbers...")
+    msgbox("Hop, skip, jump!", MSGBOX_AUTOCLOSE)
+    end
+}
+
+script SabrinaGym_Spike{
+    trainerbattle_single(TRAINER_SPIKE, "You wanna play too?\nIt'll be fun...", "Tibbers...")
+    msgbox("Hop, skip, jump!", MSGBOX_AUTOCLOSE)
+    end
+}

@@ -126,7 +126,6 @@ InterrogationRoom_AfterOak_1:
 	end
 
 InterrogationRoom_AfterOak_3:
-	closemessage
 	special SetPartyChikorita1
 	goto InterrogationRoom_AfterOak_1
 

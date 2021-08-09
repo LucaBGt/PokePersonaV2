@@ -2,6 +2,13 @@
 #define GUARD_CONSTANTS_OPPONENTS_H
 
 #define TRAINER_NONE                          0
+#define TRAINER_ADAH                          1
+#define TRAINER_LOUISE                        2
+#define TRAINER_REINA                         3
+#define TRAINER_GANDALF                       4
+#define TRAINER_SPIKE                         5
+
+
 #define TRAINER_SAWYER_1                      1
 #define TRAINER_GRUNT_AQUA_HIDEOUT_1          2
 #define TRAINER_GRUNT_AQUA_HIDEOUT_2          3

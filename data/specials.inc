@@ -542,3 +542,6 @@ gSpecials:: @ 81DBA64
 	def_special TrySetBattleTowerLinkType
 	def_special SetTotemBoost
 	def_special SwapPlayersCostume
+	def_special SetPokedexSeen
+	def_special SetPokedexOwned
+

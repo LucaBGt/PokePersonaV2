@@ -155,7 +155,6 @@ script InterrogationRoom_AfterOak{
 
 	switch(var(VAR_STARTER_MON)){
         case 0:
-			closemessage
 			special(SetPartyChikorita1)
         break
         case 1:

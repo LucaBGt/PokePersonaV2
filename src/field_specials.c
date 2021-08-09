@@ -66,6 +66,7 @@
 #include "constants/weather.h"
 #include "constants/metatile_labels.h"
 #include "palette.h"
+#include "pokedex.h"
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
@@ -1461,7 +1462,7 @@ void PutZigzagoonInPlayerParty(void)
 void AddParty1(void){
     
     u16 monData;
-    CreateMon(&gPlayerParty[1], SPECIES_BIBAREL, 26, MAX_PER_STAT_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    CreateMon(&gPlayerParty[1], SPECIES_BIBAREL, 26, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
     monData = TRUE;
     SetMonData(&gPlayerParty[1], MON_DATA_ABILITY_NUM, &monData);
     //Attacks
@@ -1481,6 +1482,11 @@ void AddParty1(void){
     SetMonData(&gPlayerParty[1], MON_DATA_MOVE4, &monData);
     monData = 10;
     SetMonData(&gPlayerParty[1], MON_DATA_PP4, &monData);
+    (void) GetSetPokedexFlag(SPECIES_BIDOOF, FLAG_SET_SEEN);
+    (void) GetSetPokedexFlag(SPECIES_BIBAREL, FLAG_SET_SEEN);
+    (void) GetSetPokedexFlag(SPECIES_BIDOOF, FLAG_SET_CAUGHT);
+    (void) GetSetPokedexFlag(SPECIES_BIBAREL, FLAG_SET_CAUGHT);
+
 
     CreateMon(&gPlayerParty[2], SPECIES_MURKROW, 25, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
     monData = TRUE;
@@ -1489,27 +1495,42 @@ void AddParty1(void){
     SetMonData(&gPlayerParty[2], MON_DATA_MOVE1, &monData);
     monData = 15;
     SetMonData(&gPlayerParty[2], MON_DATA_PP1, &monData);
+    (void) GetSetPokedexFlag(SPECIES_MURKROW, FLAG_SET_SEEN);
+    (void) GetSetPokedexFlag(SPECIES_MURKROW, FLAG_SET_CAUGHT);
 
     CreateMon(&gPlayerParty[3], SPECIES_DRILBUR, 25, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
     monData = TRUE;
     SetMonData(&gPlayerParty[3], MON_DATA_ABILITY_NUM, &monData);
+    monData = MOVE_SHADOW_CLAW;
+    SetMonData(&gPlayerParty[3], MON_DATA_MOVE1, &monData);
+    monData = 15;
+    SetMonData(&gPlayerParty[3], MON_DATA_PP1, &monData);
+    (void) GetSetPokedexFlag(SPECIES_DRILBUR, FLAG_SET_SEEN);
+    (void) GetSetPokedexFlag(SPECIES_DRILBUR, FLAG_SET_CAUGHT);
 
     CreateMon(&gPlayerParty[4], SPECIES_MORPEKO, 23, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
     monData = TRUE;
     SetMonData(&gPlayerParty[4], MON_DATA_ABILITY_NUM, &monData);
     monData = MOVE_VOLT_SWITCH;
     SetMonData(&gPlayerParty[4], MON_DATA_MOVE1, &monData);
+
+    (void) GetSetPokedexFlag(SPECIES_MORPEKO, FLAG_SET_SEEN);
+    (void) GetSetPokedexFlag(SPECIES_MORPEKO, FLAG_SET_CAUGHT);
 }
 
 void SetPartyChikorita1(void)
 {
-    u16 monData;
-    //Species
-    monData = SPECIES_BAYLEEF;
-    SetMonData(&gPlayerParty[0], MON_DATA_SPECIES, &monData);
-    //Level
-    monData = 29;
-    SetMonData(&gPlayerParty[0], MON_DATA_LEVEL, &monData);
+
+    u16 monData, gender;
+
+    GetMonNickname(&gPlayerParty[0],gStringVar1);
+    gender = GetMonGender(&gPlayerParty[0]);
+    
+    CreateMon(&gPlayerParty[0], SPECIES_BAYLEEF, 29, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    
+    SetMonData(&gPlayerParty[0], MON_DATA_NICKNAME, gStringVar1);
+    //SetMonData(&gPlayerParty[0], MON_DATA_GENDER, gStringVar1);
+
     //Attacks
     monData = MOVE_SYNTHESIS;
     SetMonData(&gPlayerParty[0], MON_DATA_MOVE1, &monData);
@@ -1519,17 +1540,22 @@ void SetPartyChikorita1(void)
     SetMonData(&gPlayerParty[0], MON_DATA_MOVE3, &monData);
     monData = MOVE_NATURAL_GIFT;
     SetMonData(&gPlayerParty[0], MON_DATA_MOVE4, &monData);
+
+    (void) GetSetPokedexFlag(SPECIES_BAYLEEF, FLAG_SET_SEEN);
+    (void) GetSetPokedexFlag(SPECIES_BAYLEEF, FLAG_SET_CAUGHT);
+    (void) GetSetPokedexFlag(SPECIES_PIGNITE, FLAG_SET_SEEN);
 }
 
 void SetPartyPiplup1(void)
 {
-    u16 monData;
-    //Species
-    monData = SPECIES_PRINPLUP;
-    SetMonData(&gPlayerParty[0], MON_DATA_SPECIES, &monData);
-    //Level
-    monData = 29;
-    SetMonData(&gPlayerParty[0], MON_DATA_LEVEL, &monData);
+    u16 monData, gender;
+
+    GetMonNickname(&gPlayerParty[0],gStringVar1);
+    gender = GetMonGender(&gPlayerParty[0]);
+    
+    CreateMon(&gPlayerParty[0], SPECIES_PRINPLUP, 29, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    
+    SetMonData(&gPlayerParty[0], MON_DATA_NICKNAME, gStringVar1);
     //Attacks
     monData = MOVE_FURY_ATTACK;
     SetMonData(&gPlayerParty[0], MON_DATA_MOVE1, &monData);
@@ -1539,6 +1565,11 @@ void SetPartyPiplup1(void)
     SetMonData(&gPlayerParty[0], MON_DATA_MOVE3, &monData);
     monData = MOVE_METAL_CLAW;
     SetMonData(&gPlayerParty[0], MON_DATA_MOVE4, &monData);
+
+    (void) GetSetPokedexFlag(SPECIES_PRINPLUP, FLAG_SET_SEEN);
+    (void) GetSetPokedexFlag(SPECIES_PRINPLUP, FLAG_SET_CAUGHT);
+    
+    (void) GetSetPokedexFlag(SPECIES_BAYLEEF, FLAG_SET_SEEN);
 }
 
 void SetPartyTepig1(void)
@@ -1559,6 +1590,22 @@ void SetPartyTepig1(void)
     SetMonData(&gPlayerParty[0], MON_DATA_MOVE3, &monData);
     monData = MOVE_ARM_THRUST;
     SetMonData(&gPlayerParty[0], MON_DATA_MOVE4, &monData);
+
+    (void) GetSetPokedexFlag(SPECIES_PIGNITE, FLAG_SET_SEEN);
+    (void) GetSetPokedexFlag(SPECIES_PIGNITE, FLAG_SET_CAUGHT);
+
+    (void) GetSetPokedexFlag(SPECIES_PRINPLUP, FLAG_SET_SEEN);
+    //(void) GetSetPokedexFlag(SPECIES_PIDOVE, FLAG_SET_SEEN);
+}
+
+void SetPokedexSeen(void)
+{
+    (void) GetSetPokedexFlag(gSpecialVar_0x8004, FLAG_SET_SEEN);
+}
+
+void SetPokedexOwned(void)
+{
+    (void) GetSetPokedexFlag(gSpecialVar_0x8004, FLAG_SET_CAUGHT);
 }
 
 bool8 IsStarterInParty(void)
