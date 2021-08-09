@@ -104,8 +104,11 @@ script InterrogationRoom_FirstScene{
 	waitmovement(0)
 	special(RemoveCameraObject)
 
+	load_field_pic(0, 40, 80)
 	msgbox(format("Agent: You got your start like so many trainers back in the day. How long ago was that?"))
 	closemessage
+	destroy_field_pic(0)
+
 	delay(60)
 	msgbox("PROLOGUE\n11 Years ago...",MSGBOX_SIGN)
 	closemessage
@@ -133,9 +136,11 @@ script InterrogationRoom_AfterOak{
 
 	delay(60)
 
+	load_field_pic(0, 40, 80)
 	msgbox("Agent: So, after that your journey\nreally begun.")
-	msgbox("I'm especially interested to hear\nabout your, what was it,\lfourth gym badge.")
+	msgbox("I'm especially interested to hear\nabout your, what was it,\lfourth gym badge?")
 	closemessage
+	destroy_field_pic(0)
 
 	setflag(FLAG_BADGE01_GET)
 	setflag(FLAG_BADGE02_GET)
@@ -160,14 +165,14 @@ script InterrogationRoom_AfterOak{
 			special(SetPartyTepig1)
         break
     }
+	special(HealPlayerParty)
 
 	special(AddParty1)
 
-	special(HealPlayerParty)
-	waitstate
+	//waitstate
 
 	//setflag(FLAG_SYS_PREVENT_MAP_FADE_OUT)
-	//warp(MAP_OAK_LAB_INTRO,255,9,20)
+	warp(MAP_SABRINA_GYM,255,15,29)
 
 	setvar(VAR_GAMESTATE, 4)
 

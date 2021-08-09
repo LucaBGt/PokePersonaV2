@@ -1467,18 +1467,28 @@ void AddParty1(void){
     //Attacks
     monData = MOVE_SURF;
     SetMonData(&gPlayerParty[1], MON_DATA_MOVE1, &monData);
+    monData = 15;
+    SetMonData(&gPlayerParty[1], MON_DATA_PP1, &monData);
     monData = MOVE_CUT;
     SetMonData(&gPlayerParty[1], MON_DATA_MOVE2, &monData);
+    monData = 30;
+    SetMonData(&gPlayerParty[1], MON_DATA_PP2, &monData);
     monData = MOVE_BRICK_BREAK;
     SetMonData(&gPlayerParty[1], MON_DATA_MOVE3, &monData);
+    monData = 15;
+    SetMonData(&gPlayerParty[1], MON_DATA_PP3, &monData);
     monData = MOVE_YAWN;
     SetMonData(&gPlayerParty[1], MON_DATA_MOVE4, &monData);
+    monData = 10;
+    SetMonData(&gPlayerParty[1], MON_DATA_PP4, &monData);
 
     CreateMon(&gPlayerParty[2], SPECIES_MURKROW, 25, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
     monData = TRUE;
     SetMonData(&gPlayerParty[2], MON_DATA_ABILITY_NUM, &monData);
     monData = MOVE_TAILWIND;
     SetMonData(&gPlayerParty[2], MON_DATA_MOVE1, &monData);
+    monData = 15;
+    SetMonData(&gPlayerParty[2], MON_DATA_PP1, &monData);
 
     CreateMon(&gPlayerParty[3], SPECIES_DRILBUR, 25, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
     monData = TRUE;

@@ -77,8 +77,10 @@ InterrogationRoom_FirstScene::
 	applymovement OBJ_EVENT_ID_CAMERA, InterogationRoom_CameraDown
 	waitmovement 0
 	special RemoveCameraObject
+	load_field_pic 0, 40, 80
 	msgbox InterrogationRoom_FirstScene_Text_8
 	closemessage
+	destroy_field_pic 0
 	delay 60
 	msgbox InterrogationRoom_FirstScene_Text_9, MSGBOX_SIGN
 	closemessage
@@ -97,9 +99,11 @@ InterrogationRoom_AfterOak::
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
 	fadescreen 0
 	delay 60
+	load_field_pic 0, 40, 80
 	msgbox InterrogationRoom_AfterOak_Text_0
 	msgbox InterrogationRoom_AfterOak_Text_1
 	closemessage
+	destroy_field_pic 0
 	setflag FLAG_BADGE01_GET
 	setflag FLAG_BADGE02_GET
 	setflag FLAG_BADGE03_GET
@@ -114,9 +118,9 @@ InterrogationRoom_AfterOak::
 	case 1, InterrogationRoom_AfterOak_4
 	case 2, InterrogationRoom_AfterOak_5
 InterrogationRoom_AfterOak_1:
-	special AddParty1
 	special HealPlayerParty
-	waitstate
+	special AddParty1
+	warp MAP_SABRINA_GYM, 255, 15, 29
 	setvar VAR_GAMESTATE, 4
 	release
 	end
@@ -262,4 +266,4 @@ InterrogationRoom_AfterOak_Text_0:
 	.string "Agent: So, after that your journey\nreally begun.$"
 
 InterrogationRoom_AfterOak_Text_1:
-	.string "I'm especially interested to hear\nabout your, what was it,\lfourth gym badge.$"
+	.string "I'm especially interested to hear\nabout your, what was it,\lfourth gym badge?$"

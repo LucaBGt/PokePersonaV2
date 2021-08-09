@@ -1073,3 +1073,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/InterrogationRoom/scripts.inc"
 
 	.include "data/maps/OakLab_Intro/scripts.inc"
+
+	.include "data/maps/SabrinaGym/scripts.inc"

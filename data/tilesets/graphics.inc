@@ -1769,3 +1769,23 @@ gTilesetPalettes_OakLab::
 	.align 2
 gTilesetTiles_OakLab::
 	.incbin "data/tilesets/secondary/oaklab/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_SabrinaGym::
+	.incbin "data/tilesets/secondary/sabrinagym/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/sabrinagym/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/sabrinagym/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/sabrinagym/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/sabrinagym/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/sabrinagym/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/sabrinagym/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/sabrinagym/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/sabrinagym/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/sabrinagym/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/sabrinagym/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/sabrinagym/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/sabrinagym/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_SabrinaGym::
+	.incbin "data/tilesets/secondary/sabrinagym/tiles.4bpp.lz"

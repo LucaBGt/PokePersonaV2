@@ -574,3 +574,10 @@ gMetatiles_OakLab::
 	.align 1
 gMetatileAttributes_OakLab::
 	.incbin "data/tilesets/secondary/oaklab/metatile_attributes.bin"
+	.align 1
+gMetatiles_SabrinaGym::
+	.incbin "data/tilesets/secondary/sabrinagym/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_SabrinaGym::
+	.incbin "data/tilesets/secondary/sabrinagym/metatile_attributes.bin"

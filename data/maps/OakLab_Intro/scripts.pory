@@ -80,14 +80,18 @@ script OakLab_Intro_Init{
     applymovement(LOCALID_KUKUI, CommonMovement_FaceUp)
     waitmovement(0)
 
+	load_field_pic(1, 40, 80)
     msgbox("Aide: Will you stop?\nPlease, do NOT touch anything!",MSGBOX_AUTOCLOSE)
+	destroy_field_pic(0)
 
     applymovement(LOCALID_ELM, CommonMovement_FaceRight)
     waitmovement(0)
 
     delay(30)
 
+	load_field_pic(1, 40, 80)
     msgbox("Aide: Hey, you?",MSGBOX_AUTOCLOSE)
+	destroy_field_pic(0)
 
     applymovement(LOCALID_KUKUI, CommonMovement_FaceRight)
     waitmovement(0)
@@ -100,6 +104,7 @@ script OakLab_Intro_Init{
     applymovement(OBJ_EVENT_ID_PLAYER,OakLab_Player_GreetElm)
 	waitmovement(0)
 
+	load_field_pic(1, 40, 80)
     msgbox("Aide: You're here to revieve your\nSTARTER POKéMON too, right?",MSGBOX_YESNO)
     switch(var(VAR_RESULT)){
         case YES:
@@ -113,14 +118,17 @@ script OakLab_Intro_Init{
 
     msgbox("I hope this isn't too much to ask,\nbut could you please look after\lthis troublemaker?")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(LOCALID_ELM, CommonMovement_FaceDown)
     waitmovement(0)
 
     delay(30)
 
+	load_field_pic(1, 40, 80)
     msgbox("Aide: I appreciate his interest in\nin science, but he can't keep his\lfingers to himself!")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(LOCALID_KUKUI, CommonMovement_FaceUp)
     waitmovement(0)
@@ -235,8 +243,10 @@ script OakLab_Elm{
         case 1:
         lock
         faceplayer
+        load_field_pic(1, 40, 80)
         msgbox("Elm: It's OK to take your time.\nThis is an important descision.")
         closemessage
+        destroy_field_pic(0)
         release
         end
         break
@@ -245,11 +255,13 @@ script OakLab_Elm{
         case 2:
         lock
         faceplayer
+        load_field_pic(1, 40, 80)
         msgbox(format("Elm: We used to just ask the TRAINERS to write down what they found out, but as it turns out, kids are pretty unreliable narrators."))
         msgbox(format("'Magcargo's body temperature is approximately 18,000 degrees F'?"))
         msgbox("I don't think so.")
         msgbox("Anyway, that's the gist of it.")
         closemessage
+        destroy_field_pic(0)
         release
         end
         break
@@ -258,8 +270,10 @@ script OakLab_Elm{
         case 3:
         lock
         faceplayer
+        load_field_pic(1, 40, 80)
         msgbox("Elm: This apprenticeship said nothing\nabout working with kids!")
         msgbox("I just wanted a nice, quiet\nresearch lab...")
+        destroy_field_pic(0)
         closemessage
         release
         end
@@ -328,8 +342,10 @@ script OakLab_Elm_FirstTalk {
     applymovement(OBJ_EVENT_ID_CAMERA,CommonMovement_WalkLeft)
 	waitmovement(0)
 
+    load_field_pic(1, 40, 80)
     msgbox("Aide: Aw man...\nThis thing just ain't working...")
     closemessage
+    destroy_field_pic(0)
 
     playse(SE_PIN)
     applymovement(LOCALID_ELM, CommonMovement_EmoteExclamation)
@@ -338,10 +354,12 @@ script OakLab_Elm_FirstTalk {
     applymovement(LOCALID_ELM, CommonMovement_FacePlayer)
     waitmovement(0)
 
+    load_field_pic(1, 40, 80)
     msgbox("Aide: Hey, you!\nSorry to make such a hassle, but\lplease do NOT touch anything in here!")
     msgbox("Aide: Hm?")
     msgbox("Aide: Ah, you see, I'm not the PROFESSOR!\nI'm just his aide, you can call me ELM,\lADRIAN ELM.\lNice to meet you!")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(LOCALID_ELM, CommonMovement_FaceUp)
     waitmovement(0)
@@ -349,9 +367,11 @@ script OakLab_Elm_FirstTalk {
     applymovement(OBJ_EVENT_ID_CAMERA,OakLab_CamUp)
 	waitmovement(0)
 
+    load_field_pic(1, 40, 80)
     msgbox("Elm: The PROFESSOR is just up ahead.\nHe's waiting for you for sure already!")
     msgbox("PROF. OAK is such a busy guy.\nIt's best to not keep him waiting!")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(OBJ_EVENT_ID_CAMERA,OakLab_CamDown)
 	waitmovement(0)
@@ -359,6 +379,7 @@ script OakLab_Elm_FirstTalk {
     applymovement(LOCALID_ELM, CommonMovement_FacePlayer)
     waitmovement(0)
 
+    load_field_pic(1, 40, 80)
     msgbox("Elm: Anyway, I've got to get back\nto work...")
 
     applymovement(LOCALID_ELM, OakLab_Elm_Jump)
@@ -366,6 +387,7 @@ script OakLab_Elm_FirstTalk {
 
     msgbox("And look after that your friend!")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(LOCALID_ELM, CommonMovement_FaceLeft)
     waitmovement(0)
@@ -381,14 +403,18 @@ script OakLab_Elm_FirstTalk {
         applymovement(LOCALID_ELM, CommonMovement_FacePlayer)
         waitmovement(0)
 
+        load_field_pic(1, 40, 80)
         msgbox("Elm: You again?")
         closemessage
+        destroy_field_pic(0)
 
         applymovement(LOCALID_ELM, CommonMovement_FaceUp)
         waitmovement(0)
 
+        load_field_pic(1, 40, 80)
         msgbox("Elm: The PROFESSOR is just up ahead.\nHe's waiting for you for sure\lalready!")
         closemessage
+        destroy_field_pic(0)
 
         applymovement(LOCALID_ELM, CommonMovement_FaceLeft)
         waitmovement(0)
@@ -451,8 +477,10 @@ script OakLab_Ball_Chikorita {
 
             showmonpic(SPECIES_CHIKORITA, 10, 3)
 
+            load_field_pic(1, 40, 80)
             msgbox("Elm: This is CHIKORITA,\nthe LEAF POKéMON.")
             msgbox(format("Will you pick this gentle POKéMON as your partner?"),MSGBOX_YESNO)
+            destroy_field_pic(0)
 
             switch(var(VAR_RESULT)){
                 case YES:
@@ -462,9 +490,11 @@ script OakLab_Ball_Chikorita {
             case NO:
                 hidemonpic
 
+                load_field_pic(1, 40, 80)
                 msgbox("Elm: That's perfectly fine.\nThink it through!")
                 closemessage
-    
+                destroy_field_pic(0)
+
                 applymovement(LOCALID_ELM, CommonMovement_FaceDown)
                 waitmovement(0)
 
@@ -539,8 +569,10 @@ script OakLab_Ball_Piplup {
 
             showmonpic(SPECIES_PIPLUP, 10, 3)
 
+            load_field_pic(1, 40, 80)
             msgbox("Elm: This is PIPLUP,\nthe PENGUIN POKéMON.")
             msgbox(format("Will you pick this proud POKéMON as your partner?"),MSGBOX_YESNO)
+            destroy_field_pic(0)
 
             switch(var(VAR_RESULT)){
                 case YES:
@@ -550,9 +582,11 @@ script OakLab_Ball_Piplup {
             case NO:
                 hidemonpic
 
+                load_field_pic(1, 40, 80)
                 msgbox("Elm: That's perfectly fine.\nThink it through!")
                 closemessage
-    
+                destroy_field_pic(0)
+
                 applymovement(LOCALID_ELM, CommonMovement_FaceDown)
                 waitmovement(0)
 
@@ -627,8 +661,10 @@ script OakLab_Ball_Tepig {
 
             showmonpic(SPECIES_TEPIG, 10, 3)
 
+            load_field_pic(1, 40, 80)
             msgbox("Elm: This is TEPIG,\nthe FIRE PIG POKéMON.")
             msgbox(format("Will you pick this energetic POKéMON as your partner?"),MSGBOX_YESNO)
+            destroy_field_pic(0)
 
             switch(var(VAR_RESULT)){
                 case YES:
@@ -638,9 +674,11 @@ script OakLab_Ball_Tepig {
             case NO:
                 hidemonpic
 
+                load_field_pic(1, 40, 80)
                 msgbox("Elm: That's perfectly fine.\nThink it through!")
                 closemessage
-    
+                destroy_field_pic(0)
+
                 applymovement(LOCALID_ELM, CommonMovement_FaceDown)
                 waitmovement(0)
 
@@ -671,8 +709,10 @@ script OakLab_OakAppear{
 
     waitse
 
+    load_field_pic(3, 40, 80)
     msgbox(format("???: Oh, the next ones are already here?"))
     closemessage
+    destroy_field_pic(0)
 
     playse(SE_PIN)
     applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_EmoteExclamation)
@@ -689,9 +729,11 @@ script OakLab_OakAppear{
 
 script OakLab_OakAppear_2{
 
+	load_field_pic(2, 40, 80)
     msgbox("Oak: Sorry for being late kids, it's\nbeen a busy day.")
     msgbox("I'll be right there with you!")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(LOCALID_OAK, OakLab_OakDownStairs)
 
@@ -718,30 +760,40 @@ script OakLab_OakAppear_2{
 
 	waitmovement(0)
 
+	load_field_pic(2, 40, 80)
     msgbox("Oak: Very well then!")
     closemessage
+    destroy_field_pic(0)
     applymovement(LOCALID_OAK, OakLab_OakNod)
 	waitmovement(0)
     
+    load_field_pic(2, 40, 80)
     msgbox("Today is a very exciting day for you, hm?")
     closemessage
     applymovement(LOCALID_OAK, OakLab_OakWalkPastBalls)
+    destroy_field_pic(0)
 	waitmovement(0)
+    load_field_pic(2, 40, 80)
     msgbox("Meeting your first partner...\nBecoming a POKéMON TRAINER...")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(LOCALID_OAK, OakLab_OakWalkPastBalls_Back)
 	waitmovement(0)
-
+    
+    load_field_pic(2, 40, 80)
     msgbox("It is an honour and a challenge for\nall the young people the visit me\lhere in my laboratory.")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(LOCALID_OAK, OakLab_OakWalkPastBalls)
 	waitmovement(0)
 
+    load_field_pic(2, 40, 80)
     msgbox("Oak: To catch POKéMON-\nThat's the real test.\lAnd to train them is-")
     msgbox("???: PROFESSOR!")
     closemessage
+    destroy_field_pic(0)
 
     playse(SE_PIN)
     applymovement(LOCALID_OAK, CommonMovement_EmoteQuestion)
@@ -762,46 +814,65 @@ script OakLab_OakAppear_2{
 
     closemessage
     delay(30)
+    load_field_pic(2, 40, 80)
     msgbox("Oak: Spit it out, ELM!\nWhat is going on?")
+    destroy_field_pic(0)
 
+    load_field_pic(1, 40, 80)
     msgbox("Elm: I'm sorry to interrupt, but...")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(LOCALID_ELM, OakLab_Elm_Jump)
 	waitmovement(0)
     delay(30)
 
+    load_field_pic(1, 40, 80)
     msgbox("It's your daughter, she's, uh...\nShe's going into labour as we speak!")
     closemessage
+    destroy_field_pic(0)
 
     playse(SE_PIN)
     applymovement(LOCALID_OAK, CommonMovement_EmoteExclamation)
     delay(60)
 
+    load_field_pic(2, 40, 80)
     msgbox("Oak: WHAT?!\nThat's early!\lI guess my grandson is a bit pushy, hm?")
+    destroy_field_pic(0)
 
+    load_field_pic(1, 40, 80)
     msgbox("Elm: We already flew her over to\nVIRIDIAN HOSPITAL, but the neighbors\lwho watched after DAISY for the day\loffered to drive you both.")
     closemessage
+    destroy_field_pic(0)
 
     playse(SE_PIN)
     applymovement(LOCALID_OAK, CommonMovement_EmoteExclamation)
     delay(60)
 
+    load_field_pic(2, 40, 80)
     msgbox("Oak: How very nice of them!")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(LOCALID_OAK, CommonMovement_FaceDown)
 	waitmovement(0)
 
+    load_field_pic(2, 40, 80)
     msgbox("Oak: Sorry kids, but I don't have time\nto lose!")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(LOCALID_OAK, CommonMovement_FaceLeft)
 	waitmovement(0)
 
+    load_field_pic(2, 40, 80)
     msgbox("Oak: ELM, I'm heading out.\nYou're in charge while I'm gone, so\lgive these kids their POKéMON and don't\lforget the POKéDEXES!")
+    destroy_field_pic(0)
+
+    load_field_pic(1, 40, 80)
     msgbox("Elm: Yessir!")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(LOCALID_OAK, OakLab_OakLeave)
 	delay(60)
@@ -827,29 +898,38 @@ script OakLab_OakAppear_2{
     fadescreen(0)
 
     delay(60)
+    load_field_pic(1, 40, 80)
     msgbox("Elm: Uh...")
     closemessage
+    destroy_field_pic(0)
+
     delay(60)
 
     playse(SE_PIN)
     applymovement(LOCALID_ELM, CommonMovement_EmoteExclamation)
     delay(60)
 
+    load_field_pic(1, 40, 80)
     msgbox("Elm: Oh yeah, right!\pIn these POKéBALLS...")
     closemessage
+    destroy_field_pic(0)
     applymovement(LOCALID_ELM, CommonMovement_FaceRight)
 	waitmovement(0)
     delay(30)
 
+    load_field_pic(1, 40, 80)
     msgbox("... there are POKéMON caught by the\nPROFESSOR himself!")
     closemessage
+    destroy_field_pic(0)
     applymovement(LOCALID_ELM, CommonMovement_FaceDown)
 	waitmovement(0)
     delay(30)
 
+    load_field_pic(1, 40, 80)
     msgbox("The both of you may choose one-\nYour very first POKéMON PARTNER!")
-    
     closemessage
+    destroy_field_pic(0)
+
     applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceRight)
     applymovement(LOCALID_KUKUI, CommonMovement_FaceLeft)
 
@@ -870,8 +950,10 @@ script OakLab_OakAppear_2{
     applymovement(LOCALID_ELM, CommonMovement_EmoteExclamation)
     delay(60)
 
+    load_field_pic(1, 40, 80)
     msgbox("Elm: Oh, no!\nI think it's best if YOU practice\la bit of patience.")
     msgbox("The other kid, {PLAYER} was it?\nYou can go first.")
+    destroy_field_pic(0)
 
     applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceRight)
     applymovement(LOCALID_KUKUI, CommonMovement_FaceLeft)
@@ -940,8 +1022,10 @@ script OakLab_DontGoThere{
     waitmovement(0)
     applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceRight)
     waitmovement(0)
+    load_field_pic(1, 40, 80)
     msgbox("Elm: Hey, don't go up there!\nThese are PROF. OAK's private quaters!")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(LOCALID_ELM, CommonMovement_FaceDown)
     waitmovement(0)
@@ -957,8 +1041,10 @@ script OakLab_DontGoThere{
 
 script OakLab_ChikoritaChosen{
 
+    load_field_pic(1, 40, 80)
     msgbox("Elm: Very well!")
     closemessage
+    destroy_field_pic(0)
 
     givemon(SPECIES_CHIKORITA,5,ITEM_NONE)
     setvar(VAR_STARTER_MON,0)
@@ -971,8 +1057,10 @@ script OakLab_ChikoritaChosen{
 
 script OakLab_PiplupChosen{
 
+    load_field_pic(1, 40, 80)
     msgbox("Elm: Very well!")
     closemessage
+    destroy_field_pic(0)
 
     givemon(SPECIES_PIPLUP,5,ITEM_NONE)
     setvar(VAR_STARTER_MON,1)
@@ -984,9 +1072,11 @@ script OakLab_PiplupChosen{
 }
 
 script OakLab_TepigChosen{
-
+    
+    load_field_pic(1, 40, 80)
     msgbox("Elm: Very well!")
     closemessage
+    destroy_field_pic(0)
 
     givemon(SPECIES_TEPIG,5,ITEM_NONE)
     setvar(VAR_STARTER_MON,2)
@@ -1097,13 +1187,17 @@ script OakLab_RivalChooseStarter{
 
     fadescreen(0)
 
+    load_field_pic(1, 40, 80)
     msgbox("Elm: Alright.\nBefore the two of you leave for\lyour big adventure, one more thing.")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(LOCALID_ELM, OakLab_Elm_GivePokedexToPlayer)
     waitmovement(0)
 
+    load_field_pic(1, 40, 80)
     msgbox("Elm: Here you go, {PLAYER}.")
+    destroy_field_pic(0)
 
 	playfanfare(MUS_OBTAIN_TMHM)
 	message(format("{PLAYER} recieved the POKéDEX!"))
@@ -1111,23 +1205,28 @@ script OakLab_RivalChooseStarter{
 	waitmessage
 	setflag(FLAG_SYS_POKEDEX_GET)
 	special(SetUnlockedPokedexFlags)
+    special(EnableNationalPokedex)
 	setflag(FLAG_RECEIVED_POKEDEX_FROM_BIRCH)
 	closemessage
 
     applymovement(LOCALID_ELM, OakLab_Elm_GivePokedexToKukui)
     waitmovement(0)
 
+    load_field_pic(1, 40, 80)
     msgbox("Elm: And for you too.\nDon't break it!")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(LOCALID_ELM, OakLab_Elm_GivePokedexWalkBack)
     waitmovement(0)
 
     msgbox("Makoa: Uh...\nThis thing is pretty neat and all,\lbut what IS it?")
+    load_field_pic(1, 40, 80)
     msgbox("Elm: What you are holding in your\nhands right now is called a POKéDEX!")
     msgbox(format("PROFESSOR OAK has invented it with his mentor, PROFESSOR ROWAN."))
     msgbox(format("It's an automatic, cutting-edge POKéMON lexicon, and we hope it becomes an irreplacable part for every POKéMON TRAINER and RESEARCHER in the field."))
     closemessage
+    destroy_field_pic(0)
     delay(30)
 
     playse(SE_PIN)
@@ -1135,10 +1234,12 @@ script OakLab_RivalChooseStarter{
     delay(60)
 
     msgbox("Makoa: That's very nice, but why\nall there no data entries?")
+    load_field_pic(1, 40, 80)
     msgbox("Elm: Eh...\nWhen we say cutting-edge, we mean\lREALLY cutting edge.")
     msgbox(format("You and the other kids that come by today will be the first users, and we hope your journeys will fill the database right up with new POKéMON information!"))
     msgbox(format("Although I think it's fair to say that this can be seen as a public service, and the POKéDEX records all data automatically."))
     closemessage
+    destroy_field_pic(0)
     delay(30)
 
     playse(SE_PIN)
@@ -1161,12 +1262,14 @@ script OakLab_RivalChooseStarter{
     closemessage
     delay(30)
 
+    load_field_pic(1, 40, 80)
     msgbox("Elm: So, that's the formalities\nout of the way.")
     msgbox("If you guys are ever in town,\nwe at OAK's LAB are always happy\lto review your DEX's progress.")
     msgbox("If I may ask a personal favour,\nany data on POKéMON EGGS is especially\luseful for my THESIS.")
     msgbox("If nothing else, I look forward to\nseeing you at the LEAGUE FINALE,\lhopefully.")
     msgbox("Take care!")
     closemessage
+    destroy_field_pic(0)
 
     special(SpawnCameraObject)
 
@@ -1190,9 +1293,10 @@ script OakLab_Elm_ForOtherKid{
     waitmovement(0)
 
     delay(30)
-
+    load_field_pic(1, 40, 80)
     msgbox("Elm: Sorry, but this POKéMON is for\nthe next kid that comes by.")
     closemessage
+    destroy_field_pic(0)
 
     applymovement(LOCALID_ELM, CommonMovement_FaceDown)
     waitmovement(0)
@@ -1203,7 +1307,7 @@ script OakLab_Elm_ForOtherKid{
 
 script OakLab_RivalBattle_Left {
 
-    msgbox("Makoa: Hey, wait a minute?\nWhere do you think you're going?")
+    msgbox("Makoa: Hey, wait a minute!\nWhere do you think you're going?")
     closemessage
     
     applymovement(LOCALID_KUKUI, OakLab_KukuiToBattle_Left)
@@ -1214,7 +1318,7 @@ script OakLab_RivalBattle_Left {
 
 script OakLab_RivalBattle_Right {
 
-    msgbox("Makoa: Hey, wait a minute?\nWhere do you think you're going?")
+    msgbox("Makoa: Hey, wait a minute!\nWhere do you think you're going?")
     closemessage
 
     goto(OakLab_RivalBattle_Start)
@@ -1235,7 +1339,9 @@ script OakLab_RivalBattle_Start {
     applymovement(LOCALID_ELM, OakLab_ElmToBattle)
     waitmovement(0)
 
+    load_field_pic(1, 40, 80)
     msgbox("Elm: You can't do that in he-")
+    destroy_field_pic(0)
 
     setflag(FLAG_SYS_CANNOT_LOSE)
 
@@ -1266,11 +1372,13 @@ script OakLab_RivalBattle_Start {
     applymovement(LOCALID_ELM, OakLab_Elm_Jump)
     waitmovement(0)
 
+    load_field_pic(1, 40, 80)
     msgbox("Elm: Alright, that's IT!")
     applymovement(LOCALID_ELM, OakLab_Elm_Jump)
     waitmovement(0)
     msgbox("You two. Out. Now.")
     closemessage
+    destroy_field_pic(0)
 
     fadescreen(1)
     setvar(VAR_GAMESTATE, 3)

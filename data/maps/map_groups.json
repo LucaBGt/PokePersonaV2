@@ -587,7 +587,8 @@
     "NavelRock_Bottom",
     "TrainerHill_Elevator",
     "IntroMap",
-    "InterrogationRoom"
+    "InterrogationRoom",
+    "SabrinaGym"
   ],
   "gMapGroup_IndoorRoute104Prototype": [
     "Route104_Prototype",

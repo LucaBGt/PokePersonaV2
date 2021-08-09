@@ -4440,6 +4440,16 @@
       "secondary_tileset": "gTileset_OakLab",
       "border_filepath": "data/layouts/OakLab_Intro/border.bin",
       "blockdata_filepath": "data/layouts/OakLab_Intro/map.bin"
+    },
+    {
+      "id": "LAYOUT_SABRINA_GYM",
+      "name": "SabrinaGym_Layout",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_SabrinaGym",
+      "border_filepath": "data/layouts/SabrinaGym/border.bin",
+      "blockdata_filepath": "data/layouts/SabrinaGym/map.bin"
     }
   ]
 }

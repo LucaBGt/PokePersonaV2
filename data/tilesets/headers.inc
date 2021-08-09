@@ -852,3 +852,14 @@ gTileset_OakLab::
 	.4byte gMetatiles_OakLab
 	.4byte gMetatileAttributes_OakLab
 	.4byte NULL
+
+	.align 2
+gTileset_SabrinaGym::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_SabrinaGym
+	.4byte gTilesetPalettes_SabrinaGym
+	.4byte gMetatiles_SabrinaGym
+	.4byte gMetatileAttributes_SabrinaGym
+	.4byte NULL

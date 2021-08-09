@@ -11,8 +11,8 @@ struct Pic
 {
     const u32 *gfx;
     const u16 *pal;
-    u8 shape;
-    u8 size;
+    u16 shape;
+    u16 size;
     const union AnimCmd *const *anims;
     SpriteCallback callback;
 };
@@ -30,11 +30,14 @@ static const union AnimCmd *const sAnims[] =
     sAnimCmdLoop
 };
 
-static const u32 sPicAgent[] = INCBIN_U32("graphics/portraits/agent.4bpp.lz");
-static const u16 sPalAgent[] = INCBIN_U16("graphics/object_events/palettes/agent.gbapal");
+static const u32 sPicAgent[] = INCBIN_U32("graphics/portraits/Portrait_2.4bpp.lz");
+static const u16 sPalIcons1[] = INCBIN_U16("graphics/portraits/icons.gbapal");
 
-static const u32 sPic2Gfx[] = INCBIN_U32("graphics/battle_anims/sprites/duck.4bpp.lz");
-static const u16 sPic2Pal[] = INCBIN_U16("graphics/battle_anims/sprites/duck.gbapal");
+static const u32 sPicElm[] = INCBIN_U32("graphics/portraits/Portrait_1.4bpp.lz");
+
+static const u32 sPicOak[] = INCBIN_U32("graphics/portraits/Portrait_3.4bpp.lz");
+static const u32 sPicOakHidden[] = INCBIN_U32("graphics/portraits/Portrait_4.4bpp.lz");
+
 
 /* And this is an example script.
 FieldPicExample_2pics:
@@ -54,8 +57,10 @@ FieldPicExample_1pic:
 
 static const struct Pic sPics[] =
 {
-    {sPicAgent, sPalAgent, SPRITE_SHAPE(64x64), SPRITE_SIZE(64x64)}, //, sAnims for talking
-    {sPic2Gfx, sPic2Pal, SPRITE_SHAPE(16x16), SPRITE_SIZE(16x16)},
+    {sPicAgent, sPalIcons1, SPRITE_SHAPE(64x64), SPRITE_SIZE(64x64)}, //, sAnims for talking
+    {sPicElm, sPalIcons1, SPRITE_SHAPE(64x64), SPRITE_SIZE(64x64)},
+    {sPicOak, sPalIcons1, SPRITE_SHAPE(64x64), SPRITE_SIZE(64x64)},
+    {sPicOakHidden, sPalIcons1, SPRITE_SHAPE(64x64), SPRITE_SIZE(64x64)},
 };
 
 static EWRAM_DATA u8 sLastPicId = 0;
