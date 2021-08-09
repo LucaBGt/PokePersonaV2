@@ -269,7 +269,7 @@
 #define VAR_UNUSED_0x40FA 0x40FA       // Unused Var
 #define VAR_UNUSED_0x40FB 0x40FB       // Unused Var
 #define VAR_UNUSED_0x40FC 0x40FC       // Unused Var
-#define VAR_UNUSED_0x40FD 0x40FD       // Unused Var
+#define VAR_SABRINAGYM_STATE 0x40FD       // Unused Var
 #define VAR_GAMESTATE 0x40FE           // Unused Var
 #define VAR_SYS_COSTUME 0x40FF         // Unused Var
 #define VAR_OAK_LAB_STATE 0x4100       // Unused Var

@@ -35,7 +35,7 @@ const struct Trainer gTrainers[] = {
         .trainerPic = TRAINER_PIC_PSYCHIC_F,
         .trainerName = _("LOUISE"),
         .items = {},
-        .doubleBattle = FALSE,
+        .doubleBattle = TRUE,
         .aiFlags = 0,
         .partySize = ARRAY_COUNT(sParty_GruntAquaHideout1),
         .party = {.NoItemCustomMoves = sParty_GruntAquaHideout1},

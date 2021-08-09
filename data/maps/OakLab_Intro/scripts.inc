@@ -1053,6 +1053,9 @@ OakLab_Elm_ForOtherKid::
 
 
 OakLab_RivalBattle_Left::
+	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceDown
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_BRENDAN, FALSE
 	msgbox OakLab_RivalBattle_Left_Text_0
 	closemessage
 	applymovement 6, OakLab_KukuiToBattle_Left
@@ -1062,6 +1065,9 @@ OakLab_RivalBattle_Left::
 
 
 OakLab_RivalBattle_Right::
+	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceDown
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_BRENDAN, FALSE
 	msgbox OakLab_RivalBattle_Left_Text_0
 	closemessage
 	goto OakLab_RivalBattle_Start
@@ -1087,6 +1093,7 @@ OakLab_RivalBattle_Start::
 	case 1, OakLab_RivalBattle_Start_4
 	case 2, OakLab_RivalBattle_Start_5
 OakLab_RivalBattle_Start_1:
+	fadedefaultbgm
 	goto_if_set FLAG_SYS_PLAYER_LOST, OakLab_RivalBattle_Start_7
 	msgbox OakLab_RivalBattle_Start_Text_3
 OakLab_RivalBattle_Start_6:

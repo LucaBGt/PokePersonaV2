@@ -1521,15 +1521,16 @@ void AddParty1(void){
 void SetPartyChikorita1(void)
 {
 
-    u16 monData, gender;
+    u16 monData;
+    u32 personality;
 
     GetMonNickname(&gPlayerParty[0],gStringVar1);
-    gender = GetMonGender(&gPlayerParty[0]);
+    personality = GetMonData(&gPlayerParty[0],MON_DATA_PERSONALITY);
     
-    CreateMon(&gPlayerParty[0], SPECIES_BAYLEEF, 29, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    CreateMon(&gPlayerParty[0], SPECIES_BAYLEEF, 29, USE_RANDOM_IVS, TRUE, personality, OT_ID_PLAYER_ID, 0);
     
     SetMonData(&gPlayerParty[0], MON_DATA_NICKNAME, gStringVar1);
-    //SetMonData(&gPlayerParty[0], MON_DATA_GENDER, gStringVar1);
+    //SetMonData(&gPlayerParty[0], MON_DATA_PERSONALITY, &personality);
 
     //Attacks
     monData = MOVE_SYNTHESIS;
@@ -1548,14 +1549,16 @@ void SetPartyChikorita1(void)
 
 void SetPartyPiplup1(void)
 {
-    u16 monData, gender;
+    u16 monData;
+    u32 personality;
 
     GetMonNickname(&gPlayerParty[0],gStringVar1);
-    gender = GetMonGender(&gPlayerParty[0]);
+    personality = GetMonData(&gPlayerParty[0],MON_DATA_PERSONALITY);
     
-    CreateMon(&gPlayerParty[0], SPECIES_PRINPLUP, 29, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    CreateMon(&gPlayerParty[0], SPECIES_PRINPLUP, 29, USE_RANDOM_IVS, TRUE, personality, OT_ID_PLAYER_ID, 0);
     
     SetMonData(&gPlayerParty[0], MON_DATA_NICKNAME, gStringVar1);
+    //SetMonData(&gPlayerParty[0], MON_DATA_PERSONALITY, &personality);
     //Attacks
     monData = MOVE_FURY_ATTACK;
     SetMonData(&gPlayerParty[0], MON_DATA_MOVE1, &monData);
@@ -1575,12 +1578,15 @@ void SetPartyPiplup1(void)
 void SetPartyTepig1(void)
 {
     u16 monData;
-    //Species
-    monData = SPECIES_PIGNITE;
-    SetMonData(&gPlayerParty[0], MON_DATA_SPECIES, &monData);
-    //Level
-    monData = 29;
-    SetMonData(&gPlayerParty[0], MON_DATA_LEVEL, &monData);
+    u32 personality;
+
+    GetMonNickname(&gPlayerParty[0],gStringVar1);
+    personality = GetMonData(&gPlayerParty[0],MON_DATA_PERSONALITY);
+    
+    CreateMon(&gPlayerParty[0], SPECIES_PIGNITE, 29, USE_RANDOM_IVS, TRUE, personality, OT_ID_PLAYER_ID, 0);
+    SetMonData(&gPlayerParty[0], MON_DATA_NICKNAME, gStringVar1);
+    //SetMonData(&gPlayerParty[0], MON_DATA_PERSONALITY, &personality);
+
     //Attacks
     monData = MOVE_TAKE_DOWN;
     SetMonData(&gPlayerParty[0], MON_DATA_MOVE1, &monData);

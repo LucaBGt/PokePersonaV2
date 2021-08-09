@@ -1307,6 +1307,11 @@ script OakLab_Elm_ForOtherKid{
 
 script OakLab_RivalBattle_Left {
 
+    applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceDown)
+    waitmovement(0)
+
+    playbgm(MUS_ENCOUNTER_BRENDAN,FALSE)
+
     msgbox("Makoa: Hey, wait a minute!\nWhere do you think you're going?")
     closemessage
     
@@ -1317,6 +1322,11 @@ script OakLab_RivalBattle_Left {
 }
 
 script OakLab_RivalBattle_Right {
+
+    applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceDown)
+    waitmovement(0)
+
+    playbgm(MUS_ENCOUNTER_BRENDAN, FALSE)
 
     msgbox("Makoa: Hey, wait a minute!\nWhere do you think you're going?")
     closemessage
@@ -1354,6 +1364,8 @@ script OakLab_RivalBattle_Start {
                 trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_TORCHIC, OakLab_KukuiLost)
 
 		}
+
+    fadedefaultbgm
 
     if(flag(FLAG_SYS_PLAYER_LOST)){
     msgbox("Makoa: YES! I did it!")

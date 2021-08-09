@@ -152,6 +152,9 @@ script InterrogationRoom_AfterOak{
 	additem(ITEM_RARE_CANDY,1)
 	additem(ITEM_PREMIER_BALL,4)
 	additem(ITEM_POKE_BALL,8)
+	additem(ITEM_Z_RING)
+	additem(ITEM_NORMALIUM_Z)
+
 
 	switch(var(VAR_STARTER_MON)){
         case 0:
@@ -171,6 +174,12 @@ script InterrogationRoom_AfterOak{
 	//waitstate
 
 	//setflag(FLAG_SYS_PREVENT_MAP_FADE_OUT)
+
+	//fadescreen(FADE_TO_BLACK)
+
+	//delay(60)
+	//msgbox("10 1/2 Years\n(and 3 badges) ago...",MSGBOX_SIGN)
+
 	warp(MAP_SABRINA_GYM,255,15,29)
 
 	setvar(VAR_GAMESTATE, 4)

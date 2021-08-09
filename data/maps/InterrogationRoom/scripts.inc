@@ -113,6 +113,8 @@ InterrogationRoom_AfterOak::
 	additem ITEM_RARE_CANDY, 1
 	additem ITEM_PREMIER_BALL, 4
 	additem ITEM_POKE_BALL, 8
+	additem ITEM_Z_RING
+	additem ITEM_NORMALIUM_Z
 	switch VAR_STARTER_MON
 	case 0, InterrogationRoom_AfterOak_3
 	case 1, InterrogationRoom_AfterOak_4

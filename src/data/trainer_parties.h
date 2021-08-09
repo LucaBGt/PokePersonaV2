@@ -1,32 +1,32 @@
 static const struct TrainerMonNoItemDefaultMoves sParty_Sawyer1[] = {
     {
-    .iv = 0,
-    .lvl = 21,
+    .iv = 50,
+    .lvl = 31,
     .species = SPECIES_NATU,
     },
     {
-    .iv = 0,
-    .lvl = 22,
+    .iv = 50,
+    .lvl = 32,
     .species = SPECIES_SLOWPOKE_GALARIAN,
     }
 };
 
 static const struct TrainerMonNoItemCustomMoves sParty_GruntAquaHideout1[] = {
     {
-    .iv = 0,
-    .lvl = 25,
+    .iv = 50,
+    .lvl = 32,
     .species = SPECIES_INDEEDEE_FEMALE,
     .moves = {MOVE_FOLLOW_ME, MOVE_PROTECT, MOVE_HELPING_HAND, MOVE_ATTRACT}
     },
     {
     .iv = 255,
-    .lvl = 27,
+    .lvl = 34,
     .species = SPECIES_RAICHU_ALOLAN,
     .moves = {MOVE_NASTY_PLOT, MOVE_PSYCHIC, MOVE_THUNDERBOLT, MOVE_SUBSTITUTE}
     },
     {
-    .iv = 0,
-    .lvl = 28,
+    .iv = 50,
+    .lvl = 31,
     .species = SPECIES_SLOWBRO_GALARIAN,
     .moves = {MOVE_WONDER_ROOM, MOVE_POISON_JAB, MOVE_ZEN_HEADBUTT, MOVE_AMNESIA}
     }
@@ -34,44 +34,44 @@ static const struct TrainerMonNoItemCustomMoves sParty_GruntAquaHideout1[] = {
 
 static const struct TrainerMonNoItemDefaultMoves sParty_GruntAquaHideout2[] = {
     {
-    .iv = 0,
-    .lvl = 24,
+    .iv = 50,
+    .lvl = 30,
     .species = SPECIES_BALTOY,
     },
     {
-    .iv = 0,
-    .lvl = 22,
+    .iv = 50,
+    .lvl = 32,
     .species = SPECIES_EXEGGCUTE,
     }
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_GruntAquaHideout3[] = {
     {
-    .iv = 0,
-    .lvl = 22,
+    .iv = 50,
+    .lvl = 32,
     .species = SPECIES_METANG,
     },
     {
-    .iv = 0,
-    .lvl = 25,
+    .iv = 50,
+    .lvl = 33,
     .species = SPECIES_DOTTLER,
     }
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_GruntAquaHideout4[] = {
     {
-    .iv = 0,
-    .lvl = 26,
+    .iv = 50,
+    .lvl = 32,
     .species = SPECIES_KIRLIA,
     },
     {
-    .iv = 0,
-    .lvl = 23,
+    .iv = 50,
+    .lvl = 29,
     .species = SPECIES_BRONZOR,
     },
     {
-    .iv = 0,
-    .lvl = 22,
+    .iv = 50,
+    .lvl = 30,
     .species = SPECIES_LUNATONE,
     }
 };
