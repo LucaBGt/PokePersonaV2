@@ -78,17 +78,46 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntAquaHideout4[] = {
 
 static const struct TrainerMonNoItemDefaultMoves sParty_GruntSeafloorCavern1[] = {
     {
-    .iv = 0,
-    .lvl = 36,
-    .species = SPECIES_POOCHYENA,
+    .iv = 50,
+    .lvl = 29,
+    .species = SPECIES_PONYTA_GALARIAN,
+    },
+    {
+    .iv = 50,
+    .lvl = 30,
+    .species = SPECIES_HYPNO,
+    },
+    {
+    .iv = 50,
+    .lvl = 28,
+    .species = SPECIES_WOBBUFFET,
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_GruntSeafloorCavern2[] = {
+static const struct TrainerMonNoItemCustomMoves sParty_GruntSeafloorCavern2[] = {
     {
-    .iv = 0,
-    .lvl = 36,
-    .species = SPECIES_CARVANHA,
+    .iv = 100,
+    .lvl = 27,
+    .species = SPECIES_WOBBUFFET,
+    .moves = {MOVE_COUNTER, MOVE_MIRROR_COAT, MOVE_DESTINY_BOND, MOVE_ENCORE}
+    },
+    {
+    .iv = 100,
+    .lvl = 28,
+    .species = SPECIES_ESPEON,
+    .moves = {MOVE_PSYCHIC, MOVE_SHADOW_BALL, MOVE_CALM_MIND, MOVE_BATON_PASS}
+    },
+    {
+    .iv = 100,
+    .lvl = 30,
+    .species = SPECIES_METANG,
+    .moves = {MOVE_METAL_CLAW, MOVE_BULLET_PUNCH, MOVE_ZEN_HEADBUTT, MOVE_MAGNET_RISE}
+    },
+    {
+    .iv = 255,
+    .lvl = 33,
+    .species = SPECIES_ALAKAZAM,
+    .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_FOCUS_BLAST, MOVE_DAZZLING_GLEAM}
     }
 };
 

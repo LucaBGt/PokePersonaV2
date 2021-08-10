@@ -37,6 +37,12 @@ static const u32 sPicElm[] = INCBIN_U32("graphics/portraits/Portrait_1.4bpp.lz")
 
 static const u32 sPicOak[] = INCBIN_U32("graphics/portraits/Portrait_3.4bpp.lz");
 static const u32 sPicOakHidden[] = INCBIN_U32("graphics/portraits/Portrait_4.4bpp.lz");
+static const u32 sPicMakoa[] = INCBIN_U32("graphics/portraits/Portrait_5.4bpp.lz");
+static const u32 sPicSabrina_Young_Dark[] = INCBIN_U32("graphics/portraits/Portrait_6.4bpp.lz");
+static const u32 sPicSabrina_Young[] = INCBIN_U32("graphics/portraits/Portrait_7.4bpp.lz");
+static const u32 sPicSabrina_Young_Hidden[] = INCBIN_U32("graphics/portraits/Portrait_8.4bpp.lz");
+
+
 
 
 /* And this is an example script.
@@ -61,6 +67,8 @@ static const struct Pic sPics[] =
     {sPicElm, sPalIcons1, SPRITE_SHAPE(64x64), SPRITE_SIZE(64x64)},
     {sPicOak, sPalIcons1, SPRITE_SHAPE(64x64), SPRITE_SIZE(64x64)},
     {sPicOakHidden, sPalIcons1, SPRITE_SHAPE(64x64), SPRITE_SIZE(64x64)},
+    {sPicMakoa, sPalIcons1, SPRITE_SHAPE(64x64), SPRITE_SIZE(64x64)},
+
 };
 
 static EWRAM_DATA u8 sLastPicId = 0;

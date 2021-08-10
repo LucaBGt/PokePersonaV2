@@ -1,4 +1,6 @@
 const LOCALID_SECURITY = 1
+const LOCALID_BUGCATCHER = 19
+
 
 //VAR_SABRINAGYM_STATE
 //0 = Speak to lady
@@ -15,9 +17,13 @@ mapscripts SabrinaGym_MapScripts {
 }
 
 script SabrinaGym_Init {
+    if(var(VAR_SABRINAGYM_STATE) == 0){
     applymovement(OBJ_EVENT_ID_PLAYER, SabrinaGym_PlayerEnter)
     waitmovement(0)
+    }
     setvar(VAR_TEMP_0, 1)
+    release 
+    end
 }
 
 script SabrinaGym_Nurse {
@@ -46,14 +52,15 @@ script SabrinaGym_Security{
         case 0:
             msgbox("Hi, how can I help you?\nOh, you're a GYM CHALLENGER?\lPlease, check in with the SERVICE COUNTER\lto challenge this GYM.\pYou know the drill! ", MSGBOX_AUTOCLOSE)
         break
-        case 1:
+        default:
             if(flag(FLAG_SABRINAGYM_FRESHWATER)){
-            msgbox("Good luck out there!", MSGBOX_AUTOCLOSE)
+            msgbox("Oh yeah, I also participated in\nthe GYM CHALLENGE in my youth.\pAny advice?\nHm...\pNever, ever stop believing in\nyourself and your team.\pEven if things get hard and no-one\nelse does...\pYou mustn't give up and\nwork hard.\lAlways.\pAh, but I digress.\nSorry for blabbering on!", MSGBOX_AUTOCLOSE)
             } else {
             msgbox("Oh, hi there, young\nchamp-in-the-making!", MSGBOX_AUTOCLOSE)
             msgbox("If you're a challenger, I gotta\nwarn ya:\lThe trainers in this GYM are no JOKE!", MSGBOX_AUTOCLOSE)
             msgbox("Here, this is for you.\nKeep your cool!", MSGBOX_AUTOCLOSE)
             giveitem(ITEM_FRESH_WATER)
+            setflag(FLAG_SABRINAGYM_FRESHWATER)
             closemessage
             }
         break
@@ -66,12 +73,50 @@ script SabrinaGym_Security{
     end
 }
 
-script SabrinaGym_DontGoIn {
+script SabrinaGym_DontGoIn_Left {
     lockall
+    call(SabrinaGym_DontGoIn_1)
+    releaseall
+    end
+}
+
+script SabrinaGym_DontGoIn_Right {
+    lockall
+    call(SabrinaGym_DontGoIn_1)
+    releaseall
+    end
+}
+
+script SabrinaGym_TraierLeave_Right{
+    applymovement(LOCALID_BUGCATCHER, CommonMovement_WalkLeft)
+    waitmovement(0)
+
+    call(SabrinaGym_DontGoIn_2)
+
+    applymovement(LOCALID_BUGCATCHER, CommonMovement_FaceRight)
+    applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceLeft)
+    waitmovement(0)
+
+
+    call(SabrinaGym_DontGoIn_3)
+}
+
+script SabrinaGym_TraierLeave_Left{
+    call(SabrinaGym_DontGoIn_2)
+
+    applymovement(LOCALID_BUGCATCHER, CommonMovement_FaceLeft)
+    applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceRight)
+    waitmovement(0)
+
+    call(SabrinaGym_DontGoIn_3)
+}
+
+script SabrinaGym_DontGoIn_1{
     applymovement(LOCALID_SECURITY, CommonMovement_EmoteExclamation)
     delay(60)
 
     applymovement(LOCALID_SECURITY, CommonMovement_FaceRight)
+    applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceDown)
     waitmovement(0)
 
     delay(30)
@@ -86,8 +131,81 @@ script SabrinaGym_DontGoIn {
 
     applymovement(LOCALID_SECURITY, CommonMovement_FaceDown)
     waitmovement(0)
+    return
+}
 
-    releaseall
+script SabrinaGym_DontGoIn_2{
+
+    msgbox("OUT OF MY WAY!\nMOVE!", MSGBOX_AUTOCLOSE)
+
+    applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_EmoteQuestion)
+    delay(60)
+
+    applymovement(LOCALID_BUGCATCHER,SabrinaGym_TrainerMoveDown)
+    waitmovement(0)
+
+    delay(30)
+
+    applymovement(LOCALID_BUGCATCHER, CommonMovement_EmoteExclamation)
+    delay(60)
+
+    return
+}
+
+script SabrinaGym_DontGoIn_3{
+
+    msgbox("It's crazy! These trainers are\ninsanely strong!\pIt's like they can predict my\nevery move!\pDarn...\nI knew I should've challenged\lANISTAR GYM instead...", MSGBOX_AUTOCLOSE)
+
+    applymovement(LOCALID_BUGCATCHER,SabrinaGym_DefeatedTrainer)
+    waitmovement(0)
+
+
+    playse(SE_DOOR)
+    removeobject(LOCALID_BUGCATCHER)
+    setvar(VAR_SABRINAGYM_STATE,2)
+    setflag(FLAG_SABRINAGYM_BUGCATCHER)
+
+    return
+}
+
+script SabrinaGym_DontLeave {
+    
+    lockall
+    applymovement(LOCALID_SECURITY, CommonMovement_EmoteExclamation)
+    delay(60)
+
+    applymovement(LOCALID_SECURITY, CommonMovement_WalkDown)
+    waitmovement(0)
+
+    delay(30)
+
+    msgbox("Sorry, but if you leave the GYM,\nyour challenge will be FORFEIT.\lDo you really want to give up?\pBelieve in yourself a bit more!", MSGBOX_AUTOCLOSE)
+
+    applymovement(LOCALID_SECURITY, CommonMovement_WalkUp)
+    applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_WalkUp)
+    waitmovement(0)
+
+    applymovement(LOCALID_SECURITY, CommonMovement_FaceDown)
+    waitmovement(0)
+
+    release
+    end
+}
+
+script SabrinaGym_Announcement_1 {
+    lock
+
+    msgbox("???: And who do we have here?")
+
+    applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_EmoteExclamation)
+    delay(60)
+
+    msgbox("Announcer: This young trainer has\njust started the SAFFRON CHALLENGE!")
+    msgbox("Let's see how good they do.\nGive them a big round of applause!")
+    closemessage
+
+    setvar(VAR_SABRINAGYM_STATE,3)
+    release
     end
 }
 
@@ -95,12 +213,26 @@ script SabrinaGym_CounterLady{
     lock
     switch(var(VAR_SABRINAGYM_STATE)){
         case 0:
-        giveitem(ITEM_TM46)
-        setvar(VAR_SABRINAGYM_STATE, 1)
-        
+
+            msgbox("Hi there, love!\nWelcome to SAFFRON GYM!")
+            msgbox("Are you an audience member, or-\nOh! Is that a TRAINER-CARD I see?")
+            msgbox("Let me see that for a moment, please...")
+            closemessage
+
+            delay(60)
+
+            msgbox("Ah, I see!\nTHREE shining BADGES, and your\lPOKéMON-TEAM is looking mighty\lstrong too!")
+            msgbox("I'll let the GYM LEADER know that you'll\nbe contending for your FOURTH BADGE.")
+            msgbox("Here, this a participatory gift!")
+            closemessage
+
+            giveitem(ITEM_TM46)
+            setvar(VAR_SABRINAGYM_STATE, 1)
+
+            msgbox("We'll be cheering you on!",MSGBOX_AUTOCLOSE)
         break
-        case 1:
-            
+        default:
+            msgbox("We'll be cheering you on!",MSGBOX_AUTOCLOSE)
         break
     }
     release
@@ -112,6 +244,15 @@ script SabrinaGym_Boy_1{
     faceplayer
     msgbox("Oh man, oh man, oh man...\nI'm so nervous...\pI already lost, but by friend\nis still in there...")
     msgbox("The trainers in the GYM are\ncrazy strong!\lI didn't even make it to the GYM LEADER...", MSGBOX_AUTOCLOSE)
+    releaseall
+    end
+}
+
+script SabrinaGym_Girl_1{
+    lockall
+    faceplayer
+    msgbox("Darn, tickets are all sold out...")
+    msgbox("Guess I'll try again tomorrow,\nI just hope the challengers are\las strong then as they are today!", MSGBOX_AUTOCLOSE)
     releaseall
     end
 }
@@ -153,6 +294,28 @@ script SabrinaGym_Spike{
     end
 }
 
+script SabrinaGym_Paletto{
+    trainerbattle_single(TRAINER_PALETTO, "All eyes are on us now...", "Smile and wave,\njust smile and wave.")
+    msgbox("Watching the GYM challenge is\na really popular passtime.\lI'm excited to work at the GYM\lduring GYM SEASON.", MSGBOX_AUTOCLOSE)
+    end
+}
+
+script SabrinaGym_Sabrina_Debug{
+    trainerbattle_single(TRAINER_SABRINA_YOUNG, "All eyes are on us now...", "Smile and wave,\njust smile and wave.")
+    msgbox("Watching the GYM challenge is\na really popular passtime.\lI'm excited to work at the GYM\lduring GYM SEASON.", MSGBOX_AUTOCLOSE)
+    end
+}
+
 movement SabrinaGym_PlayerEnter{
     walk_slow_up * 2
+}
+
+movement SabrinaGym_TrainerMoveDown {
+    walk_fast_down * 6
+    delay_16
+}
+
+movement SabrinaGym_DefeatedTrainer {
+    walk_fast_down * 5
+    delay_16
 }

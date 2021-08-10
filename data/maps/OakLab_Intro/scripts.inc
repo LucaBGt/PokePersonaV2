@@ -32,7 +32,9 @@ OakLab_Intro_Init::
 	playse SE_PIN
 	applymovement 6, CommonMovement_EmoteQuestion
 	delay 60
+	load_field_pic 4, 40, 80
 	msgbox OakLab_Intro_Init_Text_0, MSGBOX_AUTOCLOSE
+	destroy_field_pic 0
 	applymovement 6, OakLab_Kukui_That
 	waitmovement 0
 	applymovement 5, CommonMovement_FaceUp
@@ -40,12 +42,16 @@ OakLab_Intro_Init::
 	playse SE_PIN
 	applymovement 6, CommonMovement_EmoteQuestion
 	delay 60
+	load_field_pic 4, 40, 80
 	msgbox OakLab_Intro_Init_Text_1, MSGBOX_AUTOCLOSE
+	destroy_field_pic 0
 	applymovement 6, OakLab_Kukui_Final
 	waitmovement 0
 	applymovement 5, CommonMovement_FaceDown
 	waitmovement 0
+	load_field_pic 4, 40, 80
 	msgbox OakLab_Intro_Init_Text_2, MSGBOX_AUTOCLOSE
+	destroy_field_pic 0
 	playse SE_PIN
 	applymovement 5, CommonMovement_EmoteExclamation
 	delay 60
@@ -86,16 +92,20 @@ OakLab_Intro_Init_1:
 	applymovement 6, CommonMovement_FaceUp
 	waitmovement 0
 	delay 30
+	load_field_pic 4, 40, 80
 	msgbox OakLab_Intro_Init_Text_10
+	destroy_field_pic 0
 	closemessage
 	applymovement 5, CommonMovement_FaceRight
 	applymovement 6, OakLab_KukuiToPlayer
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceDown
 	waitmovement 0
+	load_field_pic 4, 40, 80
 	msgbox OakLab_Intro_Init_Text_11
 	msgbox OakLab_Intro_Init_Text_12
 	msgbox OakLab_Intro_Init_Text_13
+	destroy_field_pic 0
 	closemessage
 	fadescreen FADE_TO_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
@@ -131,7 +141,9 @@ OakLab_TryLeave_2:
 	delay 60
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
 	waitmovement 0
+	load_field_pic 4, 40, 80
 	msgbox OakLab_TryLeave_Text_0, MSGBOX_AUTOCLOSE
+	destroy_field_pic 0
 	applymovement OBJ_EVENT_ID_PLAYER, OakLab_PlayerEnter
 	waitmovement 0
 	release
@@ -162,7 +174,9 @@ OakLab_TryStairs_2:
 	delay 60
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceDown
 	waitmovement 0
+	load_field_pic 4, 40, 80
 	msgbox OakLab_TryStairs_Text_0, MSGBOX_AUTOCLOSE
+	destroy_field_pic 0
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_WalkDown
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_WalkDown
@@ -240,7 +254,9 @@ OakLab_KukuiWhatMon_2:
 OakLab_KukuiWhatMon_3:
 	lock
 	faceplayer
+	load_field_pic 4, 40, 80
 	msgbox OakLab_KukuiWhatMon_Text_0
+	destroy_field_pic 0
 	closemessage
 	applymovement 6, CommonMovement_FaceUp
 	waitmovement 0
@@ -250,19 +266,23 @@ OakLab_KukuiWhatMon_3:
 OakLab_KukuiWhatMon_4:
 	lock
 	faceplayer
+	load_field_pic 4, 40, 80
 	switch VAR_STARTER_MON
 	case 1, OakLab_KukuiWhatMon_8
 	case 2, OakLab_KukuiWhatMon_9
 	case 0, OakLab_KukuiWhatMon_10
 OakLab_KukuiWhatMon_6:
 	msgbox OakLab_KukuiWhatMon_Text_4
+	destroy_field_pic 0
 	closemessage
 	release
 	end
 
 OakLab_KukuiWhatMon_5:
 	faceplayer
+	load_field_pic 4, 40, 80
 	msgbox OakLab_KukuiWhatMon_Text_5
+	destroy_field_pic 0
 	closemessage
 	release
 	end
@@ -365,7 +385,9 @@ OakLab_Ball_Chikorita_2:
 	applymovement OBJ_EVENT_ID_FOLLOWER, CommonMovement_EmoteExclamation
 	delay 60
 	call CommonMovement_FaceFollower
+	load_field_pic 4, 40, 80
 	msgbox OakLab_Ball_Chikorita_Text_1
+	destroy_field_pic 0
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
 	waitmovement 0
@@ -373,7 +395,9 @@ OakLab_Ball_Chikorita_2:
 	delay 60
 	waitmoncry
 	call CommonMovement_FaceFollower
+	load_field_pic 4, 40, 80
 	msgbox OakLab_Ball_Chikorita_Text_2
+	destroy_field_pic 0
 	closemessage
 	call OakLab_OakAppear
 	applymovement OBJ_EVENT_ID_CAMERA, OakLab_RevealOak_Chikorita
@@ -439,7 +463,9 @@ OakLab_Ball_Piplup_2:
 	applymovement OBJ_EVENT_ID_FOLLOWER, CommonMovement_EmoteExclamation
 	delay 60
 	call CommonMovement_FaceFollower
+	load_field_pic 4, 40, 80
 	msgbox OakLab_Ball_Chikorita_Text_1
+	destroy_field_pic 0
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
 	waitmovement 0
@@ -447,7 +473,9 @@ OakLab_Ball_Piplup_2:
 	delay 60
 	waitmoncry
 	call CommonMovement_FaceFollower
+	load_field_pic 4, 40, 80
 	msgbox OakLab_Ball_Chikorita_Text_2
+	destroy_field_pic 0
 	closemessage
 	call OakLab_OakAppear
 	applymovement OBJ_EVENT_ID_CAMERA, OakLab_RevealOak_Piplup
@@ -513,7 +541,9 @@ OakLab_Ball_Tepig_2:
 	applymovement OBJ_EVENT_ID_FOLLOWER, CommonMovement_EmoteExclamation
 	delay 60
 	call CommonMovement_FaceFollower
+	load_field_pic 4, 40, 80
 	msgbox OakLab_Ball_Chikorita_Text_1
+	destroy_field_pic 0
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
 	waitmovement 0
@@ -521,7 +551,9 @@ OakLab_Ball_Tepig_2:
 	delay 60
 	waitmoncry
 	call CommonMovement_FaceFollower
+	load_field_pic 4, 40, 80
 	msgbox OakLab_Ball_Chikorita_Text_2
+	destroy_field_pic 0
 	closemessage
 	call OakLab_OakAppear
 	applymovement OBJ_EVENT_ID_CAMERA, OakLab_RevealOak_Tepig
@@ -744,12 +776,16 @@ OakLab_OakAppear_2::
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceRight
 	applymovement 6, CommonMovement_FaceLeft
 	delay 30
+	load_field_pic 4, 40, 80
 	msgbox OakLab_OakAppear_2_Text_21
+	destroy_field_pic 0
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
 	applymovement 6, CommonMovement_FaceUp
 	delay 30
+	load_field_pic 4, 40, 80
 	msgbox OakLab_OakAppear_2_Text_22
+	destroy_field_pic 0
 	closemessage
 	playse SE_PIN
 	applymovement 5, CommonMovement_EmoteExclamation
@@ -762,8 +798,10 @@ OakLab_OakAppear_2::
 	applymovement 6, CommonMovement_FaceLeft
 	closemessage
 	delay 30
+	load_field_pic 4, 40, 80
 	msgbox OakLab_OakAppear_2_Text_25
 	msgbox OakLab_OakAppear_2_Text_26
+	destroy_field_pic 0
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
 	applymovement 6, CommonMovement_FaceUp
@@ -785,7 +823,9 @@ OakLab_WannaLeave::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
 	waitmovement 0
+	load_field_pic 4, 40, 80
 	msgbox OakLab_WannaLeave_Text_0
+	destroy_field_pic 0
 	closemessage
 	applymovement 6, CommonMovement_FaceUp
 	waitmovement 0
@@ -879,7 +919,9 @@ OakLab_RivalChooseStarter::
 	playse SE_PIN
 	applymovement 6, CommonMovement_EmoteExclamation
 	delay 60
+	load_field_pic 4, 40, 80
 	msgbox OakLab_RivalChooseStarter_Text_0
+	destroy_field_pic 0
 	closemessage
 	switch VAR_STARTER_MON
 	case 1, OakLab_RivalChooseStarter_3
@@ -930,7 +972,9 @@ OakLab_RivalChooseStarter_6:
 	destroy_field_pic 0
 	applymovement 5, OakLab_Elm_GivePokedexWalkBack
 	waitmovement 0
+	load_field_pic 4, 40, 80
 	msgbox OakLab_RivalChooseStarter_Text_8
+	destroy_field_pic 0
 	load_field_pic 1, 40, 80
 	msgbox OakLab_RivalChooseStarter_Text_9
 	msgbox OakLab_RivalChooseStarter_Text_10
@@ -941,7 +985,9 @@ OakLab_RivalChooseStarter_6:
 	playse SE_PIN
 	applymovement 6, CommonMovement_EmoteQuestion
 	delay 60
+	load_field_pic 4, 40, 80
 	msgbox OakLab_RivalChooseStarter_Text_12
+	destroy_field_pic 0
 	load_field_pic 1, 40, 80
 	msgbox OakLab_RivalChooseStarter_Text_13
 	msgbox OakLab_RivalChooseStarter_Text_14
@@ -952,12 +998,14 @@ OakLab_RivalChooseStarter_6:
 	playse SE_PIN
 	applymovement 6, CommonMovement_EmoteExclamation
 	delay 60
+	load_field_pic 4, 40, 80
 	switch VAR_STARTER_MON
 	case 1, OakLab_RivalChooseStarter_13
 	case 2, OakLab_RivalChooseStarter_14
 	case 0, OakLab_RivalChooseStarter_15
 OakLab_RivalChooseStarter_11:
 	msgbox OakLab_RivalChooseStarter_Text_19
+	destroy_field_pic 0
 	closemessage
 	delay 30
 	load_field_pic 1, 40, 80
@@ -979,9 +1027,11 @@ OakLab_RivalChooseStarter_3:
 	waitmovement 0
 	delay 30
 	removeobject 2
+	load_field_pic 4, 40, 80
 	message OakLab_RivalChooseStarter_Text_1
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
+	destroy_field_pic 0
 	closemessage
 	goto OakLab_RivalChooseStarter_1
 
@@ -990,9 +1040,11 @@ OakLab_RivalChooseStarter_4:
 	waitmovement 0
 	delay 30
 	removeobject 3
+	load_field_pic 4, 40, 80
 	message OakLab_RivalChooseStarter_Text_2
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
+	destroy_field_pic 0
 	closemessage
 	goto OakLab_RivalChooseStarter_1
 
@@ -1001,9 +1053,11 @@ OakLab_RivalChooseStarter_5:
 	waitmovement 0
 	delay 30
 	removeobject 4
+	load_field_pic 4, 40, 80
 	message OakLab_RivalChooseStarter_Text_3
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
+	destroy_field_pic 0
 	closemessage
 	goto OakLab_RivalChooseStarter_1
 
@@ -1056,7 +1110,9 @@ OakLab_RivalBattle_Left::
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceDown
 	waitmovement 0
 	playbgm MUS_ENCOUNTER_BRENDAN, FALSE
+	load_field_pic 4, 40, 80
 	msgbox OakLab_RivalBattle_Left_Text_0
+	destroy_field_pic 0
 	closemessage
 	applymovement 6, OakLab_KukuiToBattle_Left
 	waitmovement 0
@@ -1068,7 +1124,9 @@ OakLab_RivalBattle_Right::
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceDown
 	waitmovement 0
 	playbgm MUS_ENCOUNTER_BRENDAN, FALSE
+	load_field_pic 4, 40, 80
 	msgbox OakLab_RivalBattle_Left_Text_0
+	destroy_field_pic 0
 	closemessage
 	goto OakLab_RivalBattle_Start
 	return
@@ -1080,7 +1138,9 @@ OakLab_RivalBattle_Start::
 	applymovement OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp
 	waitmovement 0
 	delay 30
+	load_field_pic 4, 40, 80
 	msgbox OakLab_RivalBattle_Start_Text_0
+	destroy_field_pic 0
 	closemessage
 	applymovement 5, OakLab_ElmToBattle
 	waitmovement 0
@@ -1094,10 +1154,12 @@ OakLab_RivalBattle_Start::
 	case 2, OakLab_RivalBattle_Start_5
 OakLab_RivalBattle_Start_1:
 	fadedefaultbgm
+	load_field_pic 4, 40, 80
 	goto_if_set FLAG_SYS_PLAYER_LOST, OakLab_RivalBattle_Start_7
 	msgbox OakLab_RivalBattle_Start_Text_3
 OakLab_RivalBattle_Start_6:
 	msgbox OakLab_RivalBattle_Start_Text_4
+	destroy_field_pic 0
 	closemessage
 	clearflag FLAG_SYS_CANNOT_LOSE
 	clearflag FLAG_SYS_PLAYER_LOST

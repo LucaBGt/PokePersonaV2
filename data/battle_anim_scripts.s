@@ -14051,7 +14051,7 @@ Move_POUND:
 	setalpha 12, 8
 	playsewithpan SE_M_DOUBLE_SLAP, SOUND_PAN_TARGET
 	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, ANIM_TARGET, 2
-	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 3, 0, 6, 1
+	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 3, 0, 2, 1
 	waitforvisualfinish
 	clearmonbg ANIM_TARGET
 	blendoff
@@ -14207,9 +14207,9 @@ Move_TACKLE:
 	monbg ANIM_TARGET
 	setalpha 12, 8
 	createsprite gHorizontalLungeSpriteTemplate, ANIM_ATTACKER, 2, 4, 4
-	delay 6
+	//delay 6
 	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, ANIM_TARGET, 2
-	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 3, 0, 6, 1
+	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 2, 0, 2, 1
 	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
 	waitforvisualfinish
 	clearmonbg ANIM_TARGET
@@ -14816,8 +14816,8 @@ Move_STOMP:
 	end
 
 Move_TAIL_WHIP:
-	loopsewithpan SE_M_TAIL_WHIP, SOUND_PAN_ATTACKER, 24, 3
-	createvisualtask AnimTask_TranslateMonEllipticalRespectSide, 2, ANIM_ATTACKER, 12, 4, 2, 3
+	loopsewithpan SE_M_TAIL_WHIP, SOUND_PAN_ATTACKER, 0, 3
+	createvisualtask AnimTask_TranslateMonEllipticalRespectSide, 2, ANIM_ATTACKER, 12, 4, 2, 5
 	waitforvisualfinish
 	end
 
@@ -18607,9 +18607,9 @@ Move_GROWL:
 	loadspritegfx ANIM_TAG_NOISE_LINE
 	createvisualtask SoundTask_PlayDoubleCry, 2, ANIM_ATTACKER, 255
 	call RoarEffect
-	delay 10
-	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 1, 0, 9, 1
-	createvisualtask AnimTask_ShakeMon2, 2, ANIM_DEF_PARTNER, 1, 0, 9, 1
+	//delay 10
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 1, 0, 2, 1
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_DEF_PARTNER, 1, 0, 2, 1
 	waitforvisualfinish
 	createvisualtask SoundTask_WaitForCry, 5
 	waitforvisualfinish

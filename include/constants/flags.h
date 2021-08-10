@@ -1299,7 +1299,7 @@
 #define FLAG_UNUSED_0x4E3 0x4E3             // Unused Flag
 #define FLAG_UNUSED_0x4E4 0x4E4             // Unused Flag
 #define FLAG_UNUSED_0x4E5 0x4E5             // Unused Flag
-#define FLAG_UNUSED_0x4E6 0x4E6             // Unused Flag
+#define FLAG_SABRINAGYM_BUGCATCHER 0x4E6             // Unused Flag
 #define FLAG_SABRINAGYM_FRESHWATER 0x4E7             // Unused Flag
 #define FLAG_SYS_CANNOT_LOSE 0x4E8          // Unused Flag
 #define FLAG_SYS_PLAYER_LOST 0x4E9          // Unused Flag

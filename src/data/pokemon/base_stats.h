@@ -26832,9 +26832,9 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FAIRY,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_SURGE_SURFER, ABILITY_NONE},
+            .abilities = {ABILITY_SURGE_SURFER, ABILITY_LIGHTNING_ROD, ABILITY_LEVITATE},
         #else
-            .abilities = {ABILITY_NONE, ABILITY_NONE},
+            .abilities = {ABILITY_LIGHTNING_ROD, ABILITY_NONE},
         #endif
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,

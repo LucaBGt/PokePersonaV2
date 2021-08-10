@@ -52,7 +52,9 @@ script OakLab_Intro_Init{
     applymovement(LOCALID_KUKUI, CommonMovement_EmoteQuestion)
     delay(60)
 
+	load_field_pic(4, 40, 80)
     msgbox("Boy: What's this?",MSGBOX_AUTOCLOSE)
+    destroy_field_pic(0)
 
     applymovement(LOCALID_KUKUI,OakLab_Kukui_That)
     waitmovement(0)
@@ -64,14 +66,18 @@ script OakLab_Intro_Init{
     applymovement(LOCALID_KUKUI, CommonMovement_EmoteQuestion)
     delay(60)
 
+	load_field_pic(4, 40, 80)
     msgbox("Boy: And what's that do?",MSGBOX_AUTOCLOSE)
+    destroy_field_pic(0)
 
     applymovement(LOCALID_KUKUI,OakLab_Kukui_Final)
     waitmovement(0)
     applymovement(LOCALID_ELM, CommonMovement_FaceDown)
     waitmovement(0)
 
+	load_field_pic(4, 40, 80)
     msgbox("Boy: And what-",MSGBOX_AUTOCLOSE)
+    destroy_field_pic(0)
 
     playse(SE_PIN)
     applymovement(LOCALID_ELM, CommonMovement_EmoteExclamation)
@@ -135,7 +141,9 @@ script OakLab_Intro_Init{
 
     delay(30)
 
+	load_field_pic(4, 40, 80)
     msgbox("Boy: Alright then.\nI was getting bored anyway.")
+    destroy_field_pic(0)
     closemessage
 
     applymovement(LOCALID_ELM, CommonMovement_FaceRight)
@@ -144,9 +152,11 @@ script OakLab_Intro_Init{
     applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceDown)
     waitmovement(0)
 
+	load_field_pic(4, 40, 80)
     msgbox("Boy: Hi! Nice to meet you.\nMy name is MAKOA!")
     msgbox("Makoa: You're a trainer-to-be too?\nThat's sooo cool!\pI can't wait to battle you!\lAfter we've made our choice, of course!")
     msgbox("Let's go talk to the PROF.!")
+    destroy_field_pic(0)
     closemessage
 
     fadescreen(FADE_TO_BLACK)
@@ -180,7 +190,9 @@ script OakLab_TryLeave {
         applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp)
         waitmovement(0)
 
+	    load_field_pic(4, 40, 80)
         msgbox("Makoa: You can't leave yet!\nWe still need to get out POKéMON!",MSGBOX_AUTOCLOSE)
+        destroy_field_pic(0)
         applymovement(OBJ_EVENT_ID_PLAYER, OakLab_PlayerEnter)
         waitmovement(0)
         release
@@ -214,7 +226,9 @@ script OakLab_TryStairs {
         applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceDown)
         waitmovement(0)
 
+	    load_field_pic(4, 40, 80)
         msgbox("Makoa: This goes up to the PROF.'s\nprivate quaters.\pI don't think we should go there...",MSGBOX_AUTOCLOSE)
+        destroy_field_pic(0)
         applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_WalkDown)
         waitmovement(0)
         applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_WalkDown)
@@ -293,7 +307,9 @@ script OakLab_KukuiWhatMon {
         case 1:
         lock
         faceplayer
+        load_field_pic(4, 40, 80)
         msgbox("Makoa: Come on!\nI wanna choose too!")
+        destroy_field_pic(0)
         closemessage
         applymovement(LOCALID_KUKUI, CommonMovement_FaceUp)
         waitmovement(0)
@@ -305,6 +321,7 @@ script OakLab_KukuiWhatMon {
         case 2:
         lock
         faceplayer
+        load_field_pic(4, 40, 80)
         switch(var(VAR_STARTER_MON)){
         case 1:
             msgbox("Makoa: So, CHIKORITA learns\nRAZOR LEAF at LEVEL 6?")
@@ -317,6 +334,7 @@ script OakLab_KukuiWhatMon {
         break
     }
         msgbox("Oh wow...\nThis POKéDEX-thing is really helpful!")
+        destroy_field_pic(0)
         closemessage
         release
         end
@@ -325,7 +343,9 @@ script OakLab_KukuiWhatMon {
         //3 = After Rival, ready to leave
         case 3:
             faceplayer
+            load_field_pic(4, 40, 80)
             msgbox("Makoa: I'll be right behind you!\nI just need a bit to take in the\lawesome attacks we exchanged...")
+            destroy_field_pic(0)
             closemessage
             release
             end
@@ -439,7 +459,9 @@ script OakLab_Ball_Chikorita {
 
             call(CommonMovement_FaceFollower)
 
+            load_field_pic(4, 40, 80)
             msgbox("Makoa: Oh!\nI wonder what POKéMON is inside...")
+            destroy_field_pic(0)
             closemessage
 
             applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp)
@@ -453,7 +475,9 @@ script OakLab_Ball_Chikorita {
     
             call(CommonMovement_FaceFollower)
 
+            load_field_pic(4, 40, 80)
             msgbox("Makoa: Hm...\nThis one SOUNDS strong!")
+            destroy_field_pic(0)
             closemessage
 
             call(OakLab_OakAppear)
@@ -532,7 +556,9 @@ script OakLab_Ball_Piplup {
 
             call(CommonMovement_FaceFollower)
 
+            load_field_pic(4, 40, 80)
             msgbox("Makoa: Oh!\nI wonder what POKéMON is inside...")
+            destroy_field_pic(0)
             closemessage
 
             applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp)
@@ -545,7 +571,9 @@ script OakLab_Ball_Piplup {
     
             call(CommonMovement_FaceFollower)
 
+            load_field_pic(4, 40, 80)
             msgbox("Makoa: Hm...\nThis one SOUNDS strong!")
+            destroy_field_pic(0)
             closemessage
 
             call(OakLab_OakAppear)
@@ -624,7 +652,9 @@ script OakLab_Ball_Tepig {
 
             call(CommonMovement_FaceFollower)
 
+            load_field_pic(4, 40, 80)
             msgbox("Makoa: Oh!\nI wonder what POKéMON is inside...")
+            destroy_field_pic(0)
             closemessage
 
             applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp)
@@ -637,7 +667,9 @@ script OakLab_Ball_Tepig {
     
             call(CommonMovement_FaceFollower)
 
+            load_field_pic(4, 40, 80)
             msgbox("Makoa: Hm...\nThis one SOUNDS strong!")
+            destroy_field_pic(0)
             closemessage
 
             call(OakLab_OakAppear)
@@ -935,7 +967,9 @@ script OakLab_OakAppear_2{
 
     delay(30)
 
+    load_field_pic(4, 40, 80)
     msgbox("Makoa: Oh man, this is EXCITING!")
+    destroy_field_pic(0)
     closemessage
 
     applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp)
@@ -943,7 +977,9 @@ script OakLab_OakAppear_2{
 
     delay(30)
 
+    load_field_pic(4, 40, 80)
     msgbox("Makoa: Hm, I think I'll pick...")
+    destroy_field_pic(0)
     closemessage
 
     playse(SE_PIN)
@@ -961,9 +997,11 @@ script OakLab_OakAppear_2{
 
     delay(30)
 
+    load_field_pic(4, 40, 80)
     msgbox("Makoa: Maaaan, for real?\nWhat a bummer...")
 
     msgbox("Makoa: You better chose a good one,\nOK?")
+    destroy_field_pic(0)
     closemessage
 
     applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp)
@@ -996,7 +1034,9 @@ script OakLab_WannaLeave{
     waitmovement(0)
     applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_FaceUp)
     waitmovement(0)
+    load_field_pic(4, 40, 80)
     msgbox("Makoa: Where do you think you're going?\nIf I can only pick after you, you\lbetter pick something first!")
+    destroy_field_pic(0)
     closemessage
 
     applymovement(LOCALID_KUKUI, CommonMovement_FaceUp)
@@ -1110,7 +1150,9 @@ script OakLab_RivalChooseStarter{
     applymovement(LOCALID_KUKUI, CommonMovement_EmoteExclamation)
     delay(60)
 
+    load_field_pic(4, 40, 80)
     msgbox("Makoa: OK then, this one's mine!")
+    destroy_field_pic(0)
     closemessage
 
     switch(var(VAR_STARTER_MON)){
@@ -1121,9 +1163,11 @@ script OakLab_RivalChooseStarter{
             delay(30)
             removeobject(LOCALID_CHIKORITA)
 
+            load_field_pic(4, 40, 80)
             message(format("Makoa: CHIKORITA, I choose you!"))
             waitmessage
             call(Common_EventScript_PlayGymBadgeFanfare)
+            destroy_field_pic(0)
             closemessage
         break
         case 2:
@@ -1133,9 +1177,11 @@ script OakLab_RivalChooseStarter{
             delay(30)
             removeobject(LOCALID_PIPLUP)
 
+            load_field_pic(4, 40, 80)
             message(format("Makoa: PIPLUP, I choose you!"))
             waitmessage
             call(Common_EventScript_PlayGymBadgeFanfare)
+            destroy_field_pic(0)
             closemessage
         break
         case 0:
@@ -1145,9 +1191,11 @@ script OakLab_RivalChooseStarter{
             delay(30)
             removeobject(LOCALID_TEPIG)
 
+            load_field_pic(4, 40, 80)
             message(format("Makoa: TEPIG, I choose you!"))
             waitmessage
             call(Common_EventScript_PlayGymBadgeFanfare)
+            destroy_field_pic(0)
             closemessage
         break
     }
@@ -1220,7 +1268,10 @@ script OakLab_RivalChooseStarter{
     applymovement(LOCALID_ELM, OakLab_Elm_GivePokedexWalkBack)
     waitmovement(0)
 
+    load_field_pic(4, 40, 80)
     msgbox("Makoa: Uh...\nThis thing is pretty neat and all,\lbut what IS it?")
+    destroy_field_pic(0)
+
     load_field_pic(1, 40, 80)
     msgbox("Elm: What you are holding in your\nhands right now is called a POKéDEX!")
     msgbox(format("PROFESSOR OAK has invented it with his mentor, PROFESSOR ROWAN."))
@@ -1233,7 +1284,10 @@ script OakLab_RivalChooseStarter{
     applymovement(LOCALID_KUKUI, CommonMovement_EmoteQuestion)
     delay(60)
 
+    load_field_pic(4, 40, 80)
     msgbox("Makoa: That's very nice, but why\nall there no data entries?")
+    destroy_field_pic(0)
+
     load_field_pic(1, 40, 80)
     msgbox("Elm: Eh...\nWhen we say cutting-edge, we mean\lREALLY cutting edge.")
     msgbox(format("You and the other kids that come by today will be the first users, and we hope your journeys will fill the database right up with new POKéMON information!"))
@@ -1246,6 +1300,7 @@ script OakLab_RivalChooseStarter{
     applymovement(LOCALID_KUKUI, CommonMovement_EmoteExclamation)
     delay(60)
 
+    load_field_pic(4, 40, 80)
     switch(var(VAR_STARTER_MON)){
         case 1:
             msgbox("Makoa: Wow, that's really cool!\nI wonder if the POKéDEX has already\lrecorded data about my CHIKORITA!")
@@ -1259,6 +1314,7 @@ script OakLab_RivalChooseStarter{
     }
 
     msgbox("Hm...")
+    destroy_field_pic(0)
     closemessage
     delay(30)
 
@@ -1312,7 +1368,9 @@ script OakLab_RivalBattle_Left {
 
     playbgm(MUS_ENCOUNTER_BRENDAN,FALSE)
 
+    load_field_pic(4, 40, 80)
     msgbox("Makoa: Hey, wait a minute!\nWhere do you think you're going?")
+    destroy_field_pic(0)
     closemessage
     
     applymovement(LOCALID_KUKUI, OakLab_KukuiToBattle_Left)
@@ -1328,7 +1386,9 @@ script OakLab_RivalBattle_Right {
 
     playbgm(MUS_ENCOUNTER_BRENDAN, FALSE)
 
+    load_field_pic(4, 40, 80)
     msgbox("Makoa: Hey, wait a minute!\nWhere do you think you're going?")
+    destroy_field_pic(0)
     closemessage
 
     goto(OakLab_RivalBattle_Start)
@@ -1343,7 +1403,9 @@ script OakLab_RivalBattle_Start {
 
     delay(30)
 
+    load_field_pic(4, 40, 80)
     msgbox("Makoa: We're trainers now!\nAnd I intend to keep my promise and\lfight you, here and now!")
+    destroy_field_pic(0)
     closemessage
 
     applymovement(LOCALID_ELM, OakLab_ElmToBattle)
@@ -1367,6 +1429,8 @@ script OakLab_RivalBattle_Start {
 
     fadedefaultbgm
 
+    load_field_pic(4, 40, 80)
+
     if(flag(FLAG_SYS_PLAYER_LOST)){
     msgbox("Makoa: YES! I did it!")
     } else {
@@ -1374,6 +1438,7 @@ script OakLab_RivalBattle_Start {
     }
 
     msgbox("I can't wait to fight you again\nonce we're stronger!")
+    destroy_field_pic(0)
     closemessage
 
     clearflag(FLAG_SYS_CANNOT_LOSE)

@@ -7,6 +7,8 @@
 #define TRAINER_REINA                         3
 #define TRAINER_GANDALF                       4
 #define TRAINER_SPIKE                         5
+#define TRAINER_PALETTO                       6
+#define TRAINER_SABRINA_YOUNG                 7
 
 
 #define TRAINER_SAWYER_1                      1

@@ -83,13 +83,13 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_GruntAquaHideout4},
     },
 
-    [TRAINER_GRUNT_SEAFLOOR_CAVERN_1] =
+    [TRAINER_PALETTO] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_TEAM_AQUA,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_AQUA,
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
-        .trainerName = _("GRUNT"),
+        .trainerClass = TRAINER_CLASS_PSYCHIC,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
+        .trainerPic = TRAINER_PIC_PSYCHIC_M,
+        .trainerName = _("PALETTO"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = 0,
@@ -97,18 +97,18 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_GruntSeafloorCavern1},
     },
 
-    [TRAINER_GRUNT_SEAFLOOR_CAVERN_2] =
+    [TRAINER_SABRINA_YOUNG] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_TEAM_AQUA,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_AQUA,
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
-        .trainerName = _("GRUNT"),
-        .items = {},
+        .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_LEADER,
+        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
+        .trainerPic = TRAINER_PIC_LEADER_FLANNERY,
+        .trainerName = _("SABRINA"),
+        .items = {ITEM_HYPER_POTION, ITEM_HYPER_POTION, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = 0,
         .partySize = ARRAY_COUNT(sParty_GruntSeafloorCavern2),
-        .party = {.NoItemDefaultMoves = sParty_GruntSeafloorCavern2},
+        .party = {.NoItemCustomMoves = sParty_GruntSeafloorCavern2},
     },
 
     [TRAINER_GRUNT_SEAFLOOR_CAVERN_3] =
