@@ -668,9 +668,9 @@ OakLab_OakAppear_2::
 	waitmovement 0
 	load_field_pic 2, 40, 80
 	msgbox OakLab_OakAppear_2_Text_6
+	destroy_field_pic 0
 	msgbox OakLab_OakAppear_2_Text_7
 	closemessage
-	destroy_field_pic 0
 	playse SE_PIN
 	applymovement 1, CommonMovement_EmoteQuestion
 	delay 60

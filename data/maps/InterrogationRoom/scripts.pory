@@ -173,14 +173,14 @@ script InterrogationRoom_AfterOak{
 
 	//waitstate
 
-	//setflag(FLAG_SYS_PREVENT_MAP_FADE_OUT)
+	setflag(FLAG_SYS_PREVENT_MAP_FADE_IN)
 
 	//fadescreen(FADE_TO_BLACK)
 
 	//delay(60)
 	//msgbox("10 1/2 Years\n(and 3 badges) ago...",MSGBOX_SIGN)
 
-	warp(MAP_SABRINA_GYM,255,15,29)
+	warp(MAP_SABRINA_GYM,255,15,34)
 
 	setvar(VAR_GAMESTATE, 4)
 

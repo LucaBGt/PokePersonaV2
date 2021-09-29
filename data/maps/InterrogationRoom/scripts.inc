@@ -122,7 +122,8 @@ InterrogationRoom_AfterOak::
 InterrogationRoom_AfterOak_1:
 	special HealPlayerParty
 	special AddParty1
-	warp MAP_SABRINA_GYM, 255, 15, 29
+	setflag FLAG_SYS_PREVENT_MAP_FADE_IN
+	warp MAP_SABRINA_GYM, 255, 15, 34
 	setvar VAR_GAMESTATE, 4
 	release
 	end

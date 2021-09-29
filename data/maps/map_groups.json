@@ -588,7 +588,8 @@
     "TrainerHill_Elevator",
     "IntroMap",
     "InterrogationRoom",
-    "SabrinaGym"
+    "SabrinaGym",
+    "SabrinaGym_TeleportSpace"
   ],
   "gMapGroup_IndoorRoute104Prototype": [
     "Route104_Prototype",

@@ -823,9 +823,10 @@ script OakLab_OakAppear_2{
 
     load_field_pic(2, 40, 80)
     msgbox("Oak: To catch POKéMON-\nThat's the real test.\lAnd to train them is-")
+        destroy_field_pic(0)
+
     msgbox("???: PROFESSOR!")
     closemessage
-    destroy_field_pic(0)
 
     playse(SE_PIN)
     applymovement(LOCALID_OAK, CommonMovement_EmoteQuestion)

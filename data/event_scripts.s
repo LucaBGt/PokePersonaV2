@@ -1075,3 +1075,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/OakLab_Intro/scripts.inc"
 
 	.include "data/maps/SabrinaGym/scripts.inc"
+
+	.include "data/maps/SabrinaGym_TeleportSpace/scripts.inc"

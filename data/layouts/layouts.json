@@ -4445,11 +4445,21 @@
       "id": "LAYOUT_SABRINA_GYM",
       "name": "SabrinaGym_Layout",
       "width": 30,
-      "height": 30,
+      "height": 35,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_SabrinaGym",
       "border_filepath": "data/layouts/SabrinaGym/border.bin",
       "blockdata_filepath": "data/layouts/SabrinaGym/map.bin"
+    },
+    {
+      "id": "LAYOUT_SABRINA_GYM_TELEPORT_SPACE",
+      "name": "SabrinaGym_TeleportSpace_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_SabrinaGym",
+      "border_filepath": "data/layouts/SabrinaGym_TeleportSpace/border.bin",
+      "blockdata_filepath": "data/layouts/SabrinaGym_TeleportSpace/map.bin"
     }
   ]
 }

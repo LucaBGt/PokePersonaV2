@@ -117,7 +117,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_GruntSeafloorCavern2[] = 
     .iv = 255,
     .lvl = 33,
     .species = SPECIES_ALAKAZAM,
-    .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_FOCUS_BLAST, MOVE_DAZZLING_GLEAM}
+    .moves = {MOVE_PSYCHIC, MOVE_SHADOW_BALL, MOVE_FOCUS_BLAST, MOVE_DAZZLING_GLEAM}
     }
 };
 

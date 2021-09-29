@@ -1,6 +1,9 @@
 const LOCALID_SECURITY = 1
 const LOCALID_BUGCATCHER = 19
-
+const LOCALID_SABRINA = 20
+const LOCALID_CAMERAMAN = 10
+const LOCALID_FATHER = 11
+const LOCALID_NURSE = 2
 
 //VAR_SABRINAGYM_STATE
 //0 = Speak to lady
@@ -13,33 +16,59 @@ mapscripts SabrinaGym_MapScripts {
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_TEMP_0, 0: SabrinaGym_Init
+        //VAR_SABRINAGYM_STATE, 5: SabrinaGym_PresentGymLeader
     ]
 }
 
 script SabrinaGym_Init {
+
     if(var(VAR_SABRINAGYM_STATE) == 0){
+
+    setflag(FLAG_SABRINAGYM_SABRINA_HIDDEN)
+    setobjectxy(LOCALID_SABRINA,1,33)
+    removeobject(LOCALID_SABRINA)
+
+    delay(30)
+
+    fadescreen(FADE_FROM_BLACK)
+    clearflag(FLAG_SYS_PREVENT_MAP_FADE_IN)
+
     applymovement(OBJ_EVENT_ID_PLAYER, SabrinaGym_PlayerEnter)
     waitmovement(0)
+
     }
+
     setvar(VAR_TEMP_0, 1)
     release 
     end
+
 }
 
 script SabrinaGym_Nurse {
     lock
 
     msgbox("Nurse: Hello there, Challenger!")
-    msgbox("May I fresh up your POKéMON?")
+    msgbox("May I fresh up your POKéMON?",MSGBOX_YESNO)
 
-    fadescreen(FADE_TO_BLACK)
-    special(HealPlayerParty)
-    playfanfare(MUS_HEAL)
-	waitfanfare
-    fadescreen(FADE_FROM_BLACK)
+    if(var(VAR_RESULT) == 1){
 
-    closemessage
+        msgbox("Nurse: Very well!\nThis will only take a moment...")
+        closemessage
 
+        applymovement(LOCALID_NURSE,CommonMovement_NurseBow)
+        waitmovement(0)
+
+        fadescreen(FADE_TO_BLACK)
+        special(HealPlayerParty)
+        playfanfare(MUS_HEAL)
+	    waitfanfare
+        fadescreen(FADE_FROM_BLACK)
+        delay(30)
+    }
+
+    applymovement(LOCALID_NURSE,CommonMovement_NurseBow)
+    msgbox("Nurse: Best of luck to you!",MSGBOX_AUTOCLOSE)
+    
     release
     end
 }
@@ -127,7 +156,7 @@ script SabrinaGym_DontGoIn_1{
     applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_WalkDown)
     waitmovement(0)
 
-    delay(30)
+    //delay(30)
 
     applymovement(LOCALID_SECURITY, CommonMovement_FaceDown)
     waitmovement(0)
@@ -144,7 +173,7 @@ script SabrinaGym_DontGoIn_2{
     applymovement(LOCALID_BUGCATCHER,SabrinaGym_TrainerMoveDown)
     waitmovement(0)
 
-    delay(30)
+    //delay(30)
 
     applymovement(LOCALID_BUGCATCHER, CommonMovement_EmoteExclamation)
     delay(60)
@@ -154,7 +183,14 @@ script SabrinaGym_DontGoIn_2{
 
 script SabrinaGym_DontGoIn_3{
 
-    msgbox("It's crazy! These trainers are\ninsanely strong!\pIt's like they can predict my\nevery move!\pDarn...\nI knew I should've challenged\lANISTAR GYM instead...", MSGBOX_AUTOCLOSE)
+    msgbox("It's crazy! These trainers are\ninsanely strong!\pIt's like they can predict my\nevery move!\pDarn...\nI knew I should've challenged\lANISTAR GYM instead...")
+
+    msgbox("But it's all over now anyway.\nHm? What do you mean?")
+    msgbox("Oh, you had no idea?!\nLet me set some IMPORTANT things\lstraight:")
+    msgbox("You can't just try IMPORTANT BATTLES\nagain and again, like vs a \lGYM LEADER, for example.")
+    msgbox("If you lose, you gotta live with that loss.\nBut, most subordinate trainers will give\lyou tips about their superiors's\lPOKéMON.")
+    msgbox("I lost against the GYM LEADER.\nMy GYM CHALLENGE end here.\pI'm going home.")
+    closemessage
 
     applymovement(LOCALID_BUGCATCHER,SabrinaGym_DefeatedTrainer)
     waitmovement(0)
@@ -179,7 +215,7 @@ script SabrinaGym_DontLeave {
 
     delay(30)
 
-    msgbox("Sorry, but if you leave the GYM,\nyour challenge will be FORFEIT.\lDo you really want to give up?\pBelieve in yourself a bit more!", MSGBOX_AUTOCLOSE)
+    msgbox("Sorry, but if you leave the GYM,\nyour challenge will be FORFEIT.\lThere is NO GOING BACK or TRYING AGAIN.\lDo you REALLY want to give up?", MSGBOX_AUTOCLOSE)
 
     applymovement(LOCALID_SECURITY, CommonMovement_WalkUp)
     applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_WalkUp)
@@ -205,6 +241,36 @@ script SabrinaGym_Announcement_1 {
     closemessage
 
     setvar(VAR_SABRINAGYM_STATE,3)
+    release
+    end
+}
+
+script SabrinaGym_Announcement_2 {
+    lock
+
+    applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_EmoteExclamation)
+    delay(60)
+
+    msgbox("Announcer: Wow, Challenger {PLAYER} is\ncoming in HOT!")
+    msgbox("But are they strong enough to make it\nto the GYM LEADER?\lOnly time will tell...")
+    closemessage
+
+    setvar(VAR_SABRINAGYM_STATE,4)
+    release
+    end
+}
+
+script SabrinaGym_Announcement_3 {
+    lock
+
+    applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_EmoteExclamation)
+    delay(60)
+
+    msgbox("Announcer: Challenger {PLAYER} is\nalmost there!")
+    msgbox("Victory is close-\nbut the hardest challenge is\lyet to come.")
+    closemessage
+
+    setvar(VAR_SABRINAGYM_STATE,5)
     release
     end
 }
@@ -239,6 +305,70 @@ script SabrinaGym_CounterLady{
     end
 }
 
+script SabrinaGym_PresentGymLeader{
+
+    applymovement(OBJ_EVENT_ID_PLAYER, CommonMovement_EmoteExclamation)
+    delay(60)
+
+    msgbox("Announcer: OH MAN, HERE THEY ARE!",MSGBOX_AUTOCLOSE)
+
+    special(SpawnCameraObject)
+
+    applymovement(OBJ_EVENT_ID_CAMERA, SabrinaGym_CamUp)
+    waitmovement(0)
+
+    msgbox("Announcer: Well, well, well.",MSGBOX_AUTOCLOSE)
+
+    applymovement(LOCALID_CAMERAMAN,SabrinaGym_CameraMan_1)
+    applymovement(LOCALID_FATHER,SabrinaGym_ManDown)
+    waitmovement(0)
+
+    msgbox("Congrats on coming this far.\nThe final challenge of SAFFRON GYM\lawaits!",MSGBOX_AUTOCLOSE)
+
+    applymovement(LOCALID_FATHER, CommonMovement_EmoteQuestion)
+    delay(60)
+
+    msgbox("Hahaha, no, I'm not the GYM LEADER.\pAhem...",MSGBOX_AUTOCLOSE)
+
+    applymovement(LOCALID_FATHER, CommonMovement_FaceLeft)
+    waitmovement(0)
+
+    msgbox("DEAR AUDIENCE!",MSGBOX_AUTOCLOSE)
+
+    applymovement(LOCALID_FATHER, CommonMovement_FaceRight)
+    waitmovement(0)
+
+    msgbox("IT'S THE MOMENT YOU'VE BEEN\nWAITING FOR!",MSGBOX_AUTOCLOSE)
+
+    applymovement(LOCALID_FATHER, CommonMovement_FaceDown)
+    waitmovement(0)
+
+    msgbox("Please, put your hands together for\nthe LEADER of SAFFRON GYM!\pThe girl of mystery,\nthe mistress of PSYCHIC POKéMON...",MSGBOX_AUTOCLOSE)
+
+    applymovement(LOCALID_FATHER, CommonMovement_WalkRight)
+    waitmovement(0)
+    applymovement(LOCALID_CAMERAMAN, CommonMovement_FaceLeft)
+    applymovement(LOCALID_FATHER, CommonMovement_FaceLeft)
+    waitmovement(0)
+
+    msgbox("... my darling daughter.\nSABRINA!",MSGBOX_AUTOCLOSE)
+
+    addobject(LOCALID_SABRINA)
+    setobjectxy(LOCALID_SABRINA,15,8)
+
+    playse(SE_DOOR)
+    delay(60)
+
+    applymovement(LOCALID_SABRINA,SabrinaGym_ManDown)
+    waitmovement(0)
+
+    msgbox("Announcer: Show 'em what you got, honey.")
+    msgbox("And at least TRY to smile for the camera,\nokay?",MSGBOX_AUTOCLOSE)
+
+    trainerbattle_single(TRAINER_SABRINA_YOUNG, "...", "...")
+
+}
+
 script SabrinaGym_Boy_1{
     lockall
     faceplayer
@@ -266,19 +396,32 @@ script SabrinaGym_Trashcan{
 
 script SabrinaGym_Adah{
     trainerbattle_single(TRAINER_ADAH, "Welcome to SAFFRON CITY GYM!\nLet's see what you're made of...", "Oh, nicely done!")
-    msgbox("Good luck!\nYou'll need it here...", MSGBOX_AUTOCLOSE)
+    msgbox("Good luck!\nYou'll need it here...")
+    msgbox("A hint about the GYM LEADER?\nHm, I guess I owe you since you beat me.")
+    msgbox("How about this:\nTheir trademark POKéMON is ALAKAZAM.\lAnd it's real strong. No joke.")
+    msgbox("I heard it uses a FIGHTING TYPE\nATTACK to deal with DARK TYPE\lPOKéMON.")
+
+    closemessage
     end
 }
 
 script SabrinaGym_Louise{
     trainerbattle_double(TRAINER_LOUISE, "Can I see into the future?\nMaybe!", "I totally saw that coming!", "Sorry, but you'll need more\nPOKéMON to fight me!")
-    msgbox("The future isn't yet written...", MSGBOX_AUTOCLOSE)
+    msgbox("The future isn't yet written...")
+    msgbox("Do you think I would have won\nif I used more POKéMON?")
+    msgbox("The GYM LEADER fights with 4 POKéMON,\nI thought I could take you on with\ljust 3...")
+    closemessage
+
     end
 }
 
 script SabrinaGym_Reina{
     trainerbattle_single(TRAINER_REINA, "POKéMON are our partners,\nin life and in combat!", "Ah, farts.")
-    msgbox("What I said before I read in a\nself-help book, but I guess it\ldidn't make me a winner...", MSGBOX_AUTOCLOSE)
+    msgbox("What I said before I read in a\nself-help book, but I guess it\ldidn't make me a winner...")
+    msgbox("I read too that you can gain the\nadvantage in battle by using\lSTAT-ALTERING moves.")
+    msgbox("Its a strategy the GYM LEADER uses\non their ESPEON.\pGet their STATS up and pass them on\nwith BATON PASS.")
+    closemessage
+
     end
 }
 
@@ -290,13 +433,21 @@ script SabrinaGym_Gandalf{
 
 script SabrinaGym_Spike{
     trainerbattle_single(TRAINER_SPIKE, "Taking on all the GYM CHALLENGERS\nis a bunch of work...", "That wasn't my best performance...")
-    msgbox("I'm tired...", MSGBOX_AUTOCLOSE)
+    msgbox("I'm tired...")
+    msgbox("Oh, by the way, which POKéMON\ndo you think is better?\pI use BRONZOR, but the GYM LEADER\nuses METANG for STEEL TYPE coverage.")
+    msgbox("Even with its use of MAGNET RISE,\nI think my BRONZOR could take their\lMETANG any day!")
+
+    closemessage
     end
 }
 
 script SabrinaGym_Paletto{
     trainerbattle_single(TRAINER_PALETTO, "All eyes are on us now...", "Smile and wave,\njust smile and wave.")
-    msgbox("Watching the GYM challenge is\na really popular passtime.\lI'm excited to work at the GYM\lduring GYM SEASON.", MSGBOX_AUTOCLOSE)
+    msgbox("Watching the GYM challenge is\na really popular passtime.\lI'm excited to work at the GYM\lduring GYM SEASON.")
+    msgbox("Hm... I was really trying to take\nsome pointers from the GYM LEADER...")
+    msgbox("Why? Oh, I use WOBUFFET because of them.\nIt's their OPENING POKéMON!\lBut I guess I still have much to learn...")
+    closemessage
+
     end
 }
 
@@ -318,4 +469,26 @@ movement SabrinaGym_TrainerMoveDown {
 movement SabrinaGym_DefeatedTrainer {
     walk_fast_down * 5
     delay_16
+}
+
+movement SabrinaGym_CamUp {
+    walk_up * 2
+    delay_16
+}
+
+movement SabrinaGym_ManDown {
+    walk_slow_down * 2
+    delay_16
+}
+
+movement SabrinaGym_CameraMan_1 {
+    walk_left
+    face_down
+    delay_16
+}
+
+movement CommonMovement_NurseBow{
+    nurse_joy_bow
+    delay_16
+    face_down
 }
